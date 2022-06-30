@@ -1,0 +1,220 @@
+\documentclass[dvipdfmx,a4j]{jarticle}
+
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{tikz}
+
+\geometry{top=120pt,bottom=60pt,left=70pt,right=70pt,headheight=20pt,headsep=4pt}
+
+\usepackage{xcolor}
+\definecolor{darkolivegreen}{RGB}{85,107,47}
+\definecolor{chocolate}{RGB}{210,105,30}
+\definecolor{midnightblue}{RGB}{25,25,112}
+\definecolor{maroon}{RGB}{128,0,0}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{raster,skins,breakable}
+
+\pagestyle{fancy}
+
+\newcounter{secn}   % 章のカウンタ
+\setcounter{secn}{-1}
+\newcounter{pn}     % 章ごとのページカウンタ
+
+\newcommand{\cnttwo}[1]{
+    \ifnum \value{#1}<10
+        0\arabic{#1}
+    \else
+        \arabic{#1}
+    \fi
+}
+
+% 通常ページの設定
+\fancypagestyle{pg}{
+    \newgeometry{top=100pt,bottom=60pt,left=70pt,right=70pt,headheight=20pt,headsep=4pt}
+    \lhead{
+        \begin{tikzpicture}[remember picture,overlay,shift={(current page.north)}]
+            \fill [black] (-9.65, -1.9) node[right] {{\Large \textbf{数学問題集}}};
+            \fill [black] (9.15, -1.9) node[left] {{\Large \textbf{プリント}}{\large \cnttwo{secn}}{\normalsize -\cnttwo{pn}}};
+            \fill [black] (-9.5,-2.8) rectangle (9, -2.2);
+            \fill [white] (-9.2,-2.5) node[right] {{\normalsize \textbf{制作者 : }}{\large \textbf{Anman}}};
+        \end{tikzpicture}
+    }
+    \lfoot{
+        \begin{tikzpicture}[remember picture,overlay,shift={(current page.south)}]
+            \fill [black] (-9.5, 1) rectangle (9, 1.6);
+            \fill [white] (0, 1.3) node {\thepage};
+        \end{tikzpicture}
+    }
+    \cfoot{}
+    \renewcommand{\headrulewidth}{0pt}
+}
+
+% 通常ページのデザインをデフォルトにする
+\pagestyle{pg}
+
+
+% 章立てページのデザインを現在のページに反映
+\newcommand{\pgs}[1]{
+    \setcounter{pn}{0}
+    \addtocounter{secn}{1}
+
+    \fancypagestyle{pgs}{
+        \newgeometry{top=130pt,bottom=60pt,left=70pt,right=70pt,headheight=20pt,headsep=4pt}
+        \lhead{
+            \begin{tikzpicture}[remember picture,overlay,shift={(current page.north)}]
+                \fill [black] (-9.65, -1.9) node[right] {{\Large \textbf{数学問題集}}};
+                \fill [black] (9.15, -1.9) node[left] {{\Large \textbf{プリント}}{\large \cnttwo{secn}}{\normalsize -\cnttwo{pn}}};
+                \fill [black] (-9.5,-2.8) rectangle (9, -2.2);
+                \fill [white] (-9.2,-2.5) node[right] {{\normalsize \textbf{制作者 : }}{\large \textbf{Anman}}};
+                \fill [black] (0, -3.2) node {{\LARGE \textbf{#1}}};
+                \fill [black] (-9.5,-4) rectangle (9, -3.5);
+                \fill [white] (-9.2,-3.8) node[right] {{\small \textbf{更新日 : 4/6/2022 version 0.1}}};
+            \end{tikzpicture}
+        }
+        \lfoot{
+            \begin{tikzpicture}[remember picture,overlay,shift={(current page.south)}]
+                \fill [black] (-9.5, 1) rectangle (9, 1.6);
+                \fill [white] (0, 1.3) node {\thepage};
+            \end{tikzpicture}
+        }
+        \cfoot{}
+        \renewcommand{\headrulewidth}{0pt}
+    }
+    \thispagestyle{pgs}
+}
+% \pgs{タイトル名前}
+
+
+% 章立てページのデザインを現在のページに反映（色も設定する）
+% 以降の通常ページの色も変更
+\newcommand{\pgsc}[2]{
+    \setcounter{pn}{-1} % たぶん \pagestyleと\thispagestyle で ページが増えた扱いになるため?
+    \addtocounter{secn}{1}
+
+    \fancypagestyle{pgs}{
+        \newgeometry{top=130pt,bottom=60pt,left=70pt,right=70pt,headheight=20pt,headsep=4pt}
+        \lhead{
+            \begin{tikzpicture}[remember picture,overlay,shift={(current page.north)}]
+                \fill [#2] (-9.65, -1.9) node[right] {{\Large \textbf{数学問題集}}};
+                \fill [#2] (9.15, -1.9) node[left] {{\Large \textbf{プリント}}{\large \cnttwo{secn}}{\normalsize -\cnttwo{pn}}};
+                \fill [#2] (-9.5,-2.8) rectangle (9, -2.2);
+                \fill [white] (-9.2,-2.5) node[right] {{\normalsize \textbf{制作者 : }}{\large \textbf{Anman}}};
+                \fill [#2] (0, -3.2) node {{\LARGE \textbf{#1}}};
+                \fill [#2] (-9.5,-4) rectangle (9, -3.5);
+                \fill [white] (-9.2,-3.8) node[right] {{\small \textbf{更新日 : 4/6/2022 version 0.1}}};
+            \end{tikzpicture}
+        }
+        \lfoot{
+            \begin{tikzpicture}[remember picture,overlay,shift={(current page.south)}]
+                \fill [#2] (-9.5, 1) rectangle (9, 1.6);
+                \fill [white] (0, 1.3) node {\thepage};
+            \end{tikzpicture}
+        }
+        \cfoot{}
+        \renewcommand{\headrulewidth}{0pt}
+    }
+
+
+    \fancypagestyle{pg}{
+        \newgeometry{top=100pt,bottom=60pt,left=70pt,right=70pt,headheight=20pt,headsep=4pt}
+        \lhead{
+            \begin{tikzpicture}[remember picture,overlay,shift={(current page.north)}]
+                \fill [#2] (-9.65, -1.9) node[right] {{\Large \textbf{数学問題集}}};
+                \fill [#2] (9.15, -1.9) node[left] {{\Large \textbf{プリント}}{\large \cnttwo{secn}}{\normalsize -\cnttwo{pn}}};
+                \fill [#2] (-9.5,-2.8) rectangle (9, -2.2);
+                \fill [white] (-9.2,-2.5) node[right] {{\normalsize \textbf{制作者 : }}{\large \textbf{Anman}}};
+            \end{tikzpicture}
+        }
+        \lfoot{
+            \begin{tikzpicture}[remember picture,overlay,shift={(current page.south)}]
+                \fill [#2] (-9.5, 1) rectangle (9, 1.6);
+                \fill [white] (0, 1.3) node {\thepage};
+            \end{tikzpicture}
+        }
+        \cfoot{}
+        \renewcommand{\headrulewidth}{0pt}
+    }
+    \pagestyle{pg}
+    \thispagestyle{pgs}
+}
+
+% カウンタ設定
+\let\np\newpage
+\renewcommand{\newpage}{
+    \np
+    \addtocounter{pn}{1}
+}
+
+% 注釈
+\newcommand{\annot}{
+    \hrule width 6cm
+    \vspace{1mm}
+}
+% text...\\
+% \annot
+% annotation...
+
+% 問題枠のテンプレ
+\newcounter{numpb} %%問題番号
+\setcounter{numpb}{0}
+\newtcolorbox{pb}[1][]{enhanced,boxrule=0.5mm,
+    top=6pt,left=6pt,right=4pt,bottom=6pt,arc=0mm,
+    frame style={left color=green!60!black, right color=blue!50!white},
+    colback=white,
+    boxrule=1pt,
+    %underlay={
+    %\node[black] at ([xshift=20pt,yshift=-13pt]interior.north west) {\stepcounter{numpb}\textbf{問\arabic{secn}--\arabic{numpb}.}};
+    %},
+    segmentation code={
+        \draw[dashed] (segmentation.west)--(segmentation.east);
+        %\node[red!70!white] at ([xshift=29pt,yshift=-7pt]segmentation.south west) {\textbf{解.}};
+    },
+    before upper={\setlength{\parindent}{1zw}},
+    before lower={\setlength{\parindent}{1zw}},
+}
+\renewcommand{\labelenumi}{(\arabic{enumi})}
+
+
+% 本文
+\begin{document}
+\pgs{自習用数学問題集}% 章立てページ
+この資料は, 自習用の数学問題集です. 証明問題に比重を置いています. 易しくはありません.\\
+問題の順番に規則性はほとんどなく, 分野はごっちゃ, 難易度順に並んでいるわけでもありません. ただし, 後の問題で使うような知識が前半に来ないようには作成しているつもりです.
+
+また, この問題集の解答が正しい保証はありません. 参考にする場合は気を付けてください.
+\newpage
+\pgsc{集合と位相}{darkolivegreen}
+
+%\begin{pb}
+%    \noindent
+%    \stepcounter{numpb}\textbf{問\arabic{secn}--\arabic{numpb}.} 次の問に答えなさい.
+%    \begin{enumerate}
+%        \setlength{\parskip}{0cm} % 段落間
+%        \setlength{\itemsep}{0cm} % 項目間
+%        \setlength{\leftskip}{-8pt} % 左からの頭の位置
+%        \item ara
+%        \item aaa
+%    \end{enumerate}
+%    \tcblower
+%    \noindent
+%    \textbf{解.}\\
+%    bbb
+%\end{pb}
+\noindent
+\stepcounter{numpb}\textbf{問\arabic{secn}--\arabic{numpb}:} 次の問に答えなさい.
+    \begin{enumerate}
+        \setlength{\parskip}{0cm} % 段落間
+        \setlength{\itemsep}{0cm} % 項目間
+        \setlength{\leftskip}{-8pt} % 左からの頭の位置
+        \item
+        テンプレ\\
+        テンプレテンプレテンプレテンプレテンプレ
+        \item テンプレ
+    \end{enumerate}
+\hrule
+\vspace{2mm}
+{\color{red}\textbf{解:}}\\
+テンプレテンプレテンプレテンプレ\\
+テンプレテンプレテンプレテンプレ
+\end{document}

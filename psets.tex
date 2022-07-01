@@ -15,6 +15,12 @@
 \usepackage{tcolorbox}
 \tcbuselibrary{raster,skins,breakable}
 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+\usepackage{bm}
+
 \pagestyle{fancy}
 
 \newcounter{secn}   % 章のカウンタ
@@ -174,18 +180,8 @@
     before lower={\setlength{\parindent}{1zw}},
 }
 \renewcommand{\labelenumi}{(\arabic{enumi})}
-
-
-% 本文
-\begin{document}
-\pgs{自習用数学問題集}% 章立てページ
-この資料は, 自習用の数学問題集です. 証明問題に比重を置いています. 易しくはありません.\\
-問題の順番に規則性はほとんどなく, 分野はごっちゃ, 難易度順に並んでいるわけでもありません. ただし, 後の問題で使うような知識が前半に来ないようには作成しているつもりです.
-
-また, この問題集の解答が正しい保証はありません. 参考にする場合は気を付けてください.
-\newpage
-\pgsc{集合と位相}{darkolivegreen}
-
+\renewcommand{\labelenumii}{(\roman{enumii})}
+% 使い方
 %\begin{pb}
 %    \noindent
 %    \stepcounter{numpb}\textbf{問\arabic{secn}--\arabic{numpb}.} 次の問に答えなさい.
@@ -201,20 +197,93 @@
 %    \textbf{解.}\\
 %    bbb
 %\end{pb}
-\noindent
-\stepcounter{numpb}\textbf{問\arabic{secn}--\arabic{numpb}:} 次の問に答えなさい.
+
+
+% 問題テンプレ箇条書きver
+\newcommand{\pbenum}[2]{
+    \vspace{2mm}
+    \hrule
+    \vspace{2mm}
+    \noindent
+    \stepcounter{numpb}\textbf{問\arabic{secn}--\arabic{numpb}:} 次の問に答えよ.
+        \begin{enumerate}
+            
+            \setlength{\leftskip}{-8pt} % 左からの頭の位置
+            #1
+        \end{enumerate}
+    \hrule
+    \vspace{2mm}
+    {\color{red}\textbf{解:}}
     \begin{enumerate}
-        \setlength{\parskip}{0cm} % 段落間
-        \setlength{\itemsep}{0cm} % 項目間
         \setlength{\leftskip}{-8pt} % 左からの頭の位置
-        \item
-        テンプレ\\
-        テンプレテンプレテンプレテンプレテンプレ
-        \item テンプレ
+        #2
     \end{enumerate}
-\hrule
-\vspace{2mm}
-{\color{red}\textbf{解:}}\\
-テンプレテンプレテンプレテンプレ\\
-テンプレテンプレテンプレテンプレ
+}
+
+
+
+% 本文
+\begin{document}
+\pgs{自習用数学問題集}% 章立てページ
+この資料は, 自習用の数学問題集です. 証明問題に比重を置いています. 易しくはありません.\\
+問題の順番に規則性はほとんどなく, 分野はごっちゃ, 難易度順に並んでいるわけでもありません. ただし, 後の問題で使うような知識が前半に来ないようには作成しているつもりです.
+
+また, この問題集の解答が正しい保証はありません. 参考にする場合は気を付けてください.
+\newpage
+\pgsc{集合と位相}{darkolivegreen}
+まずは数学の道具（概念）に慣れるための基礎問題.\\
+\pbenum{
+\item $n$次元実空間における任意の2点 $\bm{x}, \bm{y} \in \mathbb{R}^n$に対し, シュワルツの不等式
+\begin{equation*}
+    |(\bm{x}\ |\ \bm{y})| \leq \|\bm{x}\|\cdot \|\bm{y}\|
+\end{equation*}
+を示せ.
+\item $n$次元実空間$\mathbb{R}^n$における2点$\bm{x} = (x_1, x_2, \cdots, x_n)$と$\bm{y} = (y_1, y_2, \cdots, y_n)$の距離$d(\bm{x}, \bm{y})$を次のように定義する.
+\begin{equation*}
+    d(\bm{x}, \bm{y}) = \sqrt{\sum_{i=1}^{n}(x_i - y_i)^2}
+\end{equation*}
+このとき, 三角不等式 $d(\bm{x}, \bm{z}) \leq d(\bm{x}, \bm{y}) + d(\bm{y}, \bm{z})$ を示せ.
+}{
+\item いくつかやり方があるが, ここでは天下りだが代数的に済む解法を示す.
+\begin{enumerate}
+    \item $\bm{y} = \bm{0}$ のとき\\
+    \ \\
+    両辺 0 で成立.
+    \item $\bm{y} \neq \bm{0}$ のとき\\
+    \ \\
+    任意の実数 $a, b$ に対して, 
+    \begin{eqnarray*}
+        0 &\leq& \|a\bm{x}+b\bm{y}\|^2\\
+        &=& \|a\|^2\|\bm{x}\|^2 + 2ab\cdot (\bm{x}\ |\ \bm{y}) + \|b\|^2\|\bm{y}\|^2
+    \end{eqnarray*}
+    ここで, $a = \|\bm{y}\|^2,\ b = -(\bm{x}\ |\ \bm{y})$ とすると,
+    \begin{eqnarray*}
+        0 &\leq& \|\bm{y}\|^4\|\bm{x}\|^2-2\|\bm{y}\|^2|(\bm{x}\ |\ \bm{y})|^2 + |\bm{y}\|^2|(\bm{x}\ |\ \bm{y})|^2\\
+        &=& \|\bm{y}\|^2(\|\bm{x}\|^2\|\bm{y}\|^2 - |(\bm{x}\ |\ \bm{y})|^2)
+    \end{eqnarray*}
+    今 $\|\bm{y}\|^2 \neq 0$ より, 両辺 $\|\bm{y}\|^2$ で割り, 平方根をとれば $|(\bm{x}\ |\ \bm{y})| \leq \|\bm{x}\|\cdot \|\bm{y}\|$ が成り立つ.
+\end{enumerate}
+以上より, シュワルツの不等式が示された.
+\item まず, 通常の三角不等式 $\|\bm{x} + \bm{y}\| \leq \|\bm{x}\| + \|\bm{y}\|$ を示す.
+これは(1)のシュワルツの不等式を利用することで次のように示される.
+\begin{eqnarray*}
+    \|\bm{x} + \bm{y}\|^2 &=& |\bm{x}\|^2 + 2(\bm{x}\ |\ \bm{y}) + |\bm{y}\|^2\\
+    &\leq& \|\bm{x}\|^2 + 2\|\bm{x}\||\bm{y}\| + |\bm{y}\|^2\\
+    &=& (\|\bm{x}\| + \|\bm{y}\|)^2
+\end{eqnarray*}
+この三角不等式より, $\|\bm{x} - \bm{y} + \bm{y} - \bm{z}\| \leq \|\bm{x} -\bm{y}\| + \|\bm{y} - \bm{z}\|$ が成り立ち, $d(\bm{x}, \bm{y}) = \|\bm{x} - \bm{y}\|$ より, 
+$d(\bm{x}, \bm{z}) \leq d(\bm{x}, \bm{y}) + d(\bm{y}, \bm{z})$ が成り立つ.
+}
+\newpage
+前問について補足する.
+
+まず, シュワルツの不等式を示す際に用いた証明は天下りすぎる. そこで, 二次関数と判別式を用いた証明が良く本で紹介されている.
+これは, $\|\bm{x}\|^2t^2 - 2(\bm{x}\ |\ \bm{y})t + \|\bm{y}\|^2 = \| t\bm{x} - \bm{y}\|^2 \geq 0$ の判別式が $D \leq 0$ であることから証明する.
+この手法からは, 等号成立条件が $\bm{x} = t\bm{y}$ となる実数 $t$ が存在することとすぐにわかる. 一方, 先の天下りな証明からは等号成立条件はわかりにくい.
+先の証明からは, 等号が成立することから $\| \|\bm{y}\|^2\|\bm{x}\| - |(\bm{x}\ |\ \bm{y})| \|\bm{y}\|^2 \|^2 = 0$ より $t = (\bm{x}\ |\ \bm{y})/(\bm{y}\ |\ \bm{y})$ と具体的な $t$ を示すことと, 
+逆に$\bm{x} = t\bm{y}$ を代入することから, 等号が成立することを示す. 
+
+また, 三角不等式の方では等号成立条件はシュワルツの不等式の等号成立条件と $(\bm{x}\ |\ \bm{y}) = |(\bm{x}\ |\ \bm{y})|$ をまとめた, 
+「$(\bm{x}\ |\ \bm{y}) \geq 0$ かつ $\bm{x} = t\bm{y}$ となる実数 $t$ が存在する」こととなる.
 \end{document}
+

@@ -18,7 +18,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsfonts}
-
+\usepackage{txfonts}
 \usepackage{bm}
 
 \pagestyle{fancy}
@@ -228,6 +228,8 @@
 この資料は, 自習用の数学問題集です. 証明問題に比重を置いています. 易しくはありません.\\
 問題の順番に規則性はほとんどなく, 分野はごっちゃ, 難易度順に並んでいるわけでもありません. ただし, 後の問題で使うような知識が前半に来ないようには作成しているつもりです.
 
+数学記号や用語の定義は, 教科書ごとに著しく差があれば問題文中で定義しますが, 多くの教科書で使われているものは一々定義することはありません.
+
 また, この問題集の解答が正しい保証はありません. 参考にする場合は気を付けてください.
 \newpage
 \pgsc{集合と位相}{darkolivegreen}
@@ -285,5 +287,50 @@ $d(\bm{x}, \bm{z}) \leq d(\bm{x}, \bm{y}) + d(\bm{y}, \bm{z})$ が成り立つ.
 
 また, 三角不等式の方では等号成立条件はシュワルツの不等式の等号成立条件と $(\bm{x}\ |\ \bm{y}) = |(\bm{x}\ |\ \bm{y})|$ をまとめた, 
 「$(\bm{x}\ |\ \bm{y}) \geq 0$ かつ $\bm{x} = t\bm{y}$ となる実数 $t$ が存在する」こととなる.
+
+
+\newpage
+\pbenum{
+\item 二つの集合$A, B$に対して, 次が成り立つことを示せ.
+\begin{equation*}
+    A \not\subset B \iff A \cap B^c \neq \emptyset
+\end{equation*}
+ただし, この問題以降 $A$ が $B$ の部分集合であることを $A \subset B$ と示すこととする.
+\item $\langle X, d\rangle$ を距離空間とし, $A$ を $X$ の部分集合とする. このとき, $A$ の内部 $A^\circ$, 閉包 $\overline{A}$, 境界 $\partial A$ を次のように定義する. ただし, $x$ の近傍の全体を $\bm{V}(x)$ とする
+(すなわち, $\bm{V}(x) \coloneqq \{ V \subset X\ |\ \exists \epsilon > 0, B(x\ ;\epsilon) \subset V\}$) また, $B(x\ ;\epsilon)$ は半径$\epsilon$ の開球($\epsilon$ -近傍)である.
+\begin{eqnarray*}
+    A^\circ &\coloneqq& \{ x \in X\ |\ \exists \epsilon > 0, B(x\ ;\epsilon) \subset A\}\\
+    \overline{A} &\coloneqq& \{ x \in X\ |\ \forall V \in \bm{V}(x), V \cap A \neq \emptyset\}\\
+    \partial A &\coloneqq& \{ x \in X\ |\ \forall V \in \bm{V}(x), V \cap A \neq \emptyset \land V - A \neq \emptyset \}
+\end{eqnarray*} 
+このとき, $(A^\circ)^c = \overline{A^c}$ となることを示せ.
+}{
+\item 以下の同値変形により示される.
+\begin{eqnarray*}
+    A \not\subset B &\iff& \exists x,\ \lnot (x \in A \implies x \in B )\\
+    &\iff& \exists x,\ \lnot (\lnot(x \in A) \lor x \in B )\\
+    &\iff& \exists x,\ x \in A \land x \in B^c\\
+    &\iff& A \cap B^c \neq \emptyset
+\end{eqnarray*}
+\item まず, 以下の同値変形
+\begin{eqnarray*}
+    x \in (A^\circ)^c &\iff& x \notin A^\circ\\
+    &\iff& \lnot(\exists \epsilon > 0)[B(x\ ;\epsilon) \subset A]\\
+    &\iff& (\forall \epsilon > 0)[B(x\ ;\epsilon) \not\subset A]\\
+    &\iff& (\forall \epsilon > 0)[B(x\ ;\epsilon) \cap A^c \neq \emptyset]\hspace{1zw}\text{($\because$ (1)より)}
+\end{eqnarray*}
+より $x \in (A^\circ)^c \iff (\forall \epsilon > 0)[B(x\ ;\epsilon) \cap A^c \neq \emptyset]$ が成り立つ.\\
+これより, $(\forall \epsilon > 0)[B(x\ ;\epsilon) \cap A^c \neq \emptyset] \iff x \in \overline{A^c}$ が成り立つことを示せばよい.
+\begin{enumerate}
+    \item $\implies$\\
+    近傍の定義より, 任意の $V \in \bm{V}(x)$に対し, $B(x\ ;\epsilon_0) \subset V$ となる $\epsilon_0 > 0$ が存在するが, 今, この $\epsilon_0$ に対して $B(x\ ;\epsilon_0) \cap A^c \neq \emptyset$
+    となるので, $V \cap A^c \neq \emptyset$ となる. これより, $x \in \overline{A^c}$ となる.
+    \item $\impliedby$\\ 
+    任意の $\epsilon > 0$ に対して, $B(x\ ;\epsilon) \subset B(x\ ;\epsilon)$ が成り立つので, 任意の $\epsilon > 0$ に対して, $B(x\ ;\epsilon) \in \bm{V}(x)$ となる.
+    よって, 閉包の定義より, $x \in \overline{A^c}$ となるとき, $(\forall \epsilon > 0)[B(x\ ;\epsilon) \cap A^c \neq \emptyset]$ が成り立つ.
+\end{enumerate}
+以上より, $(A^\circ)^c = \overline{A^c}$ が成り立つ.
+}
+
 \end{document}
 

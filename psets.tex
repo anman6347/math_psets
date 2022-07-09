@@ -207,7 +207,6 @@
     \noindent
     \stepcounter{numpb}\textbf{問\arabic{secn}--\arabic{numpb}:} 次の問に答えよ.
         \begin{enumerate}
-            
             \setlength{\leftskip}{-8pt} % 左からの頭の位置
             #1
         \end{enumerate}
@@ -220,6 +219,25 @@
     \end{enumerate}
 }
 
+% 問題テンプレ箇条書きver 最初のメッセージも書き換える.
+\newcommand{\pbenumex}[3]{
+    \vspace{2mm}
+    \hrule
+    \vspace{2mm}
+    \noindent
+    \stepcounter{numpb}\textbf{問\arabic{secn}--\arabic{numpb}:} #1
+        \begin{enumerate}
+            \setlength{\leftskip}{-8pt} % 左からの頭の位置
+            #2
+        \end{enumerate}
+    \hrule
+    \vspace{2mm}
+    {\color{red}\textbf{解:}}
+    \begin{enumerate}
+        \setlength{\leftskip}{-8pt} % 左からの頭の位置
+        #3
+    \end{enumerate}
+}
 
 
 % 本文
@@ -332,5 +350,42 @@ $d(\bm{x}, \bm{z}) \leq d(\bm{x}, \bm{y}) + d(\bm{y}, \bm{z})$ が成り立つ.
 以上より, $(A^\circ)^c = \overline{A^c}$ が成り立つ.
 }
 
+\newpage
+\pbenumex{
+$\langle X, d\rangle$ を距離空間とし, $A$ を $X$ の部分集合とする. このとき, 次の問に答えよ. ただし, 内部, 境界, 閉包の定義は前問と同じものとする.
+}{
+\item $A^\circ \subset A \subset \overline{A}$ を示せ.
+\item $\partial A = \overline{A} - A^\circ$ を示せ.
+\item $A$ の外部 $A^e$ を $A^e \coloneqq (A^c)^\circ$ のように定義する. このとき, $A^\circ \cup \partial A \cup A^e = X$ であることを示せ.
+\item $A^\circ, \partial A, A^e$ がそれぞれ互いに素であることを示せ.
+}{
+\item まず, $x \in A^\circ$ のとき, $\exists \epsilon > 0, B(x\ ;\epsilon) \subset A$ であり, $x \in B(x\ ;\epsilon)$ とから $A^\circ \subset A$ となる.\\
+次に, $x \in A$ のとき, 任意の $x$ の近傍 $V$ に関して, 近傍の定義より $x \in V$ となる. よって $V \cap A \neq \emptyset$ より, $A \subset \overline{A}$ となる.\\
+以上より, $A^\circ \subset A \subset \overline{A}$ が成り立つ.
+\item まず, $\partial A \subset \overline{A} - A^\circ$ を示す.\\
+境界と閉包の定義より $\partial A \subset \overline{A}$ は明らか. よって $x \in \partial A \implies x \notin A^\circ$ を示せばよい.\\
+さて, 任意の $\epsilon > 0$ に対して $B(x\ ;\epsilon) \in \bm{V}(x)$ である(問1-2\ (2)参照)から, $x \in \partial A$ のとき, 境界の定義より $B(x\ ;\epsilon) - A \neq \emptyset$ が成り立つ.
+これより, $B(x\ ;\epsilon) \not\subset A$ となる. 今, 任意の $\epsilon > 0$ に対して, $B(x\ ;\epsilon) \not\subset A$ が示され, これは $x \notin A^\circ$ であることに他ならない.\\
+よって, $\partial A \subset \overline{A} - A^\circ$ が成り立つ.\\
+次に, $\overline{A} - A^\circ \subset \partial A$ を示す.\\
+これは, 先の議論を逆にたどることにより示せる(問1-2\ (2)を参照するとよい)\\
+以上より, $\partial A = \overline{A} - A^\circ$ が成り立つ.
+\item まず, $\overline{A} = A^\circ \cup \partial A$ となることを示す.\\
+これは次のように示される.
+\begin{align*}
+    A^\circ \cup \partial A &= A^\circ \cup (\overline{A} - A^\circ)&&\text{($\because$ (2)より)}\\
+                            &= \overline{A}&&\text{($\because$ (1)より$A^\circ \subset \overline{A}$)} 
+\end{align*}
+次に, 問1-2\ (2)より, $(A^\circ)^c = \overline{A^c}$ が成り立つから, $(A^e)^c = ((A^c)^\circ)^c = \overline{(A^c)^c} = \overline{A}$ が成り立つ. これより, $A^e \cup \overline{A} = X$ より, 
+$\overline{A} = A^\circ \cup \partial A$ とから, $A^\circ \cup \partial A \cup A^e = X$ が成り立つ.
+\item
+まず, $A^\circ \cup \partial A$ だが, これは(2)より明らかに $A^\circ \cup \partial A = \emptyset$ が成り立つ.\\
+次に $A^\circ \cap A^e = \emptyset$ を背理法により示す.\\
+$A^\circ \cap A^e$ の元の存在を仮定すると, (1)より $x \in A^\circ \cap A^e \implies x \in \overline{A} \cap A^e$ が成り立つが, (3)より $(A^e)^c = \overline{A}$ であるから, $\overline{A} \cap A^e = \emptyset$
+で矛盾. よって, $A^\circ \cap A^e = \emptyset$ が成り立つ.\\
+最後に $\partial A \cap A^e = \emptyset$ を背理法により示す.\\
+$\partial A \cap A^e$ の元の存在を仮定すると, (2)より $x \in \partial A \cap A^e \implies x \in \overline{A} \cap A^e$ が成り立ち, 先と同様にして矛盾. よって, $\partial A \cap A^e = \emptyset$ が成り立つ.\\
+以上より, $A^\circ, \partial A, A^e$ はそれぞれ互いに素である.
+}
 \end{document}
 

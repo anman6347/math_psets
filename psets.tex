@@ -75,7 +75,7 @@
                 \fill [white] (-9.2,-2.5) node[right] {{\normalsize \textbf{制作者 : }}{\large \textbf{Anman}}};
                 \fill [black] (0, -3.2) node {{\LARGE \textbf{#1}}};
                 \fill [black] (-9.5,-4) rectangle (9, -3.5);
-                \fill [white] (-9.2,-3.8) node[right] {{\small \textbf{更新日 : 4/6/2022 version 0.1}}};
+                \fill [white] (-9.2,-3.8) node[right] {{\small \textbf{更新日 : 10/7/2022 version 0.1}}};
             \end{tikzpicture}
         }
         \lfoot{
@@ -108,7 +108,7 @@
                 \fill [white] (-9.2,-2.5) node[right] {{\normalsize \textbf{制作者 : }}{\large \textbf{Anman}}};
                 \fill [#2] (0, -3.2) node {{\LARGE \textbf{#1}}};
                 \fill [#2] (-9.5,-4) rectangle (9, -3.5);
-                \fill [white] (-9.2,-3.8) node[right] {{\small \textbf{更新日 : 4/6/2022 version 0.1}}};
+                \fill [white] (-9.2,-3.8) node[right] {{\small \textbf{更新日 : 10/7/2022 version 0.1}}};
             \end{tikzpicture}
         }
         \lfoot{
@@ -244,7 +244,7 @@
 \begin{document}
 \pgs{自習用数学問題集}% 章立てページ
 この資料は, 自習用の数学問題集です. 証明問題に比重を置いています. 易しくはありません.\\
-問題の順番に規則性はほとんどなく, 分野はごっちゃ, 難易度順に並んでいるわけでもありません. ただし, 後の問題で使うような知識が前半に来ないようには作成しているつもりです.
+問題の順番に規則性はほとんどなく, 分野はごっちゃ, 難易度順に並んでいるわけでもありません. ただし, 後の問題で使うような知識が前半に来ないように編集していく予定です.
 
 数学記号や用語の定義は, 教科書ごとに著しく差があれば問題文中で定義しますが, 多くの教科書で使われているものは一々定義することはありません.
 
@@ -387,5 +387,56 @@ $A^\circ \cap A^e$ の元の存在を仮定すると, (1)より $x \in A^\circ \
 $\partial A \cap A^e$ の元の存在を仮定すると, (2)より $x \in \partial A \cap A^e \implies x \in \overline{A} \cap A^e$ が成り立ち, 先と同様にして矛盾. よって, $\partial A \cap A^e = \emptyset$ が成り立つ.\\
 以上より, $A^\circ, \partial A, A^e$ はそれぞれ互いに素である.
 }
+
+\newpage
+順序対の概念を理解しよう.\\
+
+\pbenum{
+\item $\langle a, b\rangle$ を $\langle a, b\rangle \coloneqq \{ \{a\}, \{a, b\} \}$ と定めるとき,
+\begin{align*}
+    \langle a, b\rangle = \langle c, d\rangle \iff (a = c) \land (b = d)
+\end{align*}
+となることを示せ. (補足: 外延的記法において, 同一の元を重複して書くことは禁じられていない. 同じものをいくつ書いてもその効果はただ1つだけ書いたのと同じものとしている)
+\item 順序対を拡張して $\bm{n}$\textbf{-対}を次のように定義する.
+\begin{align*}
+    \langle a_1 \rangle \coloneqq a_1,\hspace{3zw} \langle a_1, \cdots, a_{n-1}, a_n \rangle \coloneqq \langle \langle a_1, \cdots, a_{n-1} \rangle, a_n \rangle 
+\end{align*}
+このとき,
+\begin{align*}
+    \langle a_1, \cdots, a_n \rangle = \langle b_1, \cdots, b_n \rangle \iff a_1 = b_1 \land \cdots a_n = b_n
+\end{align*}
+が成り立つことを示せ.
+}{
+\item $\impliedby$ は明らか. $\implies$ は背理法で示す.\\
+まず, $a \neq c$ と仮定すると, $\{a\} \neq \{c\}$ より, $\{a\} = \{c, d\}$ とならなくてはならない. このとき, $a = c = d$ となり, $a \neq c$ に矛盾. よって $a = c$ でなくてはならない.\\
+次に $b \neq d$ を仮定する. $a = c$ より $\langle a, b\rangle = \langle c, d\rangle \implies \{ \{a\}, \{a, b\} \} = \{ \{a\}, \{a, d\} \}$ が成り立つ. ここで,
+\begin{enumerate}
+    \item $a = b$ のとき\\
+    $\{ \{a\}, \{a, b\} \} = \{\{a\}\}$ より, $\{a, d\} = \{a\}$ となるから, $d = a = b$ で $b \neq d$ に矛盾. 
+    \item $a \neq b$ のとき\\
+    $\{a, d\} = \{a\}$ または $\{a, d\} = \{a, b\}$ でなくてはならない. ここで $\{a, d\} = \{a, b\}$ とすると, $b = d$ で矛盾. また, $\{a, d\} = \{a\}$ とすると, $d = a$ となり, 今度は
+    $\{ \{a\}, \{a, d\} \} = \{\{a\}\}$ となり, $\{a, b\} = \{a\}$ より, $b = a = d$ より矛盾.
+\end{enumerate}
+以上より, $b = d$ より, $a = c \land b = d$ が成り立つ.\\
+ちなみに, 本問題で扱った $\langle a, b\rangle$ は, Kuratowski の順序対とよばれる.
+\item
+\begin{enumerate}
+    \item $\implies$\\
+    帰納法により示す.
+    $n = 1$ のときは明らか.\\
+    次に $\langle a_1, \cdots, a_k \rangle = \langle b_1, \cdots, b_k \rangle \implies a_1 = b_1 \land \cdots a_k = b_k$ が成り立つと仮定すると,
+    \begin{align*}
+        \langle a_1, \cdots, a_{k+1} \rangle = \langle b_1, \cdots, b_{k+1} \rangle &\implies \langle \langle a_1, \cdots, a_k \rangle, a_{k+1} \rangle = \langle \langle b_1, \cdots, b_k \rangle, b_{k+1} \rangle \\
+        &\implies \langle a_1, \cdots, a_k \rangle = \langle b_1, \cdots, b_k \rangle \land a_{k+1} = b_{k+1}\\
+        &\implies a_1 = b_1 \land \cdots a_k = b_k \land a_{k+1} = b_{k+1}
+    \end{align*}
+    が成り立つことから, $\langle a_1, \cdots, a_n \rangle = \langle b_1, \cdots, b_n \rangle \implies a_1 = b_1 \land \cdots a_n = b_n$ が成り立つ.\\
+    (集合の集合を認めれば, (1)において元が集合でも問題ない...はず)
+    \item $\impliedby$\\
+    上の議論を逆にたどればよい.
+\end{enumerate}
+以上より, $\langle a_1, \cdots, a_n \rangle = \langle b_1, \cdots, b_n \rangle \iff a_1 = b_1 \land \cdots a_n = b_n$ が成り立つ.
+}
+
 \end{document}
 

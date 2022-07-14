@@ -65,6 +65,8 @@
     \setcounter{pn}{0}
     \addtocounter{secn}{1}
 
+    \setcounter{numpb}{0}
+
     \fancypagestyle{pgs}{
         \newgeometry{top=130pt,bottom=60pt,left=70pt,right=70pt,headheight=20pt,headsep=4pt}
         \lhead{
@@ -97,6 +99,8 @@
 \newcommand{\pgsc}[2]{
     \setcounter{pn}{-1} % たぶん \pagestyleと\thispagestyle で ページが増えた扱いになるため?
     \addtocounter{secn}{1}
+
+    \setcounter{numpb}{0}
 
     \fancypagestyle{pgs}{
         \newgeometry{top=130pt,bottom=60pt,left=70pt,right=70pt,headheight=20pt,headsep=4pt}

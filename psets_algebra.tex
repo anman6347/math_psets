@@ -1,6 +1,28 @@
 \pgsc{代数学}{chocolate}
-\pbenum{
-\item tmp
+最初らへんは初等整数論の問題だけど, 後から変更の可能性大.
+\pbenumex{
+    以降の問題では, 正の整数全体の集合を $\mathbb{Z}^+$ で表す. このとき, 次の問に答えよ.
 }{
-\item tmp
+\item 次の条件を満たす $\mathbb{Z}^+$ の部分集合 $S$ を考える.
+\begin{align}
+    &1 \in S\\
+    &\forall n \in \mathbb{Z}^+ [n \in S \implies n + 1 \in s]
+\end{align}
+整列性（任意の空でない自然数の集合は最小限を持つ）を認めた上で, $S = \mathbb{Z}^+$ を満たすことを示せ.
+\item $\mathbb{Z}^+$ の元の各々に対し, 命題 $P(n)$ が与えられたとし, それについて次の二つのことが示されたとする.
+\setcounter{equation}{0}
+\begin{align}
+    &P(1) \text{は真}\\
+    &\forall n \in \mathbb{Z}^+ [P(n) \text{が真} \implies P(n+1) \text{も真}]
+\end{align}
+このとき, 全ての $n \in \mathbb{Z}^+$ に対して, $P(n)$ が真となることを示せ.
+}{
+\item $\mathbb{Z}^+ - S = S^{'}$ とし, $S^{'} = \emptyset$ となることを背理法により示す.\\
+$S^{'} \neq \emptyset$ と仮定すると, 整列性より $n_0 = \min S^{'}$ となる $n_0 \in \mathbb{Z}^+$ が存在する.
+今, $n_0 > 1$ より, $n_0 - 1 \geq 1$ となり $n_0 - 1 \in \mathbb{Z}^+$ である.
+ここで $n_0 - 1 < n_0 = \min \mathbb{Z}^+$ より $n_0 - 1 \notin S^{'}$ , すなわち $n_0 - 1 \in S$ となる.\\
+これより, $S$ が満たす条件(2)より, $n_0 \in S$ となり, $n_0 \in S^{'}$ に矛盾.\\
+以上より, $S^{'} = \emptyset$ であり, $S = \mathbb{Z}^+$ が成り立つ.
+\item $S =  \{\ n \in \mathbb{Z}^+\ |\ P(n) \text{が真} \}$ と集合 $S$ を定義すると, (1)より $S = \mathbb{Z}^+$ が成り立つ.
+よって, 全ての $n \in \mathbb{Z}^+$ に対して, $P(n)$ が真となる
 }

@@ -55,7 +55,7 @@ $d(\bm{x}, \bm{z}) \leq d(\bm{x}, \bm{y}) + d(\bm{y}, \bm{z})$ が成り立つ.
 「$(\bm{x}\ |\ \bm{y}) \geq 0$ かつ $\bm{x} = t\bm{y}$ となる実数 $t$ が存在する」こととなる.
 
 
-\newpage
+\newpage %=====
 \pbenum{
 \item 二つの集合$A, B$に対して, 次が成り立つことを示せ.
 \begin{equation*}
@@ -98,7 +98,7 @@ $d(\bm{x}, \bm{z}) \leq d(\bm{x}, \bm{y}) + d(\bm{y}, \bm{z})$ が成り立つ.
 以上より, $(A^\circ)^c = \overline{A^c}$ が成り立つ.
 }
 
-\newpage
+\newpage %======
 \pbenumex{
 $\langle X, d\rangle$ を距離空間とし, $A$ を $X$ の部分集合とする. このとき, 次の問に答えよ. ただし, 内部, 境界, 閉包の定義は前問と同じものとする.
 }{
@@ -136,7 +136,7 @@ $\partial A \cap A^e$ の元の存在を仮定すると, (2)より $x \in \parti
 以上より, $A^\circ, \partial A, A^e$ はそれぞれ互いに素である.
 }
 
-\newpage
+\newpage %=====
 順序対の概念を理解しよう.\\
 
 \pbenum{
@@ -184,4 +184,81 @@ $\partial A \cap A^e$ の元の存在を仮定すると, (2)より $x \in \parti
     上の議論を逆にたどればよい.
 \end{enumerate}
 以上より, $\langle a_1, \cdots, a_n \rangle = \langle b_1, \cdots, b_n \rangle \iff a_1 = b_1 \land \cdots a_n = b_n$ が成り立つ.
+}
+\newpage %=====
+選択公理を理解する.
+\pbenum{
+\item $\Lambda$ から $A_\lambda$ への写像を 集合族$(A_\lambda)_{\lambda \in \Lambda}$という. ここで, $\Lambda$ から $A_\lambda$ への写像
+$a$ のうち, $a_\lambda \in A_\lambda$ を満たすものの全体を集合族 $(A_\lambda)_{\lambda \in \Lambda}$ の直積といい, $\prod_{\lambda \in \Lambda}A_\lambda$ で
+表す. 今 $\prod_{n \in \bm{N}} A_n$ を $(A_1, A_2, \cdots, A_n)$ と表すとき, $( A_1, A_2, \cdots, A_n)$ は $n$-対の性質を持つことを示せ(ほぼ明らか)
+\item 選択公理(AC)
+\begin{align*}
+    \Lambda \neq \emptyset \land \forall \lambda \in \Lambda,\ A_\lambda \neq \emptyset \implies \prod_{\lambda \in \Lambda} A_\lambda \neq \emptyset
+\end{align*}
+から従属選択公理(DC)\\
+\begin{align*}
+    \begin{cases}
+        A \neq \emptyset\\
+        (\forall x \in A)[\exists y \in A,\ \langle x, y\rangle \in R]\hspace{2zw}(R \subset A \times A)
+    \end{cases}
+    \implies \exists f: \bm{N} \to A,\ \langle f(n), f(n+1)\rangle \in R    
+\end{align*}
+を示せ.
+\item 従属選択公理(DC)から可算選択公理(CC)
+\begin{align*}
+    \forall n \in \bm{N},\ A_n \neq \emptyset \implies \prod_{n \in \bm{N}} A_n \neq \emptyset
+\end{align*}
+を示せ.
+}{
+\item $(A_1, A_2, \cdots, A_n)$ は 写像 $A$ によって各 $n \in \bm{N}$ を写した先 $A(1), A(2), \cdots, A(n)$ を表す.
+ここで, 写像の相等条件を考えれば, $(A_1, A_2, \cdots, A_n) = (B_1, B_2, \cdots, B_n) \implies A_1 = B_1 \land A_2 = B_2 \land \cdots \land A_n = B_n$
+となり $n$-対の性質を持つ.\footnote{これにより, $\prod_{n \in \bm{N}}A_n$ は直積集合 $A_1 \times A_2 \times \cdots \times A_n$ と同一視される.}
+\item $R_x = \{y \in A\ |\ \langle x, y\rangle \in R \}$ とすれば, DCの仮定より $R_x \neq \emptyset$ となるから, ACから $\prod_{x \in A}R_x \neq \emptyset$, 成り立つ.
+すなわち, $\exists g: A \to A,\ (\forall x \in A)[\langle x, g(x)\rangle \in R_x]$ が成り立つ. そこで, $A$ の任意の元を $x_0$ とし, $x_n = g(x_{n-1})$ と
+帰納的に $(x_n)_{n \in \bm{N}}$ を作れば, $\forall n \in \bm{N},\ \langle x_n, x_{n+1} \rangle \in R$ となる. したがって, $f(n) = x_n$ となるように $f$ を
+定めれば, $\langle f(n), f(n+1) \rangle \in R$ となる.
+\item $P = \biggl\{\ p\ \bigm|\ (\exists\ n \in \bm{N})\ \left[p : \{0, 1, \cdots, n\} \to \bigcup_{i = 0}^n A_n\ \land \ (\forall i \in \{0, 1, \cdots, n\})\ [p(i) \in A_i]\right]\ \biggr\}$
+を考える. $p$ は写像であるが, 写像は二項関係の特別な場合（すなわち $p \subset \{0, 1, \cdots, n\} \times \bigcup_{i = 0}^n A_n$ ）であることに注意して
+$R = \left\{\ \langle p, q\rangle \in P \times P\ \middle|\ p \subsetneq q\ \right\}$ と二項関係 $R$ を定めると, $pRq$ ならば $q$ は写像として $p$ の真の拡大となる.
+今, $\forall n \in \bm{N},\ A_n \neq \emptyset$ より, $\forall p \in P,\ \exists q \in P,\ \langle p, q \rangle \in R$ が成り立つ（$A_{n + 1}$ から元を 1つ選んで拡大すればよい）
+よって, DCより $f : \bm{N} \to P$ で $\forall n \in \bm{N},\ \langle f(n), f(n+1) \rangle \in R$ となるものが存在する. ここで $f(n) \subset \bm{N} \times P$ に
+であることに注意して, $a = \bigcup_{n \in \bm{N}}f(n)$ とすれば, 任意の $n$ に対して, $\text{dom}(f(n)) \subsetneq \text{dom}(f(n+1))$ より
+$\forall n \in \bm{N},\ n \in \text{dom}(f(n))$ となるから $\bm{N} \subset \bigcup_{n \in \bm{N}}\text{dom}(f(n))$ となる. また, $\forall n \in \bm{N},\ \text{dom}(f(n)) \subset \bm{N}$
+より, $\bigcup_{n \in \bm{N}}\text{dom}(f(n)) \subset \bm{N}$ となるから, $\bigcup_{n \in \bm{N}}\text{dom}(f(n)) = \bm{N}$ となる. ここで
+$\text{dom}(a) = \bigcup_{n \in \bm{N}}\text{dom}(f(n))$ より, $\text{dom}(a) = \bm{N}$ となる.
+さらに, 集合 $P$ の定義より $\forall n \in \bm{N},\ a(n) \in A_n$ となる. 以上より $a \in \prod_{n \in \bm{N}}A_n$ となり, $\prod_{n \in \bm{N}}A_n \neq \emptyset$ となる. 
+}
+\newpage %=====
+選択公理の簡単な応用例.
+\pbenumex{
+    $f$ を $A$ から $B$ への写像とするとき, 次を示せ. ただし, $I_X$ は $X$ から $X$ への恒等写像を表すものとする.
+}{
+\item $f$ が全射 $\iff$ $f\circ g = I_B$ となるような写像 $g: B \to A$ が存在する
+\item $f$ が単射 $\iff$ $h\circ f = I_A$ となるような写像 $h: A \to B$ が存在する
+}{
+\item
+\begin{enumerate}
+    \item $\implies$\\
+    $f$ は全射より, $\forall b \in B,\ f^{-1}\{b\} \neq \emptyset$ となる. よって, 選択公理より $g \in \prod_{b \in B}f^{-1}\{b\}$ となる $g : B \to A$ が存在する.
+    この $g$ は 任意の $b \in B$ に対して, $g(b) \in f^{-1}\{b\}$ となるから, $\forall b \in B,\ f(g(b)) = b$ となるから $f \circ g = I_B$ を満たす.
+    \item $\impliedby$\\
+    $f \circ g = I_B$ となる $g : B \to A$ の存在を仮定すると, $\forall b \in B,\ f(g(b)) = b$ となる. $g(b) \in A$ より, $f$ は全射となる. 
+\end{enumerate}
+以上より, 「 $f$ が全射 $\iff$ $f\circ g = I_B$ となるような写像 $g: B \to A$ が存在する」が成り立つ.
+\item
+\begin{enumerate}
+    \item $\implies$\\
+    $f$ の終域を $B$ から $\text{rng}(f)$ へ縮小すると $f$ は全単射となる. このとき, 逆写像 $f^{-1} : \text{rng}(f) \to A$ が存在し, 今 $a \in A$ を適当にとり, $h : B \to A$ を
+    \begin{align*}
+        h(b) =
+        \begin{cases}
+            a & (y \in B - \text{rng}(f)\text{のとき})\\
+            f^{-1}(b) & (y \in \text{rng}(f)\text{のとき})
+        \end{cases}
+    \end{align*}
+    のように定めれば, $h \circ f = I_A$ を満たす.
+    \item $\impliedby$\\
+    $f(a) = f(a^{'}) \implies a = h(f(a)) = h(f(a^{'})) = a^{'}$ より $f$ は単射となる.
+\end{enumerate}
+以上より, 「 $f$ が単射 $\iff$ $h\circ f = I_A$ となるような写像 $h: A \to B$ が存在する 」が成り立つ.
 }

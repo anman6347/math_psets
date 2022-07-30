@@ -101,6 +101,66 @@ $d(\bm{x}, \bm{z}) \leq d(\bm{x}, \bm{y}) + d(\bm{y}, \bm{z})$ が成り立つ.
 \end{enumerate}
 以上より, $(A^\circ)^c = \overline{A^c}$ が成り立つ.
 }
+\newpage
+\hspace{-3zw}{\color{forestgreen}●●\ 内部, 閉包, 境界の定義における補足\ ●●}
+
+まず, なぜ内部の定義における $\epsilon$ の量化子がなぜ全称ではなく存在なのかについて. これは以下の図1をイメージするといい.
+$\epsilon$ が大きい $\bm{x}$ の開球は $A$ に含まれなくなる.
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+        \coordinate (A);
+        \coordinate (C) at ($(A) + (-45:1.2)$);
+        \coordinate (e1) at ($(C) + (-30:0.5)$);
+        \coordinate (e2) at ($(C) + (120:1)$);
+    
+        \draw (A) node {A} circle(2);
+        \fill (C) node [left] {$\bm{x}$} circle(0.05);
+        \draw[dotted] (C) circle(0.5);
+        \draw[dotted] (C) circle(1);
+        \draw[dashed] (C) -- (e1);
+        \draw[dashed] (C) -- (e2);
+        \draw [bend right,distance=16] (C) to node [fill=white,inner sep=0.1pt,circle] {$\epsilon_1$} (e1);
+        \draw [bend right,distance=14] (C) to node [fill=white,inner sep=0.1pt,circle] {$\epsilon_2$} (e2);
+    \end{tikzpicture}
+    \caption{内部のイメージ}
+\end{figure}
+
+次に, なぜ閉包の定義があのような定義になっているかについて. これは以下の図2をイメージするといい.
+$\bm{x}$ のような境界上の点もきちんと閉包に含まれている.
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+    \coordinate (A);
+    \draw (A) node {A} circle(2);
+
+    \coordinate (C) at ($(A) + (-45:2)$);
+    \coordinate (e1) at ($(C) + (-30:0.5)$);
+    \coordinate (e2) at ($(C) + (120:0.8)$);
+
+    \fill (C) node [left] {$\bm{x}$} circle(0.05);
+    \draw[dotted] (C) circle(0.5);
+    \draw[dotted] (C) circle(0.8);
+    \draw[dashed] (C) -- (e1);
+    \draw[dashed] (C) -- (e2);
+    \draw [bend right,distance=16] (C) to node [fill=white,inner sep=0.1pt,circle] {$\epsilon_1$} (e1);
+    \draw [bend right,distance=14] (C) to node [fill=white,inner sep=0.1pt,circle] {$\epsilon_2$} (e2);
+
+    \coordinate (D) at ($(A) + (135:1)$);
+    \fill (D) node [left] {$\bm{y}$} circle(0.05);
+    \draw[dotted] (D) circle(0.5);
+    \draw[dotted] (D) circle(1.2);
+    \coordinate (e3) at ($(D) + (-30:0.5)$);
+    \coordinate (e4) at ($(D) + (120:1.2)$);
+    \draw[dashed] (D) -- (e3);
+    \draw[dashed] (D) -- (e4);
+    \draw [bend left,distance=20] (D) to node [fill=white,inner sep=0.1pt,circle] {${\epsilon_1}^{'}$} (e3);
+    \draw [bend right,distance=20] (D) to node [fill=white,inner sep=0.1pt,circle] {${\epsilon_2}^{'}$} (e4);
+\end{tikzpicture}
+\caption{閉包と境界のイメージ}
+\end{figure}
+
+最後に, 境界の定義だが, これは上図2の $\bm{y}$ ように閉包から境界以外の点を除いている.
 \end{nmprob}
 
 

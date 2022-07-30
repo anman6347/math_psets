@@ -1,4 +1,6 @@
 \pgsc{集合と位相}{darkolivegreen}
+
+\begin{fsprob}
 まずは数学の道具（概念）に慣れるための基礎問題.\\
 \pbenum{
 \item $n$次元実空間における任意の2点 $\bm{x}, \bm{y} \in \mathbb{R}^n$に対し, シュワルツの不等式
@@ -53,9 +55,11 @@ $d(\bm{x}, \bm{z}) \leq d(\bm{x}, \bm{y}) + d(\bm{y}, \bm{z})$ が成り立つ.
 
 また, 三角不等式の方では等号成立条件はシュワルツの不等式の等号成立条件と $(\bm{x}\ |\ \bm{y}) = |(\bm{x}\ |\ \bm{y})|$ をまとめた, 
 「$(\bm{x}\ |\ \bm{y}) \geq 0$ かつ $\bm{x} = t\bm{y}$ となる実数 $t$ が存在する」こととなる.
+\end{fsprob}
 
 
-\newpage %=====
+
+\begin{nmprob}
 \pbenum{
 \item 二つの集合$A, B$に対して, 次が成り立つことを示せ.
 \begin{equation*}
@@ -97,8 +101,11 @@ $d(\bm{x}, \bm{z}) \leq d(\bm{x}, \bm{y}) + d(\bm{y}, \bm{z})$ が成り立つ.
 \end{enumerate}
 以上より, $(A^\circ)^c = \overline{A^c}$ が成り立つ.
 }
+\end{nmprob}
 
-\newpage %======
+
+
+\begin{nmprob}
 \pbenumex{
 $\langle X, d\rangle$ を距離空間とし, $A$ を $X$ の部分集合とする. このとき, 次の問に答えよ. ただし, 内部, 境界, 閉包の定義は前問と同じものとする.
 }{
@@ -135,8 +142,11 @@ $A^\circ \cap A^e$ の元の存在を仮定すると, (1)より $x \in A^\circ \
 $\partial A \cap A^e$ の元の存在を仮定すると, (2)より $x \in \partial A \cap A^e \implies x \in \overline{A} \cap A^e$ が成り立ち, 先と同様にして矛盾. よって, $\partial A \cap A^e = \emptyset$ が成り立つ.\\
 以上より, $A^\circ, \partial A, A^e$ はそれぞれ互いに素である.
 }
+\end{nmprob}
 
-\newpage %=====
+
+
+\begin{nmprob}
 順序対の概念を理解しよう.\\
 
 \pbenum{
@@ -185,7 +195,11 @@ $\partial A \cap A^e$ の元の存在を仮定すると, (2)より $x \in \parti
 \end{enumerate}
 以上より, $\langle a_1, \cdots, a_n \rangle = \langle b_1, \cdots, b_n \rangle \iff a_1 = b_1 \land \cdots a_n = b_n$ が成り立つ.
 }
-\newpage %=====
+\end{nmprob}
+
+
+
+\begin{nmprob}
 選択公理を理解する.
 \pbenum{
 \item $\Lambda$ から $A_\lambda$ への写像を 集合族$(A_\lambda)_{\lambda \in \Lambda}$という. ここで, $\Lambda$ から $A_\lambda$ への写像
@@ -228,7 +242,11 @@ $\forall n \in \bm{N},\ n \in \text{dom}(f(n))$ となるから $\bm{N} \subset 
 $\text{dom}(a) = \bigcup_{n \in \bm{N}}\text{dom}(f(n))$ より, $\text{dom}(a) = \bm{N}$ となる.
 さらに, 集合 $P$ の定義より $\forall n \in \bm{N},\ a(n) \in A_n$ となる. 以上より $a \in \prod_{n \in \bm{N}}A_n$ となり, $\prod_{n \in \bm{N}}A_n \neq \emptyset$ となる. 
 }
-\newpage %=====
+\end{nmprob}
+
+
+
+\begin{nmprob}
 選択公理の簡単な応用例.
 \pbenumex{
     $f$ を $A$ から $B$ への写像とするとき, 次を示せ. ただし, $I_X$ は $X$ から $X$ への恒等写像を表すものとする.
@@ -262,3 +280,6 @@ $\text{dom}(a) = \bigcup_{n \in \bm{N}}\text{dom}(f(n))$ より, $\text{dom}(a) 
 \end{enumerate}
 以上より, 「 $f$ が単射 $\iff$ $h\circ f = I_A$ となるような写像 $h: A \to B$ が存在する 」が成り立つ.
 }
+\end{nmprob}
+
+

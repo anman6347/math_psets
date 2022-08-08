@@ -343,3 +343,45 @@ $\text{dom}(a) = \bigcup_{n \in \bm{N}}\text{dom}(f(n))$ より, $\text{dom}(a) 
 \end{nmprob}
 
 
+
+\begin{nmprob}
+問題というよりかは確認.
+\makeatletter\tagsleft@true\makeatother
+\pbenum{
+\item $R$ を集合 $A$ 上の同値関係とする. $A$ の元 $x$ に対して, 集合 $\{ y\in A\ |\ xRy \}$ を $x$ の $R$ による同値類といい, 以後 $[x]_R$ と表す.
+また, 同値類全体の集合を $A$ の $R$ による商集合といい $A/R$ と表す. ここで, $A/R$ によって定まる集合族が $A$ の直和分割となることを示せ. ただし,
+ある集合 $X$ の部分集合族 $(X_i)_{i\in I}$ が次の三条件を満たすとき, $(X_i)_{i\in I}$ は $X$ の直和分割と呼ばれる. 
+\begin{align}
+    &\forall i\in I,\ X_i \neq \emptyset\\
+    &\bigcup_{i\in I} X_i = X\\
+    &i, j \in I \land i \neq j \implies X_i \cap X_j = \emptyset
+\end{align}
+\item 空でない集合 $A$ のある集合族 $(C_i)_{i\in I}$ が $A$ の直和分割であるとする. 任意の $A$ の元 $x$ に対し, $x \in C_i$ となる $i \in I$ がただ一つ存在することを示せ.
+\item (2)において, 関係 $R$ を $xRy \iff \exists i \in I,\ x \in C_i \land y \in C_i$ により定めると, $R$ は $A$ 上の同値関係となることを示せ.
+}{
+\item $A/R$ によって定まる族を $(X)_{X\in A/R}$ で表すことにすると
+\begin{enumerate}
+    \item 任意の $X$ を一つとり, その代表元\footnote[1]{$X \in A/R$ に対する $X$ の元}を $x$ とすると, $x \in X$ より $X \neq \emptyset$ となる
+    （$A/R \coloneqq \{ [x]_R\ |\ x \in A\}$ としているので, 代表元の存在が保証される）
+    \item 任意の $x \in A$ に対し, $x \in [x]_R \in A/R$ より, $x \in X$ となる $X \in A/R$ が存在することから $\bigcup_{X\in A/R} X = A$ となる.
+    \item 任意の $X, Y \in A/R$ に対して, $X \neq Y$ のとき, $X \cap Y \neq \emptyset$ と仮定する. $c \in X \cap Y$ とすれば
+    $xRc$ かつ $yRc$ となる（$x, y$ はそれぞれ $X, Y$ の代表元とする） ここで, $R$ は同値関係より $xRy$ となり $y \in [x]_R\ (= X)$ となる. 
+    $y \in [x]_R$ であるとき, $[x]_R = [y]_R$ であるので, $X = Y$ となるが, これは $X \neq Y$ に矛盾. よって $X \cap Y = \emptyset$ となる.
+\end{enumerate}
+以上より, $A/R$ によって定まる集合族は $A$ の直和分割となる.
+\item まず, 直和分割の条件(2) より, $\bigcup_{i \in I}C_i = A$ より, 任意の $A$ の元 $x$ に対して $x \in C_i$ となる $i \in I$ が存在する.\\
+また, $x \in C_i$ かつ $x \in C_j$ となる $i, j\ (i \neq j)$ が存在すると仮定すると, $x \in C_i \cap C_j$ より, 直和分割の条件(3)に矛盾することから, 
+$x \in C_i$ かつ $x \in C_j$ となる $i, j\ (i \neq j)$ は存在しない.\\
+以上より, 任意の $A$ の元 $x$ に対し, $x \in C_i$ となる $i \in I$ がただ一つ存在する.
+\item \
+\begin{enumerate}
+    \item (2) より 任意の $x \in A$ に対して, $x \in C_i$ となる $i$ が存在することから, $\forall x \in A,\ xRx$ で反射律が成立.
+    \item 対称律は明らかに成立.
+    \item $xRy \land yRz$ が成り立つとすると, $(\exists i \in I,\ x \in C_i \land y \in C_i) \land (\exists j \in I,\ y \in C_j \land z \in C_j)$ が成り立つ.
+    ここで $i \neq j$ とすると, $y \in C_i \cap C_j$ より, $(C_i)_{i\in I}$ が直和分割であることに反するから, $i = j$ となる. これより, $\exists k \in I,\ x \in C_k \land z \in C_k$ が
+    成り立つので $xRz$ で推移律が成立.
+\end{enumerate}
+以上より, $R$ は $A$ 上の同値関係となる.
+}
+\makeatletter\tagsleft@false\makeatother
+\end{nmprob}

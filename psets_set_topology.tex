@@ -313,6 +313,7 @@ $\text{dom}(a) = \bigcup_{n \in \bm{N}}\text{dom}(f(n))$ より, $\text{dom}(a) 
 }{
 \item $f$ が全射 $\iff$ $f\circ g = I_B$ となるような写像 $g: B \to A$ が存在する
 \item $f$ が単射 $\iff$ $h\circ f = I_A$ となるような写像 $h: A \to B$ が存在する
+\item $A$ から $B$ への単射が存在する $\iff$ $B$ から $A$ への全射が存在する
 }{
 \item
 \begin{enumerate}
@@ -339,6 +340,16 @@ $\text{dom}(a) = \bigcup_{n \in \bm{N}}\text{dom}(f(n))$ より, $\text{dom}(a) 
     $f(a) = f(a^{'}) \implies a = h(f(a)) = h(f(a^{'})) = a^{'}$ より $f$ は単射となる.
 \end{enumerate}
 以上より, 「 $f$ が単射 $\iff$ $h\circ f = I_A$ となるような写像 $h: A \to B$ が存在する 」が成り立つ.
+\item
+\begin{enumerate}
+    \item $\implies$\\
+    $A$ から $B$ への単射を $\phi$ とすれば(2)より, $\psi \circ \phi = I_A$ となる写像 $\psi : A \to B$ が存在する.
+    この $\psi$ は(1)より全射である（(1)において $B$ と $A$ を逆にみればよい）
+    \item $\impliedby$\\
+    $B$ から $A$ への全射を $\psi$ とすれば(1)より, $\psi \circ \phi = I_A$ となる写像 $\phi : A \to B$ が存在する
+    （(1)において $B$ と $A$ を逆にみればよい）ここで, この $\phi$ は(2)より単射である.
+\end{enumerate}
+以上より, 「$A$ から $B$ への単射が存在する $\iff$ $B$ から $A$ への全射が存在する」が成り立つ.
 }
 \end{nmprob}
 

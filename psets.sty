@@ -1,7 +1,8 @@
 \usepackage{fancyhdr}
 \usepackage{geometry}
+\usepackage[hang]{footmisc}
 \usepackage{tikz}
-\usetikzlibrary{positioning, calc}
+\usetikzlibrary{positioning, calc, patterns}
 
 \geometry{top=120pt,bottom=60pt,left=70pt,right=70pt,headheight=20pt,headsep=4pt}
 
@@ -11,6 +12,7 @@
 \definecolor{midnightblue}{RGB}{25,25,112}
 \definecolor{maroon}{RGB}{128,0,0}
 \definecolor{forestgreen}{RGB}{34,139,34}
+\definecolor{mediumvioletred}{RGB}{199,21,133}
 
 \usepackage{tcolorbox}
 \tcbuselibrary{raster,skins,breakable}
@@ -42,7 +44,8 @@
     \vspace{1mm}
 }
 
-
+% 注釈のインデント調整
+\setlength{\footnotemargin}{2mm}
 
 % === ページ設定 ===
 \pagestyle{fancy}
@@ -50,12 +53,13 @@
 % カウンタ設定
 \newcounter{secn}   % 章のカウンタ
 \setcounter{secn}{-1}
-\newcounter{pn}     % 章ごとのページカウンタ
+\newcounter{pn}[secn]   % 章ごとのページカウンタ
+\setcounter{pn}{0}
 
 \let\np\newpage
 \renewcommand{\newpage}{
     \np
-    \addtocounter{pn}{1}
+    \stepcounter{pn}
 }
 
 % 通常ページの設定
@@ -82,11 +86,6 @@
 % 章立てページのデザインを現在のページに反映
 % \pgs{タイトル名前}
 \newcommand{\pgs}[1]{
-    \setcounter{pn}{0}
-    \addtocounter{secn}{1}
-
-    \setcounter{numpb}{0}
-
     \fancypagestyle{pgs}{
         \newgeometry{top=130pt,bottom=60pt,left=70pt,right=70pt,headheight=20pt,headsep=4pt}
         \lhead{
@@ -110,16 +109,14 @@
         \renewcommand{\headrulewidth}{0pt}
     }
     \thispagestyle{pgs}
+
+    \stepcounter{secn}
+    \setcounter{numpb}{0}
 }
 
 % 章立てページのデザインを現在のページに反映（色も設定する）
 % 以降の通常ページの色も変更
-\newcommand{\pgsc}[2]{
-    \setcounter{pn}{-1} % たぶん \pagestyleと\thispagestyle で ページが増えた扱いになるため?
-    \addtocounter{secn}{1}
-
-    \setcounter{numpb}{0}
-
+\newcommand{\pgsc}[3]{
     \fancypagestyle{pgs}{
         \newgeometry{top=130pt,bottom=60pt,left=70pt,right=70pt,headheight=20pt,headsep=4pt}
         \lhead{
@@ -163,10 +160,16 @@
         \cfoot{}
         \renewcommand{\headrulewidth}{0pt}
     }
+    % ページスタイル設定
     \pagestyle{pg}
     \thispagestyle{pgs}
+
+    % たぶん \thispagestyle で ページが増えた扱いになるため, カウンタ設定はページ設定後に行う
+    \refstepcounter{secn}
+    \label{sec:#3}
+    \setcounter{numpb}{0}
 }
 
-
-\newenvironment{nmprob}{\newpage}{}
-\newenvironment{fsprob}{}{}
+\newenvironment{nmprob}{}{
+    \newpage
+}

@@ -6,7 +6,7 @@
 \pagestyle{pg}
 
 % バージョン
-\newcommand{\version}{0.2}
+\newcommand{\version}{0.3}
 
 % 問題番号
 \newcounter{numpb}
@@ -16,34 +16,14 @@
 % 問題テンプレ箇条書きver
 \renewcommand{\labelenumi}{(\arabic{enumi})}
 \renewcommand{\labelenumii}{(\roman{enumii})}
-\newcommand{\pbenum}[2]{
+\newcommand{\pbenum}[3][]{
     \vspace{2mm}
     \hrule
     \vspace{2mm}
     \noindent
-    \stepcounter{numpb}
+    \refstepcounter{numpb}
+    \label{pname:#1}
     \textbf{問\arabic{secn}--\arabic{numpb}:} 次の問に答えよ.
-        \begin{enumerate}
-            \setlength{\leftskip}{-8pt} % 左からの頭の位置
-            #1
-        \end{enumerate}
-    \hrule
-    \vspace{2mm}
-    {\color{red}\textbf{解:}}
-    \begin{enumerate}
-        \setlength{\leftskip}{-8pt} % 左からの頭の位置
-        #2
-    \end{enumerate}
-}
-
-% 問題テンプレ箇条書きver 最初のメッセージも書き換える.
-\newcommand{\pbenumex}[3]{
-    \vspace{2mm}
-    \hrule
-    \vspace{2mm}
-    \noindent
-    \stepcounter{numpb}
-    \textbf{問\arabic{secn}--\arabic{numpb}:} #1
         \begin{enumerate}
             \setlength{\leftskip}{-8pt} % 左からの頭の位置
             #2
@@ -57,6 +37,28 @@
     \end{enumerate}
 }
 
+% 問題テンプレ箇条書きver 最初のメッセージも書き換える.
+\newcommand{\pbenumex}[4][]{
+    \vspace{2mm}
+    \hrule
+    \vspace{2mm}
+    \noindent
+    \refstepcounter{numpb}
+    \label{pname:#1}
+    \textbf{問\arabic{secn}--\arabic{numpb}:} #2
+        \begin{enumerate}
+            \setlength{\leftskip}{-8pt} % 左からの頭の位置
+            #3
+        \end{enumerate}
+    \hrule
+    \vspace{2mm}
+    {\color{red}\textbf{解:}}
+    \begin{enumerate}
+        \setlength{\leftskip}{-8pt} % 左からの頭の位置
+        #4
+    \end{enumerate}
+}
+
 
 % 本文
 \begin{document}
@@ -67,7 +69,8 @@
 数学記号や用語の定義は, 教科書ごとに著しく差があれば問題文中で定義しますが, 多くの教科書で使われているものは一々定義することはありません.
 
 また, この問題集の解答が正しい保証はありません. 参考にする場合は気を付けてください.
-\include{psets_set_topology} % 集合と位相
+\include{psets_set} % 集合
+\include{psets_topology} % 位相
 \include{psets_algebra} % 代数学
 
 \end{document}

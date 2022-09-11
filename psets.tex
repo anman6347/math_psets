@@ -16,47 +16,43 @@
 % 問題テンプレ箇条書きver
 \renewcommand{\labelenumi}{(\arabic{enumi})}
 \renewcommand{\labelenumii}{(\roman{enumii})}
-\newcommand{\pbenum}[3][]{
+\newcommand{\pbenum}[3][undefined]{
     \vspace{2mm}
     \hrule
     \vspace{2mm}
-    \noindent
     \refstepcounter{numpb}
     \label{pname:#1}
+    \noindent
     \textbf{問\arabic{secn}--\arabic{numpb}:} 次の問に答えよ.
         \begin{enumerate}
-            \setlength{\leftskip}{-8pt} % 左からの頭の位置
             #2
         \end{enumerate}
     \hrule
     \vspace{2mm}
     {\color{red}\textbf{解:}}
-    \begin{enumerate}
-        \setlength{\leftskip}{-8pt} % 左からの頭の位置
-        #3
-    \end{enumerate}
+        \begin{enumerate}
+            #3
+        \end{enumerate}
 }
 
 % 問題テンプレ箇条書きver 最初のメッセージも書き換える.
-\newcommand{\pbenumex}[4][]{
+\newcommand{\pbenumex}[4][undefined]{
     \vspace{2mm}
     \hrule
     \vspace{2mm}
-    \noindent
     \refstepcounter{numpb}
     \label{pname:#1}
+    \noindent
     \textbf{問\arabic{secn}--\arabic{numpb}:} #2
         \begin{enumerate}
-            \setlength{\leftskip}{-8pt} % 左からの頭の位置
             #3
         \end{enumerate}
     \hrule
     \vspace{2mm}
     {\color{red}\textbf{解:}}
-    \begin{enumerate}
-        \setlength{\leftskip}{-8pt} % 左からの頭の位置
-        #4
-    \end{enumerate}
+        \begin{enumerate}
+            #4
+        \end{enumerate}
 }
 
 
@@ -72,6 +68,7 @@
 \include{psets_set} % 集合
 \include{psets_topology} % 位相
 \include{psets_algebra} % 代数学
+\include{psets_pstock} % 問題ストック
 
 \end{document}
 

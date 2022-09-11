@@ -74,7 +74,7 @@ Kuratowski の順序対を理解しよう.
 \item $y \in R[X_1]$ とすると, $\langle x, y\rangle \in R$ となる $x \in X_1$ が存在する. 今, $X_1 \subset X_2$
 より $x$ は $x \in X_2$ でもあるから, $y \in R[X_2]$ となる. よって, $R[X_1] \subset R[X_2]$ が成り立つ.
 \item
-\begin{enumerate}\setlength{\leftskip}{-8pt}
+\begin{enumerate}
 \item $R[X_1 \cup X_2] \subset R[X_1] \cup R[X_2]$ を示す.\\
 $y \in R[X_1 \cup X_2]$ とすると, $\langle x, y\rangle \in R$ となる $x \in X_1 \cup X_2$ が存在する.
 この $x$ に関して\footnote[1]{$x$ は複数存在する可能性があるが 1 つについて示せば十分であることに注意. 以後の問題も同様.}, $x \in X_1$ のときは $y \in R[X_1]$, $x \in X_2$ のときは $y \in R[X_2]$ となるので, $y \in R[X_1] \cup R[X_2]$ より, $R[X_1 \cup X_2] \subset R[X_1] \cup R[X_2]$ が成り立つ.
@@ -96,14 +96,14 @@ $y \in R[X_1 \cup X_2]$ となるから, $R[X_1 \cup X_2] \supset R[X_1] \cup R[
 
 \begin{nmprob}
 逆関係, 合成関係, 写像に関する用語を理解する.
-\pbenum{
+\pbenum[finv]{
 \item 関係 $R \subset A \times B$ が与えられたとき, その逆関係 $R^{-1}$ を $R^{-1} \coloneqq \{ \langle y, x\rangle\ |\ \langle x, y\rangle \in R\}$ により定める.
 $R^{-1}[Y_1 \cap Y_2] \subset R^{-1}[Y_1] \cap R^{-1}[Y_2]$ を示せ. ただし, $Y_1, Y_2 \subset B$ とする.
 \item 2つの関係 $R, S$ が与えられたとき, その合成関係 $R \circ S$ を $R \circ S \coloneqq \{ \langle x, z\rangle \ |\ \exists y,\ \langle x, y\rangle \in S \land \langle y, z\rangle \in R\}$ により定める.
 $(R \circ S)^{-1} = S^{-1} \circ R^{-1}$ を示せ.
 \item 関係 $R$ が $\langle x, y\rangle \in R \land \langle x, z\rangle \in R \implies y = z$ をみたすとき, $R$ を写像とよぶ.
 特に $\text{dom} (R) = A,\ \text{rng} (R) \subset B $ のときは, $R$ は $A$ から $B$ への写像\footnote[1]{$A$ を始集合, $B$ を終集合とよぶ.}と呼ぶ. $R$ が写像のとき, (1) において $R^{-1}[Y_1 \cap Y_2] \supset R^{-1}[Y_1] \cap R^{-1}[Y_2]$ を示せ（つまり(1)とから $R$ が写像であれば $R^{-1}[Y_1 \cap Y_2] = R^{-1}[Y_1] \cap R^{-1}[Y_2]$ が成り立つ）
-\item $f$ が $A$ から $B$ への写像であるとき, $A$ の元 $x$ に関して $\langle x, y\rangle \in f$ となる $y \in B$ がただ一つ存在する. これを $f$ による $x$ の像とよび, $f(x)$ と表す.
+\item $f$ が $A$ から $B$ への写像であるとき, $A (= \text{dom}(f))$ の元 $x$ に関して $\langle x, y\rangle \in f$ となる $y \in B$ がただ一つ存在する. これを $f$ による $x$ の像とよび, $f(x)$ と表す.
 ここで, $(\forall x, x^{'} \in A)[x \neq x^{'} \implies f(x) \neq f(x^{'})]$ が成り立つとき $f$ を単射とよぶ.\footnote[2]{$f$ が単射であることを示す際に, 対偶である $(\forall x, x^{'} \in A)[f(x) = f(x^{'}) \implies x = x^{'}]$ を示す場合が非常に多い.\\ また, $f$ が写像であるもとで, $f$ が単射であることと逆関係 $f^{-1}$ が写像であることは本質的に同じ.}
 また, $\text{rng} (f) = B$ のとき, $f$ を全射といい, 全射かつ単射のとき全単射という. $f$ が $A$ から $B$ への全単射のとき, 逆関係 $f^{-1}$ が $B$ から $A$ への全単射の写像\footnote[3]{これを $f$ の逆写像とよぶ}であることを示せ.}{
 \item $R^{-1} \subset B \times A$ より, 問\ref{sec:set}-\ref{pname:brelation} (3) において記号を置き換えればすぐに示される.
@@ -128,6 +128,130 @@ $\langle x, y\rangle \in R$ かつ $\langle x, y^{'}\rangle \in R$ が成り立�
 ここで, $f^{-1}(y) = f^{-1}(y^{'})$ と仮定すると, $f$ が写像であることから, $y = y^{'}$ となるから $f^{-1}$ は単射となる.\\
 以上より, $f^{-1}$ は $B$ から $A$ への全単射となる.
 } 
+\end{nmprob}
+
+
+
+\begin{nmprob}
+合成写像と二項関係.
+\pbenum[fog]{
+\item 写像 $f: A\to B,\ g: B\to C$ の合成関係 $g\circ f$ は $A$ から $C$ への写像であることを示せ.
+\item 写像 $f: A\to B$ と $g: B\to C$ がそれぞれ全単射のとき, $g\circ f$ は $A$ から $C$ への全単射となることを示せ.
+\item $X$ から $X$ への写像で, 任意の $x \in X$ に対して, その像が $x$ となるものを恒等写像といい $I_X$ で表す.
+$I_X$ は全単射であることを示せ.
+}{
+\item
+\begin{enumerate}
+\item $\text{dom}(g\circ f) = A$ を示す.\\
+$x \in \text{dom}(g\circ f)$ とすると, $\langle x, z \rangle \in g\circ f$ となる $z$ が存在するから, さらに
+$\langle x, y\rangle \in f$ となる $y$ が存在する. よって, $x \in \text{dom}(f) = A$ となるから, $\text{dom}(g\circ f) \subset A$ となる.\\
+また, $x \in A$ とすると, $A = \text{dom}(f)$ より, $\langle x, y\rangle \in f$ となる $y$ が存在するから, 同様に $\langle y, z\rangle \in g$ となる $z$ が存在する.
+これより, $\langle x, z\rangle \in g\circ f$ より, $x \in \text{dom}(g\circ f)$ より, $A \subset \text{dom}(g\circ f)$ となる.\\
+以上より, $A = \text{dom}(g\circ f)$ となる.
+\item $\text{rng}(g\circ f) \subset C$ を示す.\\
+$z \in \text{rng}(g\circ f)$ とすると, $\langle x, z\rangle \in g\circ f$ となる $x$ が存在するから, $\langle y, z\rangle \in g$ となる $y$ が存在する. よって $z \in \text{rng}(g) \subset C$ より, $z \in C$ となる.
+よって, $\text{rng}(g\circ f) \subset C$ となる.
+\item $\langle x, z\rangle \in g\circ f \land \langle x, z^{'}\rangle \in g\circ f \implies z = z^{'}$ を示す.\\
+$\langle x, z\rangle \in g\circ f \land \langle x, z^{'}\rangle \in g\circ f$ とすると, $\langle x, y\rangle \in f \land \langle y, z\rangle \in g$ となる $y$ と
+$\langle x, y^{'}\rangle \in f \land \langle y^{'}, z^{'}\rangle \in g$ となる $y^{'}$ が存在する. ここで $f$ が写像より, $y = y^{'}$ であり, $g$ も写像であるから $z = z^{'}$ となる.
+\end{enumerate}
+以上より, $g\circ f$ は $A$ から $C$ への写像である.\footnote[1]{合成関係が写像となっているときは, 合成写像とよぶ.}
+\item
+(1)より, $g\circ f$ は $A$ から $C$ への写像であるので, $g\circ f$ が全単射であることを示す.
+\begin{enumerate}
+\item 全射性を示す.\\
+$z \in C$ とすると, $g$ が全射より, $\langle y, z\rangle \in g$ となる $y \in B$ が存在する. ここで, $f$ も全射より, この $y$ に対して, $\langle x, y\rangle \in f$ となる $x \in A$ が存在する.
+これより, $\langle x, z\rangle \in g \circ f$ となる $x$ が存在することから $z \in \text{rng}(g \circ f)$ となり, $\text{rng}(g \circ f) = C$ となる. よって, $g\circ f$ は全射となる.
+\item 単射性を示す.\\
+$(g\circ f)(x) = (g\circ f)(x^{'})$ とすると, $g$ が単射より, $f(x) = f(x^{'})$ であり, $f$ も単射であることから $x = x^{'}$ となる. よって, $g\circ f$ は単射である.
+\end{enumerate}
+以上より, $g\circ f$ は全単射である.
+\item
+\begin{enumerate}
+\item 全射性を示す.\\
+$x \in X$ とすると, $I_X$ が写像より, $\langle x, y\rangle \in I_X$ となる $y$ がただ一つ存在し, 恒等写像の定義より $y = x$ である.
+よって, $\forall x \in X,\ \langle x, x\rangle \in I_X$ となるから, $X \subset \text{rng}(I_X)$ より, $X = \text{rng}(I_X)$ で $I_X$ は全射である.
+\item 単射性を示す.\\
+任意の $x, x^{'} \in X$ に対して, $I_X(x) = I_X(x^{'})$ とすると, $I_X(x) = x,\ I_X(x^{'}) = x^{'}$ より, $x = x^{'}$ となるから, $I_X$ は単射である.
+\end{enumerate}
+以上より, $I_X$ は全単射である.
+}
+\end{nmprob}
+
+
+
+\begin{nmprob}
+逆写像と二項関係.
+\pbenum{
+\item 写像 $f: A\to B$ と $g: B\to C$ の合成写像 $g\circ f: A\to C$ が全単射であるとき, $g$ は全射であり, $f$ は単射であることを示せ.
+\item 写像 $f: A\to B$ が全単射のとき, $f^{-1} \circ f = I_A,\ f \circ f^{-1} = I_B$ を示せ.
+\item 写像 $f: A\to B,\ g: B\to A$ に対して, $f\circ g = I_B,\ g\circ f= I_A$ であるとき, $f, g$ はそれぞれ全単射であり,
+$g = f^{-1},\ f = g^{-1}$ となることを示せ.
+}{
+\item
+\begin{enumerate}
+\item $g$ が全射であることを示す.\\
+$C \subset \text{rng}(g)$ を示せばよい. $z \in C$ とすると, $g \circ f$ が全単射であるから, $\langle x, z\rangle \in g \circ f$ となる $x \in A$ が存在する.
+そして, この $x, z$ に対して, $\langle x, y\rangle \in f \land \langle y, z\rangle \in g$ となる $y$ が存在する( $f$ が写像より $y = f(x)$ となる）
+よって $z \in C \implies \exists y, \langle y, z\rangle \in g$ より, $z \in \text{rng}(g)$ となり, $g$ は全射となる.
+\item $f$ が単射であることを示す.\\
+任意の $x, x^{'} \in A$ に対して, $f(x) = f(x^{'})$ と仮定すると, $g\circ f(x) = g\circ f(x^{'})$ となる. ここで, $g \circ f$ は単射であるから, $x = x^{'}$ となる. よって $f$ は単射となる.
+\end{enumerate}
+\item
+まず, $f^{-1}\circ f\subset I_A$ を示す.\\
+$\langle x, y\rangle \in f^{-1}\circ f$ とすると, 問\ref{sec:set}-\ref{pname:fog}\ (1) より, $f^{-1}\circ f$ は $A$ から $A$ への写像であるから, $x, y\in A (= \text{dom}(g\circ f))$ であり,
+また, $\langle x, z\rangle \in f\land \langle z, y\rangle \in f^{-1}$ となる $z$ が存在し, $\langle z, x\rangle \in f^{-1} \land \langle z, y\rangle \in f^{-1}$ となる. ここで, 問\ref{sec:set}-\ref{pname:finv} (4)より,
+$f^{-1}$ は $B$ から $A$ への写像であるから, $x = y$ となる. よって, $\langle x, y\rangle \in f^{-1}\circ f$ ならば $x = y$ より, $\langle x, y\rangle \in I_A$ となるので $f^{-1}\circ f \subset I_A$ となる.\\
+次に, $I_A \subset f^{-1}\circ f$ を示す.\\
+$\langle x, y\rangle \in I_A$ とすると, $x \in \text{dom}(I_A) = A$ より, $\langle x, f(x)\rangle \in f \land \langle f(x), x\rangle \in f^{-1}$ となるから $\langle x, x\rangle \in f^{-1}\circ f$ となる.
+また, $I_A$ は恒等写像であるから $x = y$ となる. よって, $\langle x, y\rangle \in f^{-1}\circ f$ となるので $I_A \subset f^{-1}\circ f$ となる.\\
+以上より, $f^{-1}\circ f = I_A$ となる. $f\circ f^{-1} = I_B$ も同様に示せる.
+\item まず, 問\ref{sec:set}-\ref{pname:fog}(3) より, $I_A, I_B$ は共に全単射である. よって (1) より $f,\ g$ は共に全単射である.\\
+次に, (2)より, $f\circ g = I_B$ ならば $f^{-1}\circ (f\circ g) = f^{-1}\circ I_B$ から $g = f^{-1}$ となる. 同様に, $f = g^{-1}$ となる.
+}
+\end{nmprob}
+
+\begin{nmprob}
+順序関係と順序集合
+\makeatletter\tagsleft@true\makeatother
+\pbenumex{
+$R$ がある集合 $A$ 上の二項関係であるとき, $\langle x, y\rangle \in R$ であることを以後 $xRy$ と表す.
+}{
+\item $\leq$ が 集合 $A$ 上の二項関係であり, 任意の $x, y, z \in A$ に対して, 次の $(O1) \sim (O3)$ を満たすとき, $\leq$ は $A$ 上の順序（関係）であるといい,
+集合 $A$ 上に一つの順序関係 $\leq$ が定められているとき, $\langle A, \leq \rangle$ を順序集合という.
+\begin{align}
+    x \leq x & & &(\text{反射律})\tag{O1}\\
+    x \leq y \land y \leq x & \implies x = y & &(\text{反対称律})\tag{O2}\\
+    x \leq y \land y \leq z & \implies x \leq z & &(\text{推移律})\tag{O3}
+\end{align}
+$x \leq y \land x \neq y$ が成り立つとき, またそのときに限り $x < y$ と二項関係 $<$ を定めれば, 次の (O4), (O5) が成り立つことを示せ.
+\begin{align}
+    x < y & \implies y \nless x \coloneqq \lnot (y < x) \tag{O4}\\
+    x < y \land y < z & \implies x < z \tag{O5}
+\end{align}
+\item (1) とは逆に (O4), (O5) を満たす二項関係 $<$ が集合 $A$ 上に与えられたとき, $x < y \lor x = y$ が成り立つとき, またその時に限り $x \leq y$ と二項関係 $\leq$ を
+定めれば $\leq$ は順序関係になることを示せ.
+\item 順序集合 $\langle A, \leq \rangle$ において, 集合 $A$ の任意の二元 $x, y$ に関して $x \leq y$ または $y \leq x$ が成り立つとき, $\leq$ は全順序（関係）といい, $\langle A, \leq \rangle$ は全順序集合という.
+$\langle A, \leq \rangle$ が全順序集合のとき, $x \nless y \iff y \leq x$ を示せ. 
+}{
+\item まず, $x < y$ が成り立つ下で $y < x$ が成り立つと仮定すると, $x \leq y \land y \leq x$ より (O2) から $x = y$ となるが, これは $x \neq y$ に矛盾する. よって (O4) が成り立つ.\\
+次に, $x < y \land y < z$ が成り立つと仮定すると, $x \leq y \land y \leq z$ が成り立つから, (O3) より $x \leq z$ が成り立つ. ここで, $x = z$ が成り立つと仮定すると, $z < y \land y < z$ が成り立ち, $y = z$ となるが,
+これは $y \neq z$ に矛盾する. よって $x \neq z$ となり, $x < z$ より (O5) が成り立つ.
+\item
+\begin{enumerate}
+\item 反射律の成立\\
+$x = x$ が常に成立ことから, $x < x \lor x = x$ も常に成立する. よって, 反射律が成立する.
+\item 反対称律の成立\\
+$x \leq y \land y \leq x$ が成り立つが $x \neq y$ だと仮定すると, $x < y \land y < x$ が成り立つ. これより, (O5) から $x < x$ となるが, (O4) より $(x < x) \land \lnot(x < x)$ が成り立ち, 矛盾式が導出される. よって $x = y$ より 反対称律が成立する.
+\item 推移律の成立\\
+$x \leq y \land y \leq z$ が成り立つと仮定すると, $(x < y \lor x = y) \land (y < z \lor y = z)$ が成り立つ. $x < y \land y < z$ の場合は (O5) より $x < z$ より $x \leq z$ となり,
+$x < y \land y = z$ の場合は $x < z$ で $x \leq z$ となる. $x = y \land y < z$ の場合も $x < z$ より $x \leq z$ であり, $x = y \land y = z$ の場合は $x = z$ で $x \leq z$ となるから, 推移律が成り立つ.
+\end{enumerate}
+\item $x \nless y$ とすると, $x \nleq y \lor x = y$ となる. $x \nleq y$ の場合は $\leq$ が全順序より, $y \leq x$ であり, $x = y$ の場合も $y \leq x$ となるから $x \nless y \implies y \leq x$ となる.\\
+$y \leq x$ として, $x < y$ が成り立つと仮定する. $x < y$ より, $x \neq y$ であるから $y \leq x$ より $y < x$ が成り立つ. よって $x < y \land y < x$ が成り立つが, これは(1)で述べた通り $x \neq y$ に矛盾する. よって $y \leq x \implies x \nless y$ となる.\\
+以上より, $x \nless y \iff y \leq x$ が成り立つ.
+}
+\makeatletter\tagsleft@false\makeatother
 \end{nmprob}
 
 

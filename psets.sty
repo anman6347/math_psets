@@ -170,6 +170,13 @@
     \setcounter{numpb}{0}
 }
 
-\newenvironment{nmprob}{}{
+% 箇条書きのインデント調整
+\let\enum\enumerate
+\let\endenum\endenumerate
+
+
+\newenvironment{nmprob}{
+    \renewenvironment{enumerate}{\begin{enum}\setlength{\leftskip}{-8pt}}{\end{enum}}
+}{
     \newpage
 }

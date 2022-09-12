@@ -1,7 +1,42 @@
 \pgsc{代数学}{chocolate}{algebra}
 
 \begin{nmprob}
-最初らへんは初等整数論の問題だけど, 後から変更の可能性大.
+ペアノシステムの数学的帰納法.
+\pbenumex{
+次の条件 (N1) から (N3) を満たす, 集合 $\bm{N}$, その一つの元 $0$, および写像 $\sigma :\bm{N} \to \bm{N}$ の対 $\langle \bm{N}, 0, \sigma \rangle$
+をペアノシステムという.
+\begin{description}\setlength{\leftskip}{16pt}
+    \item[\rm (N1)] $\sigma :\bm{N} \to \bm{N}$ は単射である.
+    \item[\rm (N2)] $0 \notin \sigma(\bm{N})$
+    \item[\rm (N3)] $S \subset \bm{N}$ のとき, $S$ が次の二条件を満たせば $S = \bm{N}$ となる.
+    \begin{align}
+        0 \in S\\
+        \sigma(S) \subset S
+    \end{align}
+    \setcounter{equation}{0}
+\end{description}
+特に, (N3) を数学的帰納法の公理とよぶ. また, $\sigma$ は後継者写像といい, $n$ に対して $\sigma(n)$ はその後継者とよばれる.
+}{
+\item 任意の $n \in \bm{N}$ に対して, $n \in S \implies \sigma(n) \in S$ が成り立つとすると, $\sigma(S) \subset S$ が成り立つことを示せ. ただし, $S \subset \bm{N}$ とする.
+\item 任意の $n \in \bm{N}$ に対して, $\sigma(n) \neq n$ を示せ.
+\item 任意の $n \in \bm{N}\backslash \{0\}$ に対して, $\exists m\in \bm{N},\ \sigma (m) = n$ を示せ. 
+}{
+\item $y \in \sigma (S)$ とすると, $\sigma (S)$ の定義から, $\langle x, y\rangle \in \sigma$ となる $x \in S$ が存在する.
+今, $\forall n \in \bm{N},\ n \in S \implies \sigma (n) \in S$ が成り立つので, $\sigma (x) \in S$ となる. また, $\sigma$ は写像より $y = \sigma (x)$ となるから, $y \in S$ となる.
+よって, $\sigma (S) \subset S$ となる.
+\item $S = \{ n \in \bm{N}\ |\  \sigma (n) \neq n \}$ とする. まず, (N2) より $0 \in S$ となる.
+次に, 任意の $n \in \bm{N}$ を一つとると, $n \in S$ ならば $\sigma (n) \neq n$ より, (N1) から $\sigma (\sigma (n)) \neq \sigma(n)$ となり, $\sigma (n) \in S$ となる.
+よって, (1) より, $\sigma (S) \subset S$ となるから, (N3) より $S = \bm{N}$ となる. これは, $\forall n \in \bm{N},\ \sigma (n) \neq n$ を意味する.\footnote[1]{$P(0)$が真かつ$P(n)$が真ならば$P(\sigma (n))$ が真であれば $S = \{ n\in \bm{N}\ |\ P(n)\}$ とすることで N3 を使える.\vspace{30pt}}
+\item $S = \{0\} \cup \sigma (\bm{N})$ とすると, 明らかに $0 \in S$ となる. また, 任意の $n \in \bm{N}$ に対して, $n \in S$ とすると, $\sigma (n) \in \sigma (\bm{N}) \subset S$ となる.
+よって, (N3) より, $S = \bm{N}$ となる. ゆえに $\bm{N}$ の $0$ 以外の元は $\sigma (\bm{N})$ に含まれる.
+以上より, 任意の $n \in \bm{N}\backslash \{0\}$ に対して, $\exists m\in \bm{N},\ \sigma (m) = n$ となる. ちなみに, (N2) とから, $\bm{N}\backslash \{0\} = \sigma (\bm{N})$ が成り立つ. 
+} 
+\end{nmprob}
+
+
+
+\begin{nmprob}
+整列性から一般的な数学的帰納法.
 \pbenumex{
     以降の問題では, 正の整数全体の集合を $\mathbb{Z}^+$ で表す. このとき, 次の問に答えよ.
 }{
@@ -17,6 +52,7 @@
     &P(1) \text{は真}\\
     &\forall n \in \mathbb{Z}^+ [P(n) \text{が真} \implies P(n+1) \text{も真}]
 \end{align}
+\setcounter{equation}{0}
 このとき, 全ての $n \in \mathbb{Z}^+$ に対して, $P(n)$ が真となることを示せ.
 }{
 \item $\mathbb{Z}^+ - S = S^{'}$ とし, $S^{'} = \emptyset$ となることを背理法により示す.\\

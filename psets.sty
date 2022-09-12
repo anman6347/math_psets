@@ -13,6 +13,7 @@
 \definecolor{maroon}{RGB}{128,0,0}
 \definecolor{forestgreen}{RGB}{34,139,34}
 \definecolor{mediumvioletred}{RGB}{199,21,133}
+\definecolor{orangered}{RGB}{255,69,0}
 
 \usepackage{tcolorbox}
 \tcbuselibrary{raster,skins,breakable}
@@ -34,6 +35,12 @@
         \arabic{#1}
     \fi
 }
+
+% ローマ数字出力
+\newcounter{num}
+\newcommand{\Rnum}[1]{\setcounter{num}{#1} \hspace{-.3em}\Roman{num}}
+\newcommand{\rnum}[1]{\setcounter{num}{#1} \hspace{-.3em}\roman{num}}
+
 
 % 注釈
 % text...\\

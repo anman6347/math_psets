@@ -2,7 +2,7 @@
 
 \begin{nmprob}
 ペアノシステムの数学的帰納法.
-\pbenumex{
+\pbenumex[peano]{
 次の条件 (N1) から (N3) を満たす, 集合 $\bm{N}$, その一つの元 $0$, および写像 $\sigma :\bm{N} \to \bm{N}$ の対 $\langle \bm{N}, 0, \sigma \rangle$
 をペアノシステムという.
 \begin{description}\setlength{\leftskip}{16pt}
@@ -26,11 +26,67 @@
 よって, $\sigma (S) \subset S$ となる.
 \item $S = \{ n \in \bm{N}\ |\  \sigma (n) \neq n \}$ とする. まず, (N2) より $0 \in S$ となる.
 次に, 任意の $n \in \bm{N}$ を一つとると, $n \in S$ ならば $\sigma (n) \neq n$ より, (N1) から $\sigma (\sigma (n)) \neq \sigma(n)$ となり, $\sigma (n) \in S$ となる.
-よって, (1) より, $\sigma (S) \subset S$ となるから, (N3) より $S = \bm{N}$ となる. これは, $\forall n \in \bm{N},\ \sigma (n) \neq n$ を意味する.\footnote[1]{$P(0)$が真かつ$P(n)$が真ならば$P(\sigma (n))$ が真であれば $S = \{ n\in \bm{N}\ |\ P(n)\}$ とすることで N3 を使える.\vspace{30pt}}
+よって, (1) より, $\sigma (S) \subset S$ となるから, (N3) より $S = \bm{N}$ となる. これは, $\forall n \in \bm{N},\ \sigma (n) \neq n$ を意味する.
+\footnote[1]{$P(0)$が真, かつ$P(n)$が真ならば$P(\sigma (n))$ が真であれば $S = \{ n\in \bm{N}\ |\ P(n)\}$ とすることで N3 から $S = \bm{N}$ を示す方法はよく使われる.\vspace{30pt}}
 \item $S = \{0\} \cup \sigma (\bm{N})$ とすると, 明らかに $0 \in S$ となる. また, 任意の $n \in \bm{N}$ に対して, $n \in S$ とすると, $\sigma (n) \in \sigma (\bm{N}) \subset S$ となる.
 よって, (N3) より, $S = \bm{N}$ となる. ゆえに $\bm{N}$ の $0$ 以外の元は $\sigma (\bm{N})$ に含まれる.
-以上より, 任意の $n \in \bm{N}\backslash \{0\}$ に対して, $\exists m\in \bm{N},\ \sigma (m) = n$ となる. ちなみに, (N2) とから, $\bm{N}\backslash \{0\} = \sigma (\bm{N})$ が成り立つ. 
+以上より, 任意の $n \in \bm{N}\backslash \{0\}$ に対して, $\exists m\in \bm{N},\ \sigma (m) = n$ となる. ちなみに, (N2) とから, $\bm{N}\backslash \{0\} = \sigma (\bm{N})$ が成り立つ（外延性から示せる）
 } 
+\end{nmprob}
+
+
+
+\begin{nmprob}
+ペアノシステムの一意性.
+\renewcommand{\labelenumii}{(\Roman{enumii})}
+\pbenum{
+\item $X$ を一つの集合とし, $X$ の一つの元 $x_0$ と写像 $\phi :X \to X$ とが与えられたとする.
+このとき, 次の二条件を満たすような写像 $f :\bm{N} \to X$ がただ一つ存在することを示せ.
+
+\renewcommand{\theequation}{\roman{equation}}
+\begin{align}
+& f(0) = x_0\\
+& \forall n \in \bm{N},\ f(\sigma (n)) = \phi (f(n))
+\end{align}
+\setcounter{equation}{0}
+\item $\langle \bm{N}, 0, \sigma \rangle$ と $\langle \bm{N^{'}}, 0^{'}, \sigma^{'} \rangle$ が共にペアノシステムであるとき,
+$\bm{N}$ から $\bm{N^{'}}$ への全単射 $f$ で, $f(0) = 0^{'}$ かつ, 任意の $n \in \bm{N}$ に対して $f(\sigma (n)) = \sigma^{'}(f(n))$ となるもの
+が一意的に存在することを示せ.
+}{
+\item
+\begin{enumerate}
+\item
+まず, $f$ の一意性から示す.\\
+相違な写像 $f: \bm{N} \to X,\ f^{'}: \bm{N} \to X$ が共に条件 (\rnum{1}), (\rnum{2}) を満たすとする.
+ここで, $S = \{ n \in \bm{N}\ |\ f(n) = f^{'}(n)\}$ とすると, (\rnum{1}) より $0 \in S$ である.
+また, 任意の $n \in \bm{N}$ に対して, $n \in S$ とすると, (\rnum{2}) より $f(\sigma (n)) = \phi (f(n)) = \phi (f^{'}(n)) = f^{'}(\sigma (n))$ となるから, $\sigma (n) \in S$ となるから
+問\ref{sec:algebra}-\ref{pname:peano}\ (1) より, $S \subset \sigma (S)$ となる. よって, 数学的帰納法の公理より, $S = \bm{N}$ となる. よって, $f = f^{'}$ となり, 矛盾. よって, $f$ が存在するとすれば一意である.
+\item
+次に, $f$ の存在を示す.\\
+まず, 次の二条件を満たす $\bm{N} \times X$ の部分集合 $R$ を考える.
+\begin{align}
+    \langle & 0, x_0\rangle \in R\\
+    \forall & (n\in \bm{N})[\langle n, x\rangle \in R \implies \langle \sigma (n), \phi (x) \rangle \in R]
+\end{align}
+\setcounter{equation}{0}
+条件(1), (2) を満たす集合全体を $\mathcal{F}$ とすると, $\bm{N} \times X \in \mathcal{F}$ より $\mathcal{F} \neq \emptyset$ である.
+よって, $\bigcap_{R \in \mathcal{F}} R$ を考えることができる.\\
+ここで, 
+\begin{align*}
+f = \bigcap_{R \in \mathcal{F}} R    
+\end{align*}
+としたとき, この $f$ が $\bm{N}$ から $X$ への写像であり, 二条件 (\rnum{1}), (\rnum{2}) を満たすことを示す.\\
+まず, $f$ が $\bm{N}$ から $X$ への写像であることを示すために, $T = \{ n \in \bm{N}\ |\ \langle n, x\rangle \in f \text{なる} x \text{が唯一つ存在する}\}$ を考える.
+
+\begin{enumerate}
+\item $0 \in T$ を示す.
+\item $\forall n \in \bm{N},\ n \in T \implies \sigma (n) \in T$ を示す.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+\end{enumerate}
+\end{enumerate}
+
+}
+\newpage
+\hspace{-3zw}{\color{orangered}●●\ 前問題の補足\ ●●}
 \end{nmprob}
 
 

@@ -69,7 +69,7 @@ $\bm{N}$ から $\bm{N^{'}}$ への全単射 $f$ で, $f(0) = 0^{'}$ かつ, 任
     \forall & (n\in \bm{N})[\langle n, x\rangle \in R \implies \langle \sigma (n), \phi (x) \rangle \in R]
 \end{align}
 \setcounter{equation}{0}
-条件(1), (2) を満たす集合全体を $\mathcal{F}$ とすると, $\bm{N} \times X \in \mathcal{F}$ より $\mathcal{F} \neq \emptyset$ である.
+条件(1), (2) を満たす集合全体を $\mathcal{F}$ とすると, $\bm{N} \times X \in \mathcal{F}$ より $\mathcal{F} \neq \emptyset$ である（条件 (2) は $\sigma (n) \in \bm{N},\ \phi (x) \in X$ より満たされる）
 よって, $\bigcap_{R \in \mathcal{F}} R$ を考えることができる.\\
 ここで, 
 \begin{align*}
@@ -77,16 +77,133 @@ f = \bigcap_{R \in \mathcal{F}} R
 \end{align*}
 としたとき, この $f$ が $\bm{N}$ から $X$ への写像であり, 二条件 (\rnum{1}), (\rnum{2}) を満たすことを示す.\\
 まず, $f$ が $\bm{N}$ から $X$ への写像であることを示すために, $T = \{ n \in \bm{N}\ |\ \langle n, x\rangle \in f \text{なる} x \text{が唯一つ存在する}\}$ を考える.
-
 \begin{enumerate}
-\item $0 \in T$ を示す.
-\item $\forall n \in \bm{N},\ n \in T \implies \sigma (n) \in T$ を示す.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+\item $0 \in T$ を示す.\\
+$f$ についてすぐにわかる通り, $f \in \mathcal{F}$ であるから, $0 \in T$ となる. 
+\item $\forall n \in \bm{N},\ n \in T \implies \sigma (n) \in T$ を示す.\\
+$n \in T$ とすると, $\langle \sigma (n), x_n \rangle \in f$ となる $x_n \in X$ がただ一つ存在する. まず, $f \in \mathcal{F}$ より, 条件 (2) から $\langle \sigma (n), \phi (x_n) \rangle \in f$ より,
+$\exists x \in X,\ \langle n, x\rangle \in f$ となる. よって, この $x$ の一意性（つまり $x = \phi (x_n)$ のみである）を示せば, $\sigma (n) \in T$ となる.
+一意性を得るために $\langle \sigma (n), y \rangle \in f$ となる $y \in X\backslash \{\phi (x_n) \}$ が存在すると仮定する.
+ここで, $g = f\backslash \{ \langle \sigma (n), y \rangle\}$ として, $g \in \mathcal{F}$ を示す.
+\begin{itemize}
+\item 条件 (1)\\
+ペアノシステムの公理 N2 より, $0 \notin \bm{N}$ であるから, $\sigma (n) \neq 0$ より, $\langle 0, x_0 \rangle \in g$ である.
+\item 条件 (2)\\
+$\langle n_g, x_g\rangle \in g$ を任意にとったとき, $\langle n_g, x_g\rangle \in f$ であり, $f \in \mathcal{F}$ とから, $f$ が条件 (2) を満たすことから, $\langle \sigma (n_g), \phi (x_g)\rangle \in f$ となる.
+$n_g \neq n$ の場合はペアノシステムの公理 N1 より, $\langle \sigma (n_g), x_g\rangle \neq \langle \sigma (n), y\rangle$ である（第一成分が異なることより）から, $\langle \sigma (n_g), x_g\rangle \in g$ となる.
+また, $n_g = n$ の場合は, 今 $n \in T$ で $\langle n, x_n \rangle \in f$ となる $x_n \in X$ はただ一つ存在することから, $x_g = x_n$ でなくてはならない. よって, $\langle \sigma (n_g), \phi (x_g) = \phi (x_n) \rangle \in f$
+であり, $y \neq \phi (x_n)$ より, $\langle \sigma (n_g), x_g\rangle \neq \langle \sigma (n), y\rangle$ となるから $\langle \sigma (n_g), x_g\rangle \in g$ となる.
+以上より, $\langle n_g, x_g\rangle \in g \implies \langle \sigma (n_g), x_g\rangle \in g$ となる.
+\end{itemize}
+以上より, $g \in \mathcal{F}$ である. さて, 今 $g \subsetneq f$ である. ここで, $f = \bigcap_{R \in \mathcal{F}} R$ より, $\forall R \in \mathcal{F},\ f \subset R$ より,
+$g \in \mathcal{F}$ とから $g \subset f$ となるが, これは $g \subsetneq f$ に矛盾する. よって, $\langle \sigma (n), y \rangle \in f$ となる $y \in X\backslash \{\phi (x_n) \}$ は存在しない,
+すなわち $\langle \sigma (n), x_n \rangle \in f$ となる $x_n \in X$ がただ一つ存在する. 以上より, $\sigma (n) \in T$ となり, $\forall n \in \bm{N},\ n \in T \implies \sigma (n) \in T$ が成り立つ.
 \end{enumerate}
+上の (a), (b) より, 問\ref{sec:algebra}-\ref{pname:peano}\ (1)より $T = \bm{N}$ となる. よって, $f$ は $\bm{N}$ から $X$ への写像となる. また, $0 \in T$ を示す際に述べた通り, $f \in \mathcal{F}$ より, $f$ は二条件 (1), (2) を満たす.
+これより, すぐにわかる通り $f$ が満たすべき二条件 (\rnum{1}), (\rnum{2}) も満たされる. 以上より, $f$ の存在性が示された.
 \end{enumerate}
-
+\item
+(1) において, $X = \bm{N}^{'},\ \phi = \sigma,\ x_0 = 0^{'}$ とすればよい.
 }
-\newpage
+
 \hspace{-3zw}{\color{orangered}●●\ 前問題の補足\ ●●}
+
+前問題における各写像の様子を次図に示す.
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+        \coordinate (O);       
+        \node (A0) at ($(O) + (0, 1)$) {$0$};
+        \node (B0) at ($(O) + (0, -1)$) {$x_0$};
+        \node (A1) at ($(A0) + (2, 0)$) {$\sigma (0)$};
+        \node (B1) at ($(B0) + (2, 0)$) {$\phi (x_0)$};
+        \node (A2) at ($(A1) + (2, 0)$) {$\ldots$};
+        \node (B2) at ($(B1) + (2, 0)$) {$\ldots$};
+        \node (A3) at ($(A2) + (2, 0)$) {$n$};
+        \node (B3) at ($(B2) + (2, 0)$) {$f(n)$};
+        \node (A4) at ($(A3) + (2, 0)$) {$\sigma (n)$};
+        \node (B4) at ($(B3) + (2, 0)$) {$\phi (f(n))$};
+
+        \draw [|->] (A0) to node [above] {$\sigma$} (A1);
+        \draw [|->] (A1) to node [above] {$\sigma$} (A2);
+        \draw [|->] (A2) to node [above] {$\sigma$} (A3);
+        \draw [|->] (A3) to node [above] {$\sigma$} (A4);
+        \draw [|->] (B0) to node [below] {$\phi$} (B1);
+        \draw [|->] (B1) to node [below] {$\phi$} (B2);
+        \draw [|->] (B2) to node [below] {$\phi$} (B3);
+        \draw [|->] (B3) to node [below] {$\phi$} (B4);
+        \draw [bend right,distance=10,->] (A0) to node [left] {$f$} (B0);
+        \draw [bend right,distance=10,->] (A1) to node [left] {$f$} (B1);
+        \draw [bend right,distance=10,->] (A3) to node [left] {$f$} (B3);
+        \draw [bend right,distance=10,->] (A4) to node [left] {$f$} (B4);
+    \end{tikzpicture}
+    \caption{前問題のイメージ}
+\end{figure}
+
+また, 全単射の存在だけでなく一意性も示したのは以下のような要素の順番の入れ替えを防ぐためである.
+\begin{figure}[htbp]
+    \begin{minipage}[b]{0.45\linewidth}
+    \centering
+    \begin{tikzpicture}
+        \coordinate (O);
+        \coordinate (A1) at ($(O) + (-1, 1)$);
+        \coordinate (A2) at ($(O) + (-1, 0)$);
+        \coordinate (A3) at ($(O) + (-1, -1)$);
+        \coordinate (B1) at ($(O) + (1, 1)$);
+        \coordinate (B2) at ($(O) + (1, 0)$);
+        \coordinate (B3) at ($(O) + (1, -1)$);
+        \fill (A1) circle [radius=0.06];
+        \fill (A2) circle [radius=0.06];
+        \fill (A3) circle [radius=0.06];
+        \fill (B1) circle [radius=0.06];
+        \fill (B2) circle [radius=0.06];
+        \fill (B3) circle [radius=0.06];
+        \draw (A1) node [above] {$0$};
+        \draw (A2) node [above] {$1$};
+        \draw (A3) node [above] {$2$};
+        \draw (B1) node [above] {$0^{'}$};
+        \draw (B2) node [above] {$1^{'}$};
+        \draw (B3) node [above] {$2^{'}$};
+        \draw (A2) circle [x radius=0.8, y radius=1.6];
+        \draw (B2) circle [x radius=0.8, y radius=1.6];
+        \draw [->] (A1) to (B1);
+        \draw [->] (A2) to (B2);
+        \draw [->] (A3) to (B3);
+    \end{tikzpicture}
+    \caption{全単射の例 1}
+    \end{minipage}
+    \begin{minipage}[b]{0.45\linewidth}
+    \centering
+    \begin{tikzpicture}
+        \coordinate (O);
+        \coordinate (A1) at ($(O) + (-1, 1)$);
+        \coordinate (A2) at ($(O) + (-1, 0)$);
+        \coordinate (A3) at ($(O) + (-1, -1)$);
+        \coordinate (B1) at ($(O) + (1, 1)$);
+        \coordinate (B2) at ($(O) + (1, 0)$);
+        \coordinate (B3) at ($(O) + (1, -1)$);
+        \fill (A1) circle [radius=0.06];
+        \fill (A2) circle [radius=0.06];
+        \fill (A3) circle [radius=0.06];
+        \fill (B1) circle [radius=0.06];
+        \fill (B2) circle [radius=0.06];
+        \fill (B3) circle [radius=0.06];
+        \draw (A1) node [above] {$0$};
+        \draw (A2) node [above] {$1$};
+        \draw (A3) node [above] {$2$};
+        \draw (B1) node [above] {$0^{'}$};
+        \draw (B2) node [above] {$1^{'}$};
+        \draw (B3) node [above] {$2^{'}$};
+        \draw (A2) circle [x radius=0.8, y radius=1.6];
+        \draw (B2) circle [x radius=0.8, y radius=1.6];
+        \draw [->] (A1) to (B2);
+        \draw [->] (A2) to (B3);
+        \draw [->] (A3) to (B1);
+    \end{tikzpicture}
+    \caption{全単射の例 2}
+    \end{minipage}
+\end{figure}
+\setcounter{figure}{0}
 \end{nmprob}
 
 

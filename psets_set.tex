@@ -185,6 +185,7 @@ $x \in X$ とすると, $I_X$ が写像より, $\langle x, y\rangle \in I_X$ と
 \pbenum[comp_inv]{
 \item 写像 $f: A\to B$ と $g: B\to C$ の合成写像 $g\circ f: A\to C$ が全単射であるとき, $g$ は全射であり, $f$ は単射であることを示せ.
 \item 写像 $f: A\to B$ が全単射のとき, $f^{-1} \circ f = I_A,\ f \circ f^{-1} = I_B$ を示せ.
+\item 写像 $f: A\to B,\ g: B\to C,\ h: C\to D$ に対して $h\circ (g\circ f) = (h \circ g)\circ f$ を示せ.
 \item 写像 $f: A\to B,\ g: B\to A$ に対して, $f\circ g = I_B,\ g\circ f= I_A$ であるとき, $f, g$ はそれぞれ全単射であり,
 $g = f^{-1},\ f = g^{-1}$ となることを示せ.
 }{
@@ -206,6 +207,11 @@ $f^{-1}$ は $B$ から $A$ への写像であるから, $x = y$ となる. よ�
 $\langle x, y\rangle \in I_A$ とすると, $x \in \text{dom}(I_A) = A$ より, $\langle x, f(x)\rangle \in f \land \langle f(x), x\rangle \in f^{-1}$ となるから $\langle x, x\rangle \in f^{-1}\circ f$ となる.
 また, $I_A$ は恒等写像であるから $x = y$ となる. よって, $\langle x, y\rangle \in f^{-1}\circ f$ となるので $I_A \subset f^{-1}\circ f$ となる.\\
 以上より, $f^{-1}\circ f = I_A$ となる. $f\circ f^{-1} = I_B$ も同様に示せる.
+\item
+$\langle x, w\rangle \in h\circ (g\circ f)$ とすると, $\langle x, z\rangle \in g \circ f,\ \langle z, w\rangle \in h$ となる $z$ が存在し,
+$\langle x, y\rangle \in f,\ \langle y, z\rangle \in g$ となる $y$ が存在する. よって, $\langle y, w\rangle \in h\circ g$ となり,
+$\langle x, w\rangle \in (h \circ g) \circ f$ となる. よって, $h \circ (g \circ f) \subset (h \circ g)\circ f$ となる.
+同様に, $h \circ (g \circ f) \supset (h \circ g)\circ f$ となるので, $h \circ (g \circ f) = (h \circ g)\circ f$ となる.\footnote[1]{この結合法則は一般の二項関係においても成り立つ.}
 \item まず, 問\ref{sec:set}-\ref{pname:fog}(3) より, $I_A, I_B$ は共に全単射である. よって (1) より $f,\ g$ は共に全単射である.\\
 次に, (2)より, $f\circ g = I_B$ ならば $f^{-1}\circ (f\circ g) = f^{-1}\circ I_B$ から $g = f^{-1}$ となる. 同様に, $f = g^{-1}$ となる.
 }

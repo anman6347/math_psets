@@ -39,7 +39,7 @@
 \begin{nmprob}
 ペアノシステムの一意性.
 \renewcommand{\labelenumii}{(\Roman{enumii})}
-\pbenum{
+\pbenum[peanouq]{
 \item $X$ を一つの集合とし, $X$ の一つの元 $x_0$ と写像 $\phi :X \to X$ とが与えられたとする.
 このとき, 次の二条件を満たすような写像 $f :\bm{N} \to X$ がただ一つ存在することを示せ.
 
@@ -208,6 +208,45 @@ $g(0) = 0$ かつ $\forall n \in \bm{N},\ g(\sigma (n)) = f^{'}(f(\sigma (n))) =
     \end{minipage}
 \end{figure}
 \setcounter{figure}{0}
+\end{nmprob}
+
+
+
+\begin{nmprob}
+自然数の加法
+\makeatletter\tagsleft@true\makeatother
+\pbenumex{
+問\ref{sec:algebra}-\ref{pname:peanouq} より, $m \in \bm{N}$ のとき,
+
+\begin{align}
+    f_m(0) &= m \tag*{\hspace{3zw}(A1)$_m$} \\
+    f_m\circ \sigma &= \sigma\circ f_m\hspace{2zw}\left(\text{すなわち, }\forall n \in \bm{N},\ f_m(\sigma (n))= \sigma(f_m (n))\right) \tag*{\hspace{3zw}(A2)$_m$}
+\end{align}
+
+を満たす$f_m:\bm{N} \to \bm{N}$ が一意的に存在する. ここで, $m, n \in \bm{N}$ に対して, $f_m(n)$ を $m, n$ の和とよび, $m + n$ と表す.
+}{
+\item $m \in \bm{N}$ のとき, $m + 0 = m$ となることを示せ.
+\item $m, n \in \bm{N}$ のとき, $m + \sigma (n) = \sigma (m + n)$ となることを示せ.
+\item $f_0 = I_{\bm{N}}$ となることを示せ.
+\item $n \in \bm{N}$ のとき, $0 + n = n$ となることを示せ.
+\item $m, n \in \bm{N}$ のとき, $\sigma (m) + n = \sigma (m + n)$ となることを示せ.
+}{
+\item (A1)$_m$ より, $m + 0 = m$ が成り立つ.
+\item (A2)$_m$ より, $m + \sigma (n) = f_m(\sigma (n)) = \sigma (f_m(n)) = \sigma (m + n)$ となる.
+\item 恒等写像の定義から, $I_{\bm{N}}(0) = 0$ である. また, $I_{\bm{N}}(\sigma (n)) = \sigma (n) = \sigma (I_{\bm{N}}(n))$ より, $I_{\bm{N}}$ は, 条件 (A1)$_0$, (A2)$_0$ を満たす.
+よって, $f_0$ の一意性から $f_0 = I_{\bm{N}}$ となる.
+\item (3) より, $0 + n = f_0(n) = I_{\bm{N}}(n) = n$ となる.
+\item $h = \sigma \circ f_m$ とすると, $h(0) = \sigma (m)$ であり,
+\begin{align*}
+    h\circ \sigma &= (\sigma \circ f_m)\circ \sigma\\
+    &= \sigma \circ (f_m \circ \sigma)&&\text{($\because$ 問題\ref{sec:set}-\ref{pname:comp_inv}\ (3)の写像の結合法則より)}\\
+    &= \sigma \circ (\sigma \circ f_m)&&\text{($\because$ (A2)$_m$ より)}\\
+    &= \sigma \circ h
+\end{align*}
+より, $h$ は条件 (A1)$_{\sigma (m)}$ (A2)$_{\sigma (m)}$ を満たす. よって, $f_{\sigma (m)}$ の一意性より $f_{\sigma (m)} = \sigma \circ f_m$ となるから
+$\sigma (m) + n = f_{\sigma (m)}(n) = \sigma (f_m(n)) = \sigma (m + n)$ となる.
+}
+\makeatletter\tagsleft@false\makeatother
 \end{nmprob}
 
 

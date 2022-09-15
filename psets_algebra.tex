@@ -103,8 +103,12 @@ $g \in \mathcal{F}$ とから $g \subset f$ となるが, これは $g \subsetne
 これより, すぐにわかる通り $f$ が満たすべき二条件 (\rnum{1}), (\rnum{2}) も満たされる. 以上より, $f$ の存在性が示された.
 \end{enumerate}
 \item
-(1) において, $X = \bm{N}^{'},\ \phi = \sigma,\ x_0 = 0^{'}$ とすればよい.
-}
+(1) において, $X = \bm{N}^{'},\ \phi = \sigma,\ x_0 = 0^{'}$ とすると, $f(0) = 0^{'}$ かつ $\forall n\in \bm{N},\ f(\sigma (n)) = \sigma^{'} (f(n))$ となる $f: \bm{N} \to \bm{N^{'}}$ が存在する.
+この $f$ が全単射であることを示す. 先と逆に考えて $f^{'}(0^{'}) = 0$ かつ $\forall n^{'} \in \bm{N^{'}},\ f^{'}(\sigma^{'}(n^{'})) = \sigma (f^{'}(n^{'}))$ となる $f^{'}: \bm{N^{'}} \to \bm{N}$ も存在する. ここで, $g = f^{'} \circ f$ とすると, $g$ は $\bm{N}$ から $\bm{N}$ への写像となり,
+$g(0) = 0$ かつ $\forall n \in \bm{N},\ g(\sigma (n)) = f^{'}(f(\sigma (n))) = f^{'}(\sigma^{'}(f(n))) = \sigma (f^{'}(f(n))) = \sigma (g(n))$ より, $g$ は条件 (\rnum{1}), (\rnum{2}) を満たす.
+ここで, $\bm{N}$ から $\bm{N}$ への写像である $I_{\bm{N}}$ も, 条件 (\rnum{1}), (\rnum{2}) を満たす. よって, (1)より $g$ は一意であるから $g = f^{'} \circ f = I_{\bm{N}}$ となる. 同様に, $f \circ f^{'} = I_{\bm{N^{'}}}$ となるから,
+問\ref{sec:set}-\ref{pname:comp_inv}\ (4) より, $f$ は全単射である.
+} 
 
 \hspace{-3zw}{\color{orangered}●●\ 前問題の補足\ ●●}
 

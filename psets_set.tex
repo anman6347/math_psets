@@ -220,7 +220,7 @@ $\langle x, w\rangle \in (h \circ g) \circ f$ となる. よって, $h \circ (g 
 \begin{nmprob}
 順序関係と順序集合
 \makeatletter\tagsleft@true\makeatother
-\pbenumex{
+\pbenumex[ordr]{
 $R$ がある集合 $A$ 上の二項関係であるとき, $\langle x, y\rangle \in R$ であることを以後 $xRy$ と表す.
 }{
 \item $\leq$ が 集合 $A$ 上の二項関係であり, 任意の $x, y, z \in A$ に対して, 次の $(O1) \sim (O3)$ を満たすとき, $\leq$ は $A$ 上の順序（関係）であるといい,
@@ -261,6 +261,75 @@ $y \leq x$ として, $x < y$ が成り立つと仮定する. $x < y$ より, $x
 \end{nmprob}
 
 
+
+\begin{nmprob}
+最大元, 極大元, 部分順序集合, 上界, 上限.
+\pbenumex{
+$\langle A, \leq \rangle$ を一つの与えられた順序集合とする.
+$A$ の空でない部分集合 $M$ を考える. $a,b \in M$ に関して $a \leq b$ が成り立つとき, またその時に限り $a \leq_M b$ と二項関係 $\leq_M$ を定めると, これは明らかに $M$ 上の順序関係となる.
+ここで $\langle M, \leq_M \rangle$ を $\langle A, \leq \rangle$ の部分順序集合といい, 誤解が生まれない場合には $\langle M, \leq \rangle$ で表す.
+
+}{
+\item $A$ に一つの元 $a$ があって, $\forall x \in A,\ x \leq a$ が成り立つとき, $a$ を $A$ の最大元といい $\max A$ と表す.
+最大限が任意の順序集合の台集合\footnote[1]{順序集合 $\langle A, \leq \rangle$ における集合 $A$ をその台集合という. また, 順序関係を明示しなくても誤解が生まれない場合は $A$ のことを順序集合とよぶことがある.}
+に存在するとは限らないが, 存在すれば一意的に定まることを示せ.
+\item $A$ の元 $a$ に関して, $\lnot (\exists x \in A,\ a < x)$ が成り立つとき, $a$ を $A$ の極大元という.
+極大元の存在やその一意性は一般には保証されないが, $\max A$ が存在するとき, $a = \max A$ となることを示せ. 
+\item $A$ が全順序集合のとき, $a$ が $A$ の最大限であることと $a$ が $A$ の極大元であることは同値であることを示せ.
+\item $A$ の元 $a$ 関して, $\forall x \in M,\ x \leq a$ が成り立つとき, $a$ を $M$ の $A$ における上界という.
+$M$ の $A$ における上界全体の集合を $M^*$ とすると, $M^* \neq \emptyset$ のとき, $M$ は $A$ において上に有界という.
+$M$ が $A$ において上に有界かつ $\min M^*$ が存在するとき, $\min M^*$ を $M$ の $A$ における上限といい $\sup M$ と表す.
+$\sup M$ が存在すれば一意的であることを示せ.
+\item $\sup M$ が存在するという下で, $\sup M \in M \iff (\max M (\in M) \text{が存在})$ を示せ.
+}{
+\item $\max A$ が存在するとし, $a = \max A,\ a^{'} = \max A$ かつ $a \neq a^{'}$ とすると,
+$a, a^{'}$ 共に $A$ の最大限より $a \leq a^{'}$ かつ $a^{'} \leq a$ より $a = a^{'}$ となり矛盾する.
+よって, $\max A$ が存在すれば, それは一意に定まる.
+\item $a = \max A$ とし, $a$ が $A$ の極大元でないとする. $a$ は $A$ の極大元ではないから $a < x$ となる $x \in A$ が存在する.
+これより $a \leq x$ かつ $a \neq x$ となるが, $a = \max A$ より $x \leq a$ でもあるから $a = x \land a \neq x$ となり矛盾する.
+よって $a = \max A$ は $A$ の極大元となる.
+\item
+$A$ が全順序集合のとき, 
+\begin{align*}
+    \forall x \in A,\ x\leq a &\iff \forall x \in A,\ \lnot (a < x)&&\text{($\because$ 問\ref{sec:set}-\ref{pname:ordr}\ (3)より)}\\
+    &\iff \lnot (\exists x \in A,\ a < x)
+\end{align*}
+より, $A$ が全順序集合のとき, $a$ が $A$ の最大限となることと, $A$ の極大元になることは同値である.
+\item $\sup M$ が存在すれば $\min M^*$ が存在し, 最小元の一意性より $\sup M$ は一意的に定まる.
+\item $a \in A$ に関して 
+\begin{empheq}[left={a = \sup M \iff \empheqlbrace}]{alignat=2}
+    & \forall x \in M,\ x \leq a && \quad (\because \text{$a$ は $M$ の上界}) \tag{a}\\
+    & \forall x^{'} \in M^*,\ a \leq x^{'} && \quad (\because \text{$a$ は上界の最小値}) \tag{b}
+\end{empheq}
+となるから, $\sup M \in M$ とすると (a) より, $\max M = \sup M$ となる. また, $a = \max M$ とすると, 明らかに (a) が成り立ち, また, $a \in M$ より (b) も成り立つ.
+よって, $a = \sup M$ となり, $\sup M = \max M$ より, $\sup M \in M$ となる.
+}
+\newpage
+\hspace{-3zw}{\color{forestgreen}●●\ 最大元, 上限の補足\ ●●}
+
+最大元と上限についてまとめると次の表のようになる（最小元, 下限も同様）
+\begin{table}[hbtp]
+    \caption{$\max M, \sup M$ の存在}
+    \begin{center}
+        \begin{tabular}{c|c|c}
+            $\max M$ の存在 & $\sup M$ の存在 & 説明 \\ \hline \hline
+            存在する & 存在する & $\sup M = \max M,\ \sup M \in M$\\ \hline
+            存在する & 存在しない & ありえない.\\ \hline
+            存在しない & 存在する & $\sup M \notin M$ となる.\\ \hline
+            存在しない & 存在しない & 起こりうる.\\ \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\begin{itemize}
+    \item $\max M$ が存在 $\implies$ $\sup M = \max M$
+    \item $\max M$ が存在しない $\implies$ $\sup M$ が存在し $\sup M \notin M$ , または $\sup M$ は存在しない.
+    \item $\sup M$ が存在し, $\sup M \in M$ $\implies$ $\max M = \sup M$
+    \item $\sup M$ が存在し, $\sup M \notin M$ $\implies$ $\max M$ は存在しない.
+    \item $\sup M$ が存在しない $\implies$ $\max M$ は存在しない.
+\end{itemize}
+\end{nmprob}
+\setcounter{table}{0}
 
 \begin{nmprob}
 選択公理を理解する.

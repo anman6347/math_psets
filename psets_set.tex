@@ -1,6 +1,78 @@
 \pgsc{集合}{darkolivegreen}{set}
 
 \begin{nmprob}
+ZCの公理における空集合. 数理論理学との連係はまだ無理（勉強中）で簡単な略した自己流のものに留める.
+\pbenum{
+\item $\text{emp} (x) \iff \forall z,\ z\notin x$ と定義する. $\text{emp} (x) \land \text{emp} (y) \implies x = y$ を示せ.
+\item $\exists y,\ \text{emp} (y)$ を示せ.
+}{
+\item 以下の証明図（省略済み）より, $\text{emp} (x) \land \text{emp} (y) \implies x = y$ が成り立つ.
+ここでは, 外延性の公理「 $\forall x \forall y((\forall z,\ z \in x \leftrightarrow z \in y) \to x = y)$ 」を用いている.
+\begin{prooftree}
+    \AxiomC{$[\text{emp}(x) \land \text{emp}(y)]_1$}
+    \UnaryInfC{$\forall z, z\notin x$}
+    \UnaryInfC{$s \notin x$}
+    \UnaryInfC{$\lnot (s \in x)$}
+    \AxiomC{$[s \in x]_2$}
+    \BinaryInfC{$\bot$}
+    \UnaryInfC{$s \in y$}
+    \RightLabel{{\scriptsize 2}}
+    \UnaryInfC{$s \in x \to s \in y$}
+    \AxiomC{$[\text{emp}(x) \land \text{emp}(y)]_1$}
+    \UnaryInfC{$\forall z, z\notin y$}
+    \UnaryInfC{$s \notin y$}
+    \UnaryInfC{$\lnot (s \in y)$}
+    \AxiomC{$[s \in y]_3$}
+    \BinaryInfC{$\bot$}
+    \UnaryInfC{$s \in x$}
+    \RightLabel{{\scriptsize 3}}
+    \UnaryInfC{$s \in y \to s \in x$}
+    \BinaryInfC{$s \in x \leftrightarrow s \in y$}
+    \UnaryInfC{$\forall z,\ z \in x \leftrightarrow z \in y$}
+    \AxiomC{}
+    \UnaryInfC{$\forall x \forall y((\forall z,\ z \in x \leftrightarrow z \in y) \to x = y)$}
+    \UnaryInfC{$\forall y((\forall z,\ z \in x \leftrightarrow z \in y) \to x = y)$}
+    \UnaryInfC{$(\forall z,\ z \in x \leftrightarrow z \in y) \to x = y$}
+    \BinaryInfC{$x = y$}
+    \RightLabel{{\scriptsize 1}}
+    \UnaryInfC{$(\text{emp}(x) \land \text{emp}(y)) \to x = y$}
+\end{prooftree}
+\item 以下の証明図より $\exists y,\ \text{emp}(y)$ となる.
+分出公理「 $\phi$ が $x, w_1, \ldots w_n$ を自由変数として含み, $y$ を自由変数として含まない論理式のとき, $\forall z \forall w_1, \ldots w_n \exists y \forall x (x \in y \leftrightarrow (x \in z \land \phi))$ 」
+を用いている.
+\begin{prooftree}
+    \AxiomC{$[\forall x(x \in y_0 \leftrightarrow (x \in z \land x \neq x))]_1$}
+    \UnaryInfC{$x \in y_0 \leftrightarrow (x \in z \land x \neq x)$}
+    %\BinaryInfC{$\forall x(x \in y \leftrightarrow (x \in z \land x \neq x))$}
+    \UnaryInfC{$x \in y_0 \to (x \in z \land x \neq x)$}
+    \AxiomC{$[x \in y_0]_2$}
+    \BinaryInfC{$x \in z \land x \neq x$}
+    \UnaryInfC{$x \neq x$}
+    \AxiomC{}
+    \UnaryInfC{$x = x$}
+    \BinaryInfC{$\bot$}
+    \RightLabel{{\scriptsize 2}}
+    \UnaryInfC{$x \notin y_0$}
+    \UnaryInfC{$\forall x, x \notin y_0$}
+    \UnaryInfC{$\exists y \forall x, x \notin y$}
+    \AxiomC{}
+    \UnaryInfC{$\forall z\exists y \forall x(x \in y \leftrightarrow (x \in z \land x \neq x))$}
+    \UnaryInfC{$\exists y \forall x(x \in y \leftrightarrow (x \in z \land x \neq x))$}
+    \RightLabel{{\scriptsize 1}}
+    \BinaryInfC{$\exists y \forall x, x \notin y$}
+    \UnaryInfC{$\vdots$}
+    \UnaryInfC{$\exists y, \forall z, z \notin y$}
+    \UnaryInfC{$\exists y,\ \text{emp}(y)$}
+\end{prooftree}
+}
+\hspace{-3zw}{\color{forestgreen}●●\ まとめ\ ●●}\\
+(1), (2) より $\text{emp}(x)$ となる $x$ がただ一つ存在する. この唯一の $x$ を $\emptyset$ で表し, 空集合とよぶ.
+よって, $\forall z, z \notin \emptyset$ が成り立つ.
+\end{nmprob}
+
+
+
+\begin{nmprob}
 Kuratowski の順序対を理解しよう.
 \pbenum{
 \item $\langle a, b\rangle$ を $\langle a, b\rangle \coloneqq \{ \{a\}, \{a, b\} \}$ と定めるとき,

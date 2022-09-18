@@ -331,6 +331,42 @@ $A$ が全順序集合のとき,
 \end{nmprob}
 \setcounter{table}{0}
 
+
+
+\begin{nmprob}
+順序写像, 順序単射, 順序同型写像, 順序同型
+\pbenum{
+\item 2 つの順序集合 $\langle A, \leq \rangle$ および $\langle A^{'}, \leq^{'} \rangle$ を考える. $f: A \to A^{'}$ で $a, b \in A$ に対して $a \leq b \implies f(a) \leq^{'} f(b)$ となるとき,
+$f$ は $\langle A, \leq \rangle$ から $\langle A^{'}, \leq^{'} \rangle$ への順序写像とよばれる.\footnote[1]{誤解がない生まれない場合には $A$ から $A^{'}$ への順序写像や単に順序写像という場合がある}
+$f$ が順序写像で, さらに $a, b \in A$ に対して $f(a) \leq^{'} f(b) \implies a \leq b$ となるとき,
+$f$ は単射となることを示せ.\footnote[2]{この $f$ を $\langle A, \leq \rangle$ から $\langle A^{'}, \leq^{'} \rangle$ への順序単射という. これも誤解の生まれない場合には $A$ から $A^{'}$ への順序単射や単に順序単射という場合がある.}
+\item $f$ が $A$ から $A^{'}$ への順序単射かつ $f$ が全射のとき, $f$ は $\langle A, \leq \rangle$ から $\langle A^{'}, \leq^{'} \rangle$ への順序同型写像とよばれる.\footnote[3]{注1, 2と同様.}
+$f$ が $A$ から $A^{'}$ への順序同型写像のとき, $f^{-1}$ は $A^{'}$ から $A$ への順序同型写像となることを示せ.
+\item $\langle A, \leq \rangle$ から $\langle A^{'}, \leq^{'} \rangle$ への順序同型写像が存在するとき, 両者は順序同型であるといい, $\langle A, \leq \rangle \simeq \langle A^{'}, \leq^{'} \rangle$ と表す（または略して $A \simeq A^{'}$ と表す）
+$\langle A, \leq \rangle \simeq \langle A, \leq \rangle$ となることを示せ.
+\item $\langle A, \leq \rangle \simeq \langle A^{'}, \leq^{'} \rangle \implies \langle A^{'}, \leq^{'} \rangle \simeq \langle A, \leq \rangle$ となることを示せ.
+\item $\langle A, \leq \rangle \simeq \langle A^{'}, \leq^{'} \rangle \land \langle A^{'}, \leq^{'} \rangle \simeq \langle A^{''}, \leq^{''} \rangle \implies \langle A, \leq \rangle \simeq \langle A^{''}, \leq^{''} \rangle$ となることを示せ.
+}{
+\item $f(a) = f(b)$ とすると, $f(a) \leq^{'} f(b)$ かつ $f(b) \leq^{'} f(a)$ となるから, $a \leq b$ かつ $b \leq a$ より $a = b$ となる.
+よって, $f$ は単射となる.
+\item $f: A \to A^{'}$ は全単射より, \ref{sec:set}-\ref{pname:finv}\ (4) より $f^{-1}$ は $A^{'}$ から $A$ への全単射写像である.
+ここで, $a^{'}, b^{'} \in A^{'}$ とすると, $f$ が全射より, $\langle a, a^{'} \rangle \in f,\ \langle b, b^{'} \rangle \in f$ となる $a, b \in A$ が存在する. ここで, $f$ は写像より, $a^{'} = f(a),\ b^{'} = f(b)$ となる.
+また, $\langle a^{'}, a\rangle \in f^{-1}$ で $a = f^{-1}(a^{'})$ となり, 同様に $b = f^{-1}(b^{'})$ となる.\\
+よって, $a^{'} \leq^{'} b^{'}$ とすると, $f(a) \leq^{'} f(b)$ より, $f$ が順序同型写像であることとから $f^{-1}(a^{'}) \leq f^{-1}(b^{'})$ となり, $f^{-1}$ は順序写像となる.
+また, さらに $f^{-1}(a^{'}) \leq f^{-1}(b^{'})$ とすると, $a \leq b$ より, $f$ の順序単射性より, $a^{'} \leq b^{'}$ となり, $f^{-1}$ は順序単射となる.
+ここで, $f^{-1}$ は全（単）射であったから $f$ は順序同型写像となる.
+\item $I_A$ が $\langle A, \leq \rangle$ から $\langle A, \leq \rangle$ への順序同型写像となる. よって, $A \simeq A^{'}$ となる.
+\item $\langle A, \leq \rangle$ から $\langle A^{'}, \leq^{'} \rangle$ への順序同型写像の一つを $f$ とすると, (3) より, $f^{-1}$ は $\langle A^{'}, \leq^{'} \rangle$ から $\langle A, \leq \rangle$ への順序同型写像となる.
+よって, $A \simeq A^{'} \implies A^{'} \simeq A$ となる.
+\item $A$ から $A^{'}$ への順序同型写像の一つを $f$, $A^{'}$ から $A^{''}$ への順序同型写像の一つを $f^{'}$ とし, $f^{''} = f^{'} \circ f$ とする.
+まず, 問\ref{sec:set}-\ref{pname:fog}\ (2) より $f^{''}$ は $A$ から $A^{''}$ への全単射である. 次に $a \leq b$ とすると, $f(a) \leq f(b)$ より $f^{'}(f(a)) \leq f^{'}(f(b))$, すなわち $f^{''}(a) \leq f^{''}(b)$ となり, $f^{''}$ は順序写像となる.
+同様に, $f^{''}(a) \leq f^{''}(b)$ とすると, $a \leq b$ となり, $f^{''}$ は順序単射となるから, 全射であることとから $f^{''}$ は $A$ から $A^{''}$ への順序同型写像となる.
+よって, $A \simeq A^{'} \land A^{'} \simeq A^{''} \implies A \simeq A^{''}$ となる.
+}
+\end{nmprob}
+
+
+
 \begin{nmprob}
 選択公理を理解する.
 \pbenum{

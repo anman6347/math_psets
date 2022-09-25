@@ -2,7 +2,7 @@
 
 \begin{nmprob}
 ZCの公理における空集合. 数理論理学との連係はまだ無理（勉強中）で簡単な略した自己流のものに留める.
-\pbenum{
+\pbenum[emptyset]{
 \item $\text{emp} (x) \iff \forall z,\ z\notin x$ と定義する. $\text{emp} (x) \land \text{emp} (y) \implies x = y$ を示せ.
 \item $\exists y,\ \text{emp} (y)$ を示せ.
 }{
@@ -38,7 +38,7 @@ ZCの公理における空集合. 数理論理学との連係はまだ無理（�
     \UnaryInfC{$(\text{emp}(x) \land \text{emp}(y)) \to x = y$}
 \end{prooftree}
 \item 以下の証明図より $\exists y,\ \text{emp}(y)$ となる.
-分出公理「 $\phi$ が $x, w_1, \ldots w_n$ を自由変数として含み, $y$ を自由変数として含まない論理式のとき, $\forall z \forall w_1, \ldots w_n \exists y \forall x (x \in y \leftrightarrow (x \in z \land \phi))$ 」
+分出公理「 $\phi$ は $x, z$ 以外の自由変数があれば, $w_1, \ldots w_n$ であり, $y$ を自由変数として含まない論理式のとき, $\forall z \forall w_1, \ldots w_n \exists y \forall x (x \in y \leftrightarrow (x \in z \land \phi))$ 」
 を用いている.
 \begin{prooftree}
     \AxiomC{$[\forall x(x \in y_0 \leftrightarrow (x \in z \land x \neq x))]_1$}
@@ -68,6 +68,49 @@ ZCの公理における空集合. 数理論理学との連係はまだ無理（�
 \hspace{-3zw}{\color{forestgreen}●●\ まとめ\ ●●}\\
 (1), (2) より $\text{emp}(x)$ となる $x$ がただ一つ存在する. この唯一の $x$ を $\emptyset$ で表し, 空集合とよぶ.
 よって, $\forall z, z \notin \emptyset$ が成り立つ.
+\end{nmprob}
+
+
+
+\begin{nmprob}
+分出公理とクラス. 数理論理学との連係がまだ無理なため, この問題からはより素朴的な議論に留める. 後に編集可能性あり.
+\pbenum{
+\item $\forall x,\ x\in A \leftrightarrow \phi(x)$ を満たす集合 $A$ が存在すれば, それは一意に定まることを示せ.
+\item (1) における $A$ を以後, $\{ x\ |\ \phi (x)\}$ で表す\footnote[1]{(1) と同様に, $\forall x,\ x \in A \leftrightarrow x \in z\land \phi(x)$ の場合は $\{ x\ |\ x \in z \land \phi(x) \}$ の表記も使用する.
+また, $\{ x \in z\ |\ \phi(x) \}$ は $\{ x\ |\ x \in z \land \phi(x) \}$ の略記とする. }
+が, (1) において集合 $A$ が存在しない場合にもこの表記を許すこととし, クラスとよぶことにする.
+$A$ が存在すれば, クラス $\{ x\ |\ \phi (x)\}$ は集合であり, $A$ が存在しなければ, $\{ x\ |\ \phi (x)\}$ は真クラスであるとよぶ. $\{ x\ |\ x \neq x\}$ が集合であることを示せ.
+\item $\{ x\ |\ x = x\}$ は真クラスであることを示せ.
+}{
+\item $(\forall x,\ x\in A \leftrightarrow \phi(x)) \land (\forall x,\ x\in B \leftrightarrow \phi(x)) \to A = B$ を示す.
+\begin{prooftree}
+    \AxiomC{$[\forall x,\ x\in A \leftrightarrow \phi(x)) \land (\forall x,\ x\in B \leftrightarrow \phi(x))]_1$}
+    \UnaryInfC{$\forall x,\ x\in A \leftrightarrow \phi(x)$}
+    \UnaryInfC{$s\in A \leftrightarrow \phi(s)$}
+    \UnaryInfC{$\vdots$}
+    \AxiomC{$[\forall x,\ x\in A \leftrightarrow \phi(x)) \land (\forall x,\ x\in B \leftrightarrow \phi(x))]_1$}
+    \UnaryInfC{$\forall x,\ x\in B \leftrightarrow \phi(x)$}
+    \UnaryInfC{$s\in B \leftrightarrow \phi(s)$}
+    \UnaryInfC{$\vdots$}
+    \BinaryInfC{$s \in A \leftrightarrow s \in B$}
+    \UnaryInfC{$\forall z,\ z \in A \leftrightarrow z \in B$}
+    \RightLabel{{\scriptsize 外延性の公理を用いる}}
+    \UnaryInfC{$A = B$}
+    \RightLabel{{\scriptsize 1}}
+    \UnaryInfC{$(\forall x,\ x\in A \leftrightarrow \phi(x)) \land (\forall x,\ x\in B \leftrightarrow \phi(x)) \to A = B$}
+\end{prooftree}
+\item この問題以降, 素朴的な議論で示すこととする.\\
+問題\ref{sec:set}-\ref{pname:emptyset}\ より, $\forall x,\ x \notin \emptyset$ より, $\forall x,\ x \in \emptyset \leftrightarrow x \neq x$ が成り立つから,
+$\{ x\ |\ x \neq x\}$ は集合である. さらに外延性の公理による空集合の一意性より, $\{ x\ |\ x \neq x\} = \emptyset$ となる.
+\item 
+まず, クラス $\{x \in z\ |\ x \notin x\}$ を考える. 分出公理より, このクラスは集合である（また, 外延性の公理より一意でもある） $R = \{x \in z\ |\ x \notin x\}$ とすると,
+$R \in R \leftrightarrow R \in z \land R \notin R$ \footnote[2]{これより, ラッセルの逆理を回避が可能となる. $R \in z$ を仮定しない限り, $R \notin R$ から $R \in R$ が言えないからである.}
+となる. よって, $R \in z$ と仮定すると, $R \in R \land R \notin R$ が成り立ち矛盾するので $R \notin z$ となる.
+これより, 分出公理の $z$ の任意性とから, $\forall z \exists R,\ R \notin z$ すなわち $\lnot (\exists z \forall R,\ R \in z)$ \footnote[3]{素朴的には, すべての集合を含む集合は存在しないと主張している.}が成り立つ.\\
+さて, $\{ x\ |\ x = x\}$ が集合と仮定すると, $\forall x,\ x \in A \leftrightarrow x = x$ となる集合 $A$ が存在する.
+よって, $x = x \to x \in A$ において, $x = x$ は常に成り立つこととから, $x \in A$ となるから, $\exists A\forall x,\ x \in A$ が成り立つが,
+これは $\lnot (\exists z \forall R,\ R \in z)$ に矛盾する. よって, $\{ x\ |\ x = x\}$ は真クラスである.
+}
 \end{nmprob}
 
 
@@ -289,6 +332,8 @@ $\langle x, w\rangle \in (h \circ g) \circ f$ となる. よって, $h \circ (g 
 }
 \end{nmprob}
 
+
+
 \begin{nmprob}
 順序関係と順序集合
 \makeatletter\tagsleft@true\makeatother
@@ -336,14 +381,14 @@ $y \leq x$ として, $x < y$ が成り立つと仮定する. $x < y$ より, $x
 
 \begin{nmprob}
 最大元, 極大元, 部分順序集合, 上界, 上限.
-\pbenumex{
+\pbenumex[max_sup]{
 $\langle A, \leq \rangle$ を一つの与えられた順序集合とする.
 $A$ の空でない部分集合 $M$ を考える. $a,b \in M$ に関して $a \leq b$ が成り立つとき, またその時に限り $a \leq_M b$ と二項関係 $\leq_M$ を定めると, これは明らかに $M$ 上の順序関係となる.
 ここで $\langle M, \leq_M \rangle$ を $\langle A, \leq \rangle$ の部分順序集合といい, 誤解が生まれない場合には $\langle M, \leq \rangle$ で表す.
 
 }{
 \item $A$ に一つの元 $a$ があって, $\forall x \in A,\ x \leq a$ が成り立つとき, $a$ を $A$ の最大元といい $\max A$ と表す.
-最大限が任意の順序集合の台集合\footnote[1]{順序集合 $\langle A, \leq \rangle$ における集合 $A$ をその台集合という. また, 順序関係を明示しなくても誤解が生まれない場合は $A$ のことを順序集合とよぶことがある.}
+最大元が任意の順序集合の台集合\footnote[1]{順序集合 $\langle A, \leq \rangle$ における集合 $A$ をその台集合という. また, 順序関係を明示しなくても誤解が生まれない場合は $A$ のことを順序集合とよぶことがある.}
 に存在するとは限らないが, 存在すれば一意的に定まることを示せ.
 \item $A$ の元 $a$ に関して, $\lnot (\exists x \in A,\ a < x)$ が成り立つとき, $a$ を $A$ の極大元という.
 極大元の存在やその一意性は一般には保証されないが, $\max A$ が存在するとき, $a = \max A$ となることを示せ. 
@@ -434,6 +479,38 @@ $\langle A, \leq \rangle \simeq \langle A, \leq \rangle$ となることを示�
 まず, 問\ref{sec:set}-\ref{pname:fog}\ (2) より $f^{''}$ は $A$ から $A^{''}$ への全単射である. 次に $a \leq b$ とすると, $f(a) \leq f(b)$ より $f^{'}(f(a)) \leq f^{'}(f(b))$, すなわち $f^{''}(a) \leq f^{''}(b)$ となり, $f^{''}$ は順序写像となる.
 同様に, $f^{''}(a) \leq f^{''}(b)$ とすると, $a \leq b$ となり, $f^{''}$ は順序単射となるから, 全射であることとから $f^{''}$ は $A$ から $A^{''}$ への順序同型写像となる.
 よって, $A \simeq A^{'} \land A^{'} \simeq A^{''} \implies A \simeq A^{''}$ となる.
+}
+\end{nmprob}
+
+
+
+\begin{nmprob}
+整列集合, 直前直後の元, 切片
+\pbenum{
+\item $W$ が順序集合で, その空でない任意の部分集合が最小元をもつとき, $W$ を整列集合という.
+$W$ は全順序集合であることを示せ.
+\item $A$ を任意の順序集合とし, $a, b \in A$ とする. $a < b \land \lnot (\exists x \in A,\ a < x < b)$ が成り立つとき,
+$A$ の中で $b$ は $a$ の直後の元, $a$ は $b$ は直前の元であるという. また, $\{ x \in A\ |\ x < a \}$ を $A$ の $a$ による切片といい, $\text{seg}_A (a)$ で表す.
+\textbf{全順序集合} $A$ の中で $b$ が $a$ の\textbf{直前}の元であることと $b = \max \text{seg}_A (a)$ であることが同値であることを示せ.
+\footnote[1]{これより, $a$ の直前の元は $a$ に対して一意に定まる. 直後の元も同様.}
+\item tmp
+}{
+\item $W$ の任意の異なる二元 $a, b$ に対して, $\{a , b\} \subset W$ より, $\{a, b\}$ に最小元が存在する.
+最小元の一意性（問 \ref{sec:set}-\ref{pname:max_sup}参考）より, $a, b$ のどちらか一方が $\min \{a, b\}$ となる.
+ここで, $a$ が最小元のとき, $a \leq b$ で比較可能, また, $b$ が最小元のときも $b \leq a$ となり比較可能である. よって, $W$ は全順序集合となる.
+\item
+\begin{enumerate}
+\item $\implies$\\
+$b$ が $a$ の直前の元とすると, $b \in A$ かつ $b < a$ より, $b \in \text{seg}_A (a)$ となる.
+また, $x \not\leq b$ となる $x \in \text{seg}_A (a)$ が存在すると仮定すると, 問\ref{sec:set}-\ref{pname:ordr} (3) より, $x > b$ となる.
+また, $x \in \text{seg}_A (a)$ より, $x < a$ より, $b < x < a$ となるが, これは $\lnot (\exists x \in A,\ b < x < a)$ に矛盾する.
+よって, $\forall x \in \text{seg}_A (a),\ x \leq b$ となり, $b = \max \text{seg}_A (a)$ となる.
+\item $\impliedby$\\
+$b = \max \text{seg}_A (a)$ とすると, まず, $b \in \text{seg}_A(a)$ より, $b < a$ となる.
+次に, $b < x_0 < a$ となる $x_0 \in \text{seg}_A(a)$ が存在すると仮定する. ここで, $\forall x \in \text{seg}_A (a),\ x \leq b$ より,
+$b < x_0 \leq b$ となる. $b < x_0$ より, $b \neq x_0$ であるから, $b < x_0 < b$ となるが, これは矛盾. よって, $\lnot (\exists x \in A,\ a < x < b)$ が成り立つ.
+よって, $b$ は $a$ の直前の元である.
+\end{enumerate}
 }
 \end{nmprob}
 

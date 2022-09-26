@@ -285,7 +285,7 @@ $\sigma (m) + n = f_{\sigma (m)}(n) = \sigma (f_m(n)) = \sigma (m + n)$ とな�
 
 \begin{nmprob}
 \makeatletter\tagsleft@true\makeatother
-自然数の加法の交換律と結合律.
+自然数の加法の交換律と結合律, 数学的帰納法.
 \pbenumex{
 空でない集合 $G$ に $G \times G$ から $G$ への 1 つの写像（$G$ 上の（二項）演算という） $*$ \footnote[1]{記号 $*$ が二項演算を表すとき, $*$ はしばしば乗法（演算）とよばれる.}が与えられたとする.
 $\langle a , b\rangle \in G \times G$ の $*$ による像を $a*b$ と表す\footnote[2]{厳密には, $(a*b)$ と表し, 一番外側の括弧を省略してもよいこととする. 後の問題でわかるように, $*$ が結合的であれば, 全ての括弧を省略することが可能である.}
@@ -294,7 +294,7 @@ $*$ は結合律を満たす, あるいは結合的であるという.
 \begin{align}
 & \forall a, b, c \in G,\ (a * b) * c =  a * (b * c) & & (\text{結合律})\tag*{\hspace{3zw}(G1)}\\
 \intertext{また, 空でない集合 $G$ 上のある二項演算 $*$ が結合律を満たすとき $\langle G, * \rangle$ は半群であるという.\newline
-さらに, $\langle G, * \rangle$ が半群であり, さらに条件 (G2) を満たすとき, $\langle G, * \rangle$ はモノイドであるという.}
+$\langle G, * \rangle$ が半群であり, さらに条件 (G2) を満たすとき, $\langle G, * \rangle$ はモノイドであるという.}
 & \exists e \in G,\ \forall a \in G,\ e * a = a * e = a \tag*{\hspace{3zw}(G2)}
 \intertext{条件 (G2) によって存在する $e \in G$ を $G$ の $*$ に関する単位元という.\newline
 また, 二項演算 $*$ が次の条件を満たすとき, $*$ は交換律を満たす, あるいは可換であるといい, $*$ が可換かつ $\langle G, *\rangle$ が半群のとき, $\langle G, *\rangle$ を可換半群とよぶ.
@@ -305,6 +305,7 @@ $*$ は結合律を満たす, あるいは結合的であるという.
 \item $\forall m, n\in \bm{N}$ に対して, 問\ref{sec:algebra}-\ref{pname:Nplus}\ における $f_m(n)$ を像とする写像は $\bm{N}$ 上の二項演算となり, これを $+$ で表すこととする.
 \footnote[3]{記号 $+$ が二項演算とき, $+$ はしばしば加法（演算）とよばれる.}
 $\langle \bm{N}, +\rangle$ が可換モノイドであることを示せ.
+\item $1 \coloneqq \sigma(0)$ と定義する. $\bm{N}$ の部分集合 $S$ が $0 \in S$ かつ $\forall n \in \bm{N},\ n \in S \implies n + 1 \in S$ を満たすとき, $S = \bm{N}$ となることを示せ.
 }{
 \item 問\ref{sec:algebra}-\ref{pname:Nplus}\ (1), (4) より, $\bm{N}$ の加法に単位元 $0$ が存在する.
 よって, 加法が結合律と交換律を満たすことを示せばよい.
@@ -313,44 +314,17 @@ $\langle \bm{N}, +\rangle$ が可換モノイドであることを示せ.
     任意の $n \in \bm{N}$ を一つとり, $S = \{ m \in \bm{N}\ |\ m + n = n + m\}$ とする.\\
     $\bm{N}$ の加法に関して単位元が存在することから, $0 \in S$ となる.
     また $m \in S$ と仮定すると, $m + n = n + m$ となり, 問\ref{sec:algebra}-\ref{pname:Nplus}\ (2), (4) より,
-    $\sigma (m) + n = \sigma (m + n) = \sigma (n + m) = n + \sigma (m)$ となるから $m \in S \implies \sigma (m) \in S$ が成り立つ.
+    $\sigma (m) + n = \sigma (m + n) = \sigma (n + m) = n + \sigma (m)$ となるから, $\forall m \in \bm{N},\ m \in S \implies \sigma (m) \in S$ が成り立つ.
     よって, 問\ref{sec:algebra}-\ref{pname:peano}\ (1) とから $S = \bm{N}$ が成り立つ. 今, $n$ は任意にとっているので, $\forall m, n\in \bm{N},\ m + n = n + m$ が成り立つ.
-    \item 結合律
+    \item 結合律\\
+    交換律の成立を示したものと同等な帰納法で示す.\\
+    任意の $n, k \in \bm{N}$ をとる. まず, 問\ref{sec:algebra}-\ref{pname:Nplus}\ (3) より, $(0 + n) + k = n + k = 0 + (n + k)$ が成り立つ.\\
+    次に, 任意の $m \in \bm{N}$ を一つとり, この $m$ に対して, $(m + n) + k = m + (n + k)$ が成り立つと仮定する.
+    ここで, 問\ref{sec:algebra}-\ref{pname:Nplus}\ (5) より, $(\sigma (m) + n) + k = \sigma (m + n) + k = \sigma ((m + n) + k)$ であり, 先の仮定から, $\sigma ((m + n) + k) = \sigma (m + (n + k)) = \sigma (m) + (n + k)$
+    となるから, $(\sigma (m) + n) + k = \sigma (m) + (n + k)$ が成り立つ.\footnote[4]{これにより, $P(0) \land \forall n \in \bm{N},\ P(n) \implies P(n + 1)$ から $\forall n \in \bm{N},\ P(n)$ が成り立つといえる.}
 \end{enumerate}
+\item 問\ref{sec:algebra}-\ref{pname:Nplus}\ より, $n + 1 = n + \sigma (0) = \sigma (n + 0) = \sigma (n)$ となる.
+よって, 問\ref{sec:algebra}-\ref{pname:peano}\ (1) より, $\sigma (S) \subset S$ となり, 数学的帰納法の公理より, $S = \bm{N}$ となる.
 }
 \makeatletter\tagsleft@false\makeatother
 \end{nmprob}
-
-
-
-\begin{nmprob}
-整列性から一般的な数学的帰納法.
-\pbenumex{
-    以降の問題では, 正の整数全体の集合を $\mathbb{Z}^+$ で表す. このとき, 次の問に答えよ.
-}{
-\item 次の条件を満たす $\mathbb{Z}^+$ の部分集合 $S$ を考える.
-\begin{align}
-    &1 \in S\\
-    &\forall n \in \mathbb{Z}^+ [n \in S \implies n + 1 \in s]
-\end{align}
-整列性（任意の空でない自然数の集合は最小限を持つ）を認めた上で, $S = \mathbb{Z}^+$ を満たすことを示せ.
-\item $\mathbb{Z}^+$ の元の各々に対し, 命題 $P(n)$ が与えられたとし, それについて次の二つのことが示されたとする.
-\setcounter{equation}{0}
-\begin{align}
-    &P(1) \text{は真}\\
-    &\forall n \in \mathbb{Z}^+ [P(n) \text{が真} \implies P(n+1) \text{も真}]
-\end{align}
-\setcounter{equation}{0}
-このとき, 全ての $n \in \mathbb{Z}^+$ に対して, $P(n)$ が真となることを示せ.
-}{
-\item $\mathbb{Z}^+ - S = S^{'}$ とし, $S^{'} = \emptyset$ となることを背理法により示す.\\
-$S^{'} \neq \emptyset$ と仮定すると, 整列性より $n_0 = \min S^{'}$ となる $n_0 \in \mathbb{Z}^+$ が存在する.
-今, $n_0 > 1$ より, $n_0 - 1 \geq 1$ となり $n_0 - 1 \in \mathbb{Z}^+$ である.
-ここで $n_0 - 1 < n_0 = \min \mathbb{Z}^+$ より $n_0 - 1 \notin S^{'}$ , すなわち $n_0 - 1 \in S$ となる.\\
-これより, $S$ が満たす条件(2)より, $n_0 \in S$ となり, $n_0 \in S^{'}$ に矛盾.\\
-以上より, $S^{'} = \emptyset$ であり, $S = \mathbb{Z}^+$ が成り立つ.
-\item $S =  \{\ n \in \mathbb{Z}^+\ |\ P(n) \text{が真} \}$ と集合 $S$ を定義すると, (1)より $S = \mathbb{Z}^+$ が成り立つ.
-よって, 全ての $n \in \mathbb{Z}^+$ に対して, $P(n)$ が真となる
-}
-\end{nmprob}
-

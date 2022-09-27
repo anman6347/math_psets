@@ -339,14 +339,19 @@ $\langle \bm{N}, +\rangle$ が可換モノイドであることを示せ.
     g_m\circ \sigma &= f_m \circ g_m\hspace{2zw}\left(\text{すなわち, }\forall n \in \bm{N},\ f_m(\sigma (n))= \sigma(f_m (n))\right) \tag*{\hspace{3zw}(M2)$_m$}
 \end{align}
 を満たす$g_m:\bm{N} \to \bm{N}$ が一意的に存在する. ここで, $m, n \in \bm{N}$ に対して, $g_m(n)$ を 像とする写像は $\bm{N}$ 上の二項演算となり, これを $*$ で表すこととする.
-$m, n \in \bm{N}$ に対して, $m * n (= g_m(n))$ を $m , n$ の積とよぶ（$m, n$ の積は $mn$ や $m \cdot n$ と表す場合もある）
+$m, n \in \bm{N}$ に対して, $m * n (= g_m(n))$ を $m , n$ の積とよぶ（$m, n$ の積は $mn$ や $m \cdot n$ と表す場合もある\footnote[1]{厳密には, $(a*b)$, $(ab)$ または $(a \cdot b)$ と表し, 一番外側の括弧を省略してもよいこととする. 後の問題でわかるように, $*$ が結合的であれば, 全ての括弧を省略することが可能である.}）
+また, 一般に, 空でない集合 $G$ 上に二つの異なる二項演算が定義されているときに,
+一方を加法, もう一方を乗法と見なした場合, 加法の引数となる $G$ の要素が, $(ab)$ のように $G$ の積で表されているとき, その要素の一番外側の括弧を省略し, $ab$ と表すことを許す.
 }{
 \item $m\in \bm{N}$ のとき, $m0 = 0$ となることを示せ.
 \item $m, n \in \bm{N}$ のとき, $m \cdot \sigma (n) = m(n + 1) = mn + m$ となることを示せ.
 \item $n \in \bm{N}$ のとき, $0n = 0$ となることを示せ.
 \item $m, n \in \bm{N}$ のとき, $\sigma (m) \cdot n = (m + 1)n = mn + n$ となることを示せ.
 }{
-\item tmp
+\item (M1)$_m$ より, $m0 = 0$ が成り立つ.
+\item まず, 問\ref{sec:algebra}-\ref{pname:Nplus_monoid}\ (2) より, $\sigma (n) = n + 1$  であるから, $m \cdot \sigma (n) = m(n + 1)$ が成り立つ.
+次に, (M2)$_m$ より, $m \cdot \sigma(n) = m + mn$ となるので, 問\ref{sec:algebra}-\ref{pname:Nplus_monoid}\ (1) より, 加法が交換律を満たすことから, $m\cdot \sigma(n) = mn + m$ となる.
+よって, $m \cdot \sigma (n) = m(n + 1) = mn + m$ となる.
 }
 \hspace{-3zw}{\color{orangered}●●\ 乗法のイメージ\ ●●}
 \begin{figure}[htbp]

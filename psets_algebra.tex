@@ -352,7 +352,29 @@ $m, n \in \bm{N}$ に対して, $m * n (= g_m(n))$ を $m , n$ の積とよぶ�
 \item まず, 問\ref{sec:algebra}-\ref{pname:Nplus_monoid}\ (2) より, $\sigma (n) = n + 1$  であるから, $m \cdot \sigma (n) = m(n + 1)$ が成り立つ.
 次に, (M2)$_m$ より, $m \cdot \sigma(n) = m + mn$ となるので, 問\ref{sec:algebra}-\ref{pname:Nplus_monoid}\ (1) より, 加法が交換律を満たすことから, $m\cdot \sigma(n) = mn + m$ となる.
 よって, $m \cdot \sigma (n) = m(n + 1) = mn + m$ となる.
+\item 任意の $n \in \bm{N}$ に対して, $\psi_0(n) = 0$ となるような定値写像 $\psi_0$ を考えると, $\psi_0(0) = 0$ より $\psi_0$ は (M1)$_0$ を満たす.
+また, $\psi_0(\sigma(n)) = 0$ であり, 問\ref{sec:algebra}-\ref{pname:Nplus}\ (4) の $f_0(0) = 0$ とから, $\psi_0(\sigma(n)) = f_0(\psi_0(n))$ より, $\psi_0$ は (M2)$_0$ を満たす.
+よって, 問\ref{sec:algebra}-\ref{pname:peanouq}\ (1) より, $g_0 = \psi_0$ となるから, $0n = 0$ となる.
+\item まず, (2) と同様にして $\sigma (m) \cdot n = (m + 1)n$ が成り立つ.
+次に, 任意の $n$ に対して, $f_{g_m(n)}(n)$ を像とする写像 $h$ を考える（すなわち $h(n) = mn + n$ となる）と, $h(0) = f_0(0) = 0$ となる.
+また, (2) および加法の結合律と交換律より
+\begin{align*}
+    h(\sigma (n)) &= m \cdot \sigma (n) + \sigma (n)\\ 
+    &= (mn + m) + (n + 1)\\
+    &= (n + 1) + (m + mn)\\
+    &= n + (1 + (m + mn))\\
+    &= n + ((m + 1) + mn)\\
+    &= n + (\sigma (m) + mn)\\
+    &= \sigma(m) + (mn + n)\\
+    &= \sigma(m) + h(n)\\
+    &= f_{\sigma (m)}(h(n))
+\end{align*}
+となるから, $h$ は (M1)$_{\sigma (m)}$ と (M2)$_{\sigma (m)}$ を満たすので, 問\ref{sec:algebra}-\ref{pname:peanouq}\ (1) より, $g_{\sigma (m)} = h$ となる.
+よって, $\sigma (m) \cdot n = mn + n$ となるから, $\sigma (m) \cdot n = (m + 1)n = mn + n$ となる.
+
+
 }
+\newpage
 \hspace{-3zw}{\color{orangered}●●\ 乗法のイメージ\ ●●}
 \begin{figure}[htbp]
     \centering
@@ -361,13 +383,13 @@ $m, n \in \bm{N}$ に対して, $m * n (= g_m(n))$ を $m , n$ の積とよぶ�
         \node (A0) at ($(O) + (0, 1)$) {$0$};
         \node (B0) at ($(O) + (0, -1)$) {$0$};
         \node (A1) at ($(A0) + (2, 0)$) {$\sigma (0)$};
-        \node (B1) at ($(B0) + (2, 0)$) {$f_m (0)$};
+        \node [minimum width = 26pt, minimum height = 10pt, label = {[align=center, label distance = -12pt]south:$f_m (0)$\\ \raise2pt\hbox{\rotatebox{90}{$=$}} \\ \raise8pt\hbox{$m$}}](B1) at ($(B0) + (2, 0)$) {};
         \node (A2) at ($(A1) + (2, 0)$) {$\ldots$};
         \node (B2) at ($(B1) + (2, 0)$) {$\ldots$};
         \node (A3) at ($(A2) + (2, 0)$) {$n$};
         \node (B3) at ($(B2) + (2, 0)$) {$mn$};
         \node (A4) at ($(A3) + (2, 0)$) {$\sigma (n)$};
-        \node (B4) at ($(B3) + (2, 0)$) {$\sigma (mn)$};
+        \node (B4) at ($(B3) + (2, 0)$) {$m + mn$};
 
         \draw [|->] (A0) to node [above] {$\sigma$} (A1);
         \draw [|->] (A1) to node [above] {$\sigma$} (A2);

@@ -409,3 +409,48 @@ $m, n \in \bm{N}$ に対して, $m * n (= g_m(n))$ を $m , n$ の積とよぶ�
 \setcounter{figure}{0}
 \makeatletter\tagsleft@false\makeatother
 \end{nmprob}
+
+
+
+\begin{nmprob}
+乗法の交換律, 結合律. 加法と乗法の分配律.
+\pbenum{
+\item $\bm{N}$ における乗法が交換律を満たす, すなわち, 任意の $m, n \in \bm{N}$ に対して, $mn = nm$ となることを示せ.
+\item 一般に, 空でない集合 $G$ に二つの二項演算が与えられ, 各々を加法と乗法としたとき, 任意の $a, b, c \in G$ に対して, 次の条件を満たすとき, 乗法は加法に対して左分配律を満たす, または左側から分配的であるという.
+\begin{align*}
+    a(b + c) = ab + ac & &  (\text{左分配律})
+\end{align*}
+また, 次の条件を満たす場合には, 乗法は加法に対して右分配律を満たす, または右側から分配的であるという.
+\begin{align*}
+    (b + c)a = ba + ca & &  (\text{右分配律})
+\end{align*}
+乗法が加法に対して左分配律も右分配律も満たすとき, 乗法は加法に対して（両側）分配律を満たす, または両側から分配的だという.\\
+$\bm{N}$ において, 乗法は加法に対して分配律を満たすことを示せ.
+\item $\bm{N}$ における乗法が結合律を満たす, すなわち, 任意の $m, n, k \in \bm{N}$ に対して, $(mn)k = m(nk)$ となることを示せ.
+}{
+\item 任意の $n \in \bm{N}$ を一つとり, $m$ に関する数学的帰納法で示す.
+まず, 問\ref{sec:algebra}-\ref{pname:Nprod}\ (1), (3) より $0n = 0 = n0$ で $0n = n0$ が成り立つ.
+次に, 任意の $m \in \bm{N}$ をとり, この $m$ に対して $mn = nm$ が成り立つと仮定すると, この仮定と問\ref{sec:algebra}-\ref{pname:Nprod}\ (2), (4) から,
+$\sigma (m) \cdot n = mn + n = nm + n = n \cdot \sigma (m)$ となり, $\forall m \in \bm{N},\ (mn = nm \implies \sigma (m)\cdot n = n \cdot \sigma (m))$ が成り立つ.
+以上より, 任意の $m, n \in \bm{N}$ に対して, $mn = nm$ となる.
+\item 乗法が加法に対して左分配律を満たす, すなわち $m(n + k) = mn + mk$ であることを示せば, (1) より, 乗法の交換律から, 乗法は右分配律を満たすので, 左分配律のみ示せば十分である.\\ 
+任意の $m, n \in \bm{N}$ をとり, $k$ に関する数学的帰納法で示す.\\
+まず, 問\ref{sec:algebra}-\ref{pname:Nplus}\ (1) および 問\ref{sec:algebra}-\ref{pname:Nprod}\ (3) より, $m(n + 0) = mn = mn + m0$ が成り立つ.\\
+次に, 任意の $k \in \bm{N}$ を一つとり, この $k$ に対して, $m(n + k) = mn + mk$ が成り立つと仮定すると,
+\begin{align*}
+m(n + \sigma (k)) &= m(n + (k + 1))\\
+&= m((n + k) + 1)\\
+&= m(n + k) + m\\
+&= (mn + mk) + m\\
+&= mn + (mk + m)\\
+&= mn + m\cdot \sigma (k)
+\end{align*}
+となるから, $\forall k \in \bm{N},\ m(n + k) = mn + mk \implies m(n + \sigma (k)) = mn + m\sigma (k)$ が成り立つ.
+よって, $\forall k \in \bm{N},\ m(n + k) = mn + mk$ となり, 乗法は加法に対して分配律を満たす.
+\item 任意の $m, n\in \bm{N}$ をとり, $k$ に関する数学的帰納法で示す.\\
+まず, $(mn)0 = 0 = m0 = m(n0)$ より, $(mn)0 = m(n0)$ が成り立つ.\\
+次に, 任意の $k \in \bm{N}$ を一つとり, この $k$ に対して, $(mn)k = m(nk)$ が成り立つと仮定すると, 乗法の加法に対する分配律から
+$(mn)\sigma (k) = (mn)k + mn = m(nk) + mn = m(nk + n) = m(n \cdot \sigma (k))$ より, $(mn) \sigma (k) = m(n\cdot \sigma (k))$ となる.
+以上より, $\bm{N}$ における乗法は結合律を満たす.
+}
+\end{nmprob}

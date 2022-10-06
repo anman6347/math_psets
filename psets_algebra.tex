@@ -506,6 +506,8 @@ $l^{'} = 0$ であれば $\sigma (m) = n$ が, $l^{'} \neq 0$ であれば $n = 
 ここで順序集合 $\langle \bm{N}, \leq \rangle$ は全順序集合であることを示せ.
 \item $0$ は $\bm{N}$ の最小元であることを示せ.
 \item $m < n$ ならば $m + 1 \leq n$ となることを示せ.
+\item $\sigma : \bm{N} \to \bm{N}$ は順序単射であることを示せ.
+\item $\bm{N}$ の中で $\sigma (m)$ は $m$ の直後の元であることを示せ.
 }{
 \item まず, (O4) が成り立つことを示す. $m < n$ が成り立つ下で, $n < m$ が成り立つと仮定すると,
 ある $k, l \in \bm{N}\backslash \{0\}$ に対して, $n = m + k$ かつ $m = n + l$ となることから $n = k + (n + l)$ となるが, これは問\ref{sec:algebra}-\ref{pname:Nord_pre}\ (3) の証明と同様にして矛盾である.
@@ -520,5 +522,40 @@ $n = m + l$ かつ $k = n + l^{'}$ となる. よって, $k = m + (l + l^{'})$ �
 $n = 0 + n$ であることとから, $0 \leq n$ より, $0$ は $\bm{N}$ の最小元となる.
 \item $m < n$ とすると, ある $l \in \bm{N}\backslash \{0\}$ に対して, $n = m + l$ となる. $l \neq 0$ より, ある $l^{'} \in \bm{N}$ に対して, $l = \sigma (l^{'})$ と
 表せるから, $n = m + \sigma (l^{'}) = \sigma (m) + l^{'}$ より, $m + 1 \leq n$ となる. 
+\item $m, n\in \bm{N}$ に対して, $m \leq n$ とすると, ある $l \in \bm{N}$ に対して, $n = m + l$ となる.
+よって, $n + 1 = (m + l) + 1 = (m + 1) + l$ より, $\sigma (m) \leq \sigma (n)$ であるから, $\sigma$ は順序写像. また, $\sigma (m) \leq \sigma (n)$ とすると,
+$\sigma (m) = \sigma (n)$ の場合は, $\sigma$ の単射性から $m = n$ であり, $m \leq n$ となる. $\sigma (m) < \sigma (n)$ の場合, $m \geq n$ と仮定すると, $\sigma$ は順序写像により $\sigma (m) \geq \sigma (n)$ となり矛盾するので,
+$m \geq n$ とはならず, $m, n$ に対して $m < n,\ m = n,\ n < m$ のいずれか一つのみが必ず成り立つことから, $m < n$ となり, $m \leq n$ となる. よって, $\sigma (m) \leq \sigma (n)$ とすると $m \leq n$ となるので $\sigma$ は順序単射である.
+\item (2) より, 問\ref{sec:set}-\ref{pname:w_ordset}\ (2) とから, $\sigma (m)$ が $m$ の直後の元であることを示すには, $m = \max \text{seg}_{\bm{N}}(\sigma (m))$ となることを示せば十分である.\\
+まず, $\sigma (m) = m + 1$ で $1 = \sigma (0) \neq 0$ より, $m < \sigma (m)$ であるから, $m \in \text{seg}_{\bm{N}}(\sigma (m))$ である.
+次に, 任意の $n \in \text{seg}_{\bm{N}}(\sigma (m))$ を一つとると, $n < \sigma (m)$ より, (4) から $n + 1 \leq \sigma (m)$ , すなわち $\sigma (n) \leq \sigma (m)$ となる.
+ここで, (5) より $\sigma$ は順序単射であるから $n \leq m$ となる. よって, $m = \max \text{seg}_{\bm{N}}(\sigma (m))$ となるので, $\sigma (m)$ が $m$ の直後の元となる.
+}
+\end{nmprob}
+
+
+
+\begin{nmprob}
+自然数の整列性, 加法・乗法の単調性.
+\pbenum{
+\item $\bm{N}$ の任意の空でない部分集合 $S$ は最小元をもつことを示せ.
+\item $m < n$ ならば, 任意の $k \in \bm{N}$ に対して, $m + k < n + k$ となること（加法の単調性）を示せ.
+\item $m + k = n + k$ ならば $m = n$ となること（加法に関する簡約律）を示せ.
+\item $m \neq 0 \land n \neq 0$ ならば $mn \neq 0$ であることを示せ.
+\item $m < n \land k \neq 0$ ならば $mk < nk$ となること（乗法の単調性）を示せ.
+\item $mk = nk \land k \neq 0$ ならば $m = n$ となること（乗法の簡約律）を示せ.
+}{
+\item $T = \{ n \in \bm{N}\ |\ \forall x \in S,\ n \leq x\}$ とすると, 問\ref{sec:algebra}-\ref{pname:Nord}\ (3) より, $0 \in T$ であり,
+また, $S$ の元の一つを $c$ とすると, $\sigma (c) \notin T$ となるから, $T \neq \bm{N}$ となる.
+よって, 数学的帰納法の公理より, $m \in T \land \sigma (m) \notin T$ となる $m \in \bm{N}$ が存在する（仮に存在しなければ, 任意の $m \in \bm{N}$ に対して, $m \in T \implies \sigma (m) \in T$ で $T = \bm{N}$ となってしまう）
+この $m$ に対して, $m \in T$ より, $\forall x \in S,\ x \leq m$ であるが, もし $m \notin S$ ならば, $m < x$ で, 問\ref{sec:algebra}-\ref{pname:Nord}\ (4) より, $\sigma (m) \leq x$ となり, $\sigma (m) \notin T$ に矛盾する.
+よって, $m \in S$ であり, $m \in T$ とから, $m$ は $S$ の最小元である.
+\item $m < n$ より, ある $l \neq \bm{N}\backslash\{0\}$ に対して, $n = m + l$ となり, $n + k = (m + l) + k = (m + k) + l$ より, $m + k < n + k$ となる.
+\item $m + k = n + k$ の下で $m < n$ と仮定すると, (2) より, $m + k < n + k$ より, $m + k \neq n + k$ で矛盾.
+また, $n < m$ と仮定しても同様に矛盾する. よって, $m = n$ となる.
+\item $m \neq 0$ と $n \neq 0$ より, ある$m^{'}, n^{'} \in \bm{N}$ に対して $m = \sigma (m^{'}) = m^{'} + 1, n = \sigma (n^{'}) = n^{'} + 1$ となる.
+よって, $mn = m^{'}n^{'} + m^{'} + n^{'} + 1$ となり, $1 \leq mn$ であり, $mn = 0$ と仮定すると矛盾するから $mn \neq 0$ となる.
+\item $n = m + l,\ l \neq 0$ とすると, $nk = mk + lk$ で $l \neq 0$ かつ $k \neq 0$ より, (4) から $lk \neq 0$ で $mk < nk$ となる.
+\item (3) と同様にして示せる. 
 }
 \end{nmprob}

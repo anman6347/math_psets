@@ -581,12 +581,14 @@ $S = \bm{Z}^+$ を満たすことを示せ.
 \end{align}
 \setcounter{equation}{0}
 このとき, 全ての $n \in \bm{Z}^+$ に対して, $P(n)$ が真となることを示せ.
+\item $1$ は $\bm{Z}^+$ の最小元であることを示せ.
 \item $S (\subset \bm{Z}^+)$ が次の条件を満たすとき, $S = \bm{Z}^+$ となることを示せ.
 \begin{align}
     &1 \in S\\
-    &\forall n \in \bm{Z}^+ [\forall k \in \bm{Z}^+[1 \leq k < n \implies k \in S] \implies n + 1 \in S]
+    &\forall n \in \bm{Z}^+ [\forall k \in \bm{Z}^+[k < n \implies k \in S] \implies n + 1 \in S]
 \end{align}
 \setcounter{equation}{0}
+\item (4) において, $S$ の条件 (2) における $k < n$ の部分を $k \leq n$ としても $S = \bm{Z}^+$ となることを示せ.
 }{
 \item $\bm{Z}^+ - S = S^{'}$ とし, $S^{'} = \emptyset$ となることを背理法により示す.\\
 $S^{'} \neq \emptyset$ と仮定すると, $\bm{N}$ の整列性より $n_0 = \min S^{'}$ となる $n_0 \in \bm{N}$ が存在する. 今, $n_0 \in S^{'} \subset \bm{Z}^+$ より, $n_0 \neq 0$ であり, また,
@@ -598,8 +600,11 @@ $1 \leq {n_0}^{'}$ となる. よって, ${n_0}^{'} \neq 0$ であり, ${n_0}^{'
 以上より, $S^{'} = \emptyset$ であり, $S = \bm{Z}^+$ が成り立つ.
 \item $S =  \{\ n \in \bm{Z}^+\ |\ P(n) \text{が真} \}$ と集合 $S$ を定義すると, (1)より $S = \bm{Z}^+$ が成り立つ.
 よって, 全ての $n \in \bm{Z}^+$ に対して, $P(n)$ が真となる.
+\item $\bm{Z}^+$ の $1$ と異なる最小元が存在すると仮定し, それを $m$ とすると, $m \neq 1$ より $m < 1$ となる.
+ここで, $m \in \bm{Z}^{+} \subset \bm{N}$ より, $0$ が $\bm{N}$ の最小元であることと $0 \neq m$ から, $0 < m < 1$ となる. これは $1$ が $0$ の直後の元であることに矛盾. よって $\min \bm{Z}^+ = 1$ となる.
 \item (1) と同様に示す. $n_0 = \min S^{'}$ として, $\sigma ({n_0}^{'}) = n_0$ とする.
-今, 任意の $1 \leq k < {n_0}^{'}$ となる $k$ をとると $k \in S$ となる. これは, $1 \leq k < {n_0}^{'}$ となる $k$ のうち, $k \notin S$ すなわち $k \in S^{'}$ となる $k$ が存在すれば, $k < {n_0}^{'} < n_0 \leq k$ となり矛盾するからである.
+今, 任意の $k < {n_0}^{'}$ となる $k \in \bm{Z}^+$ をとると (3) より, $1 \leq k < {n_0}^{'}$ となり, $k \in S$ となる（これは, $1 \leq k < {n_0}^{'}$ となる $k$ のうち, $k \notin S$ すなわち $k \in S^{'}$ となる $k$ が存在すれば, $k < {n_0}^{'} < n_0 \leq k$ となり矛盾するからである）
 これより, $S$ の条件 (2) より, $n_0 \in S$ となり, $n_0 \in S^{'}$ に矛盾するので $S = \bm{Z}^+$ となる.
+\item (4) と同様に $1 \leq k \leq {n_0}^{'}$ で $k \in S^{'}$ とすると, $k \leq {n_0}^{'} < n_0 \leq k$ で矛盾することから, $S = \bm{Z}^+$ となる.
 } 
 \end{nmprob}

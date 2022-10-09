@@ -1,16 +1,100 @@
 \pgsc{数理論理学}{midnightblue}{mlogic}
 
 \begin{nmprob}
-制作中.
+項と論理式の定義. 
 \pbenumex{
-    制作中
+変数記号, 定数記号, 関数記号, 命題記号, 述語記号, 論理記号, 補助記号を次表のように用意する.
+\footnote[1]{記号論理学においては定義に素朴的な集合論が導入されたり, メタ的な考察に直感的な論法や数学的帰納法を用いることが多い.
+結局のところ, 論理の構成には別の論理（メタ論理）が必要になり, そのまたメタ論理が必要に... となるため, これは仕方ない. ゼロから構成していくというより, 自動でシミュレートするコンパイラのようなものを人間の直観に従って作ることに近い.}
+    \begin{table}[hbtp]
+        \caption{論理式で使用される記号}
+        \begin{center}
+            \begin{tabular}{c|c}
+                & 使用する記号 \\ \hline
+                変数記号 & 英小文字 1 文字およびそれに $^{'}$ をつけたもの\\ \hline
+                定数記号 & zero, unity, two, three \\ \hline
+                関数記号 & $\bullet$, $\diamond$ suc \\ \hline
+                命題記号 & A, B, C, D \\ \hline
+                述語記号 & P, Q, R, = \\ \hline
+                論理記号 & $\lnot, \land, \lor, \to, \forall, \exists, \bot$ \\ \hline
+                補助記号 & (, ) \\ \hline
+            \end{tabular}
+        \end{center}
+    \end{table}\\
+ここで, 上の表の記号によって構成される文字列のうち, 項とよばれるものを次のように定義する.
+\begin{itemize}
+    \item 変数記号は項である.
+    \item 定数記号は項である.
+    \item $t_1, t_2$ が項ならば $(t_1 \bullet t_2),\ (t_1 \diamond t_2),\ \text{suc} (t_1)$ も項である. ただし, $t_1$ が変数記号または定数記号である場合は $\text{suc}\ t_1$ と省略可能である.
+    \item 上に該当する記号列以外は項ではない.
+\end{itemize}
+さらに, 論理式とよばれるものを次のように定義する.
+\begin{itemize}
+    \item 命題記号および $\bot$ は論理式である.
+    \item $t$ が項で $P$ が述語記号ならば $P(t)$ は全て論理式である.
+    \item $t_1$ と $t_2$ が項ならば $(t_1 = t_2)$ は論理式である.
+    \item $\phi$ と $\psi$ が論理式で $x$ が変数記号ならば $(\lnot \phi), (\phi \land \psi), (\phi \lor \psi), (\phi \to \psi), (\forall x \phi), (\exists x \phi)$
+    はいずれも論理式である.
+    \item 上に該当する記号列以外は論理式ではない. ただし, 論理式の一番外側に括弧がある場合は省略できる.
+\end{itemize}
+特に, 命題記号単体からなる論理式, 一つの述語記号からなる $P(t)$ の形の論理式, および論理式 $\bot$ を原始論理式とよぶ.
 }{
-\item 未定
+\item $\forall x \forall y ((\text{suc}(x) = \text{suc}(y \diamond \text{two})) \to (x = (y \diamond \text{two})))$ は論理式か.
+\item $\exists x(x)$ は論理式か.
 }{
-\item \ \\
-\begin{prooftree}
-    \AxiomC{$(\Phi \land \Psi)$}
-    \UnaryInfC{$\Phi$}
-\end{prooftree}
+\item 論理式である.
+\item $(x)$ は論理式でないので $\exists x(x)$ は論理式ではない.\footnote[2]{直感的に場合分けと背理法の論理を使って証明しているが, ここは仕方ない. 自動シミュレートを作った世界の中では厳密でなくてはならないが, メタ的には直感的な論理で証明される.\vspace{30pt}}
+}
+\setcounter{table}{0}
+\end{nmprob}
+
+
+
+\begin{nmprob}
+自由変数, 束縛変数, 代入可能, 閉論理式, 閉項.
+\pbenumex{
+括弧を省略していない論理式中で, 次の下線を引いた $x$ のような変数記号の出現をを束縛出現という. また, 変数記号の出現で束縛出現でないものを自由出現という.
+（ここで, 問題の(2)の $x$ のように束縛出現と自由出現は両立する場合があることに注意）
+\begin{align*}
+    \cdots (\forall \underline{x} (\cdots \underline{x} \cdots)) \cdots\\
+    \cdots (\exists \underline{x} (\cdots \underline{x} \cdots)) \cdots
+\end{align*}
+また, 出現する変数記号全てが自由出現しないような項, 論理式をそれぞれ閉項, 閉論理式という.\\
+ここで, $\phi$ を括弧を省略していない論理式, $x$ を変数記号, $t$ を項としたとき, 次の 2 条件を満たす変数記号 $y$ が存在するとき, $\phi$ の中の $x$ に $t$ は代入不可能であるという.
+\begin{itemize}
+    \item $\phi$ は $\cdots (\forall y (\cdots x \cdots)) \cdots$ または $\cdots (\exists y (\cdots x \cdots)) \cdots$ という形をしている（ただし, $x$ は $\phi$ 中で自由出現）
+    \item 項 $t$ 中に変数記号 $y$ が出現する.
+\end{itemize}
+上の 2 条件を満たす変数記号 $y$ が存在しないとき, $\phi$ の中の $x$ に $t$ は代入可能であるという. また, $\phi$ の中の $x$ に $t$ が代入可能である場合に, $\phi$ 中の自由出現する $x$ を全て $t$ に置き換えて得られる論理式を $\phi [t/x]$ と表す（$\phi [t/x]$ が論理式となることは (2) 参照）
+}{
+\item 全ての項に対して, その項に含まれる変数記号 $x$ を項 $t$ に置き換えたものは項となることを示せ.
+\item 全ての論理式に対して, その論理式に含まれる全ての自由出現する $x$ を項 $t$ に置き換えたものは論理式となることを示せ.
+\item 論理式 $\forall a \forall y ((\exists x (z = x)) \land (x \bullet \text{suc} (y))) [\text{zero}/x]$ を $[\cdots]$ による代入の表現がない形で表せ.
+}{
+\item 任意の項を一つとり, $s$ とする. 項の定義から, 任意の項は, 変数記号, 定数記号または $t_1, t_2$ を項として $(t_1 \bullet t_2),\ (t_1 \diamond t_2),\ \text{suc} (t_1)$ で構成されるもののみである.
+まず, $s$ が 変数記号 $x$ である場合は $t$ に置き換えても項である. また, $s$ が $x$ 以外の変数記号である場合または定数記号である場合は, 置き換える変数記号 $x$ が存在しないため, $x$ を $t$ に置き換えることは何もしないことと同じで, そのまま項となる.
+次に, 項 $t_1, t_2$ の $x$ を $t$ に置き換えたものも項になると仮定すると, $(t_1 \bullet t_2),\ (t_1 \diamond t_2),\ \text{suc} (t_1)$ いずれも $x$ を $t$ に置き換えたものも項となる.\footnote[1]{ここで直感的な数学的帰納法を用いているが, 仕方ない. ただし, 論理を構成して, 数学に入れば厳密化できる}
+よって, 全ての項に対して, その項に含まれる変数記号 $x$ を項 $t$ に置き換えたものは項となる.
+\item 論理式の定義から, 任意の論理式は, 原始論理式であるか, $\psi, \phi$ を論理式として$(\lnot \phi), (\phi \land \psi), (\phi \lor \psi), (\phi \to \psi), (\forall x \phi), (\exists x \phi)$ で構成されるもののみである.
+まず, 原始論理式で $P(x)$ という形のものは, $P(t)$ としても論理式である. また, 原始論理式で $x = x$, $s = x$, $x = s$ という形（$s$ は項）のものも $t$ を代入しても論理式である. さらに, 原始論理式で命題記号 や $\bot$ となっているものは $x$ を含まず, 論理式となる.
+次に, 論理式 $\phi, \psi$ の 自由出現する $x$ を $t$ で置き換えた $\phi [t/x]$ および $\psi [t/x]$ がそれぞれ論理式だと仮定すると, 論理式 $(\lnot \phi), (\phi \land \psi), (\phi \lor \psi), (\phi \to \psi), (\forall x \phi), (\exists x \phi)$ の自由出現する $x$ に $t$ を代入した
+$(\lnot \phi[t/x]),\ (\phi[t/x] \land \psi[t/x]),\ (\phi[t/x] \lor \psi[t/x]),\ (\phi[t/x] \to \psi[t/x]),\ (\forall x \phi[t/x]),\ (\exists x \phi[t/x])$ はいずれも論理式となる.
+よって, 全ての論理式に対して, その論理式に含まれる全ての自由出現する $x$ を項 $t$ に置き換えたものは論理式となる.
+\item $\forall a \forall y ((\exists x (z = x)) \land (\text{zero} \bullet \text{suc} (y)))$
+}
+\end{nmprob}
+
+
+
+\begin{nmprob}
+自然演繹の準備. 仮定集合.
+\pbenumex{
+証明とは，与えられた仮定を使い, 許された推論規則を適用して結論を得る道筋であり, これを可視化する証明図を 3 問かけて定義する.\\
+まずは, 仮定集合の定義を行う.\\
+制作中
+}{
+\item 制作中  
+}{
+\item 制作中
 }
 \end{nmprob}

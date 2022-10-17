@@ -116,13 +116,174 @@ $R \in R \leftrightarrow R \in z \land R \notin R$ \footnote[2]{これより, �
 
 
 \begin{nmprob}
+共通部分, 差集合. 対の公理と集合の構成. ここも素朴的にいく.
+\pbenumex[Apairing]{
+分出公理より, $\{x \in z\ |\ \phi\}$ は集合であり, さらに外延性の公理より一意である（ただし, $\phi$ は $y$ をこの集合自身としたとき, 自由変数として $y$ を含まない論理式 ）
+よって, $\{ x \in z\ |\ x \in u\},\ \{ x \in z\ |\ x \notin u\}$ はそれぞれ集合であり, それぞれ $z \cap u,\ z \backslash u$ で表す.
+また, 前者を $z$ と $u$ の共通部分といい, 後者を $z$ と $u$ の差集合という.
+}{
+\item $z \cap u = u \cap z$ を示せ.
+\item $z \cap u \subset z$ を示せ.
+\item $z \backslash u \subset z$ を示せ.
+\item 対の公理「$\forall x \forall y \exists z (x \in z \land y \in z)$」と分出公理から, $\{v\ |\ v = x \lor v = y \}$ が集合となることを示せ. 以後, $\{v\ |\ v = x \lor v = y \}$ を $\{x, y\}$ と表す.
+}{ 
+\item $\forall x,\ x \in z \cap u \leftrightarrow x \in z \land x \in u$ と $x \in z \land x \in u \leftrightarrow x \in u \land x \in z$ から, $\forall x,\ x \in z \cap u \leftrightarrow x \in u \cap z$ であり,
+外延性の公理より, $z \cap u = u \cap z$ となる.
+\item $x \in z \cap u$ を仮定すると, $\forall x,\ x \in z \cap u \leftrightarrow x \in z \land x \in u$ から $x \in z \land x \in u$ が成り立つ.
+ここで, $x \in z \land x \in u \to x \in z$ より, $x \in z$ となり, $\forall x,\ x \in z \cap u \to x \in z$ となるから, $z \cap u \subset z$ が成り立つ.
+\item (2) の $x \in u$ を $x \notin u$ に変えれば, 同様に示せる.
+\item 証明図で示す. 複雑になるので, 分割する.
+\begin{prooftree}
+    \AxiomC{$[\forall v (v \in s_0 \leftrightarrow (v \in z_0 \land (v = x \lor v = y)))]_1$}
+    \UnaryInfC{$v \in s_0 \leftrightarrow (v \in z_0 \land (v = x \lor v = y))$}
+    \UnaryInfC{$v \in s_0 \to (v \in z_0 \land (v = x \lor v = y))$}
+    \AxiomC{$[v \in y_0]_2$}
+    \BinaryInfC{$v \in z_0 \land (v = x \lor v = y)$}
+    \UnaryInfC{$v = x \lor v = y$}
+    \RightLabel{{\scriptsize 2}}
+    \UnaryInfC{$v \in s_0 \to (v = x \lor v = y)$}
+\end{prooftree}
+\begin{prooftree}
+    \AxiomC{$[v = x]_3$}
+    \AxiomC{$[x \in z_0 \land y \in z_0]_4$}
+    \UnaryInfC{$x \in z_0$}
+    \BinaryInfC{$v \in z_0$}
+    \AxiomC{$[v = y]_5$}
+    \AxiomC{$[x \in z_0 \land y \in z_0]_4$}
+    \UnaryInfC{$y \in z_0$}
+    \BinaryInfC{$v \in z_0$}
+    \AxiomC{$[v = x \lor v = y]_6$}
+    \RightLabel{{\scriptsize 3, 5}}
+    \TrinaryInfC{$v \in z_0$}
+    \UnaryInfC{$v \in z_0 \land (v = x \lor v = y)$}
+\end{prooftree}
+\begin{prooftree}
+    \AxiomC{$v \in z_0 \land (v = x \lor v = y)$}
+    \AxiomC{$[\forall v (v \in s_0 \leftrightarrow (v \in z_0 \land (v = x \lor v = y)))]_1$}
+    \UnaryInfC{$(v \in z_0 \land (v = x \lor v = y)) \to v \in s_0$}
+    \BinaryInfC{$v \in s_0$}
+    \RightLabel{{\scriptsize 6}}
+    \UnaryInfC{$(v = x \lor v = y) \to v \in s_0$}
+\end{prooftree}
+\begin{prooftree}
+    \AxiomC{$v \in s_0 \to (v = x \lor v = y)$}
+    \AxiomC{$(v = x \lor v = y) \to v \in s_0$}
+    \BinaryInfC{$v \in s_0 \leftrightarrow (v = x \lor v = y)$}
+    \UnaryInfC{$\forall v (v \in s_0 \leftrightarrow (v = x \lor v = y))$}
+    \UnaryInfC{$\exists s\forall v (v \in s \leftrightarrow (v = x \lor v = y))$}
+    \UnaryInfC{$\forall x\forall y\exists s\forall v (v \in s \leftrightarrow (v = x \lor v = y))$}
+    \AxiomC{}
+    \UnaryInfC{$\forall x\forall y\forall z\exists s\forall v (v \in s \leftrightarrow (v \in z \land (v = x \lor v = y)))$}
+    \UnaryInfC{$\exists s\forall v (v \in s \leftrightarrow (v \in z_0 \land (v = x \lor v = y)))$}
+    \RightLabel{{\scriptsize 1}}
+    \BinaryInfC{$\forall x\forall y\exists s\forall v (v \in s \leftrightarrow (v = x \lor v = y))$}
+\end{prooftree}
+\begin{prooftree}
+    \AxiomC{$\forall x\forall y\exists s\forall v (v \in s \leftrightarrow (v = x \lor v = y))$}
+    \AxiomC{}
+    \UnaryInfC{$\exists z (x \in z \land y \in z)$}
+    \RightLabel{{\scriptsize 4}}
+    \BinaryInfC{$\forall x\forall y\exists s\forall v (v \in s \leftrightarrow (v = x \lor v = y))$}
+\end{prooftree}
+}
+\end{nmprob}
+
+
+
+\begin{nmprob}
+    和集合の公理.
+\pbenum[Aunion]{
+\item $\{x, x\} = \{ x \}$ を示すことにより, $\{x\}$ も集合であることを示せ. ただし, $\{x\} \coloneqq \{v\ |\ v = x\}$ とする.
+\item $\{x, y\} = \{y, x\}$ を示せ.
+\item 和集合の公理「$\forall \mathcal{F} \exists A \forall Y \forall x((x \in Y \land Y \in \mathcal{F}) \to x \in A)$」からクラス $\{ x\ |\ \exists Y \in \mathcal{F},\ (x \in Y)\}$
+\footnote[1]{以後, $\exists x \in X,\ \phi$ を $\exists x (x \in X \land \phi)$ の略記とする（$x, X$ は変数記号, $\phi$ は論理式）同様に全称記号の略記も考える.}が集合であることを示せ.
+}{
+\item $v \in \{x, x\} \leftrightarrow (v = x \lor v = x) \leftrightarrow v = x \leftrightarrow v \in \{x \}$ で $\forall v (v \in \{x, x\} \leftrightarrow v \in \{x\})$ より, 外延性の公理から $\{x, x\} = \{x \}$ となる. 
+\item 上と同様して, $(v = x \lor v = y) \leftrightarrow (v = y \lor v = x)$ とから $\{x, y\} = \{y, x\}$ となる.
+\item 分割した証明図で示す. ただし, 基本的に問\ref{sec:set}-\ref{pname:Apairing}\ (3) と同じなので, 大幅に省略する.
+\begin{prooftree}
+    \AxiomC{$[\forall x(x \in B_0 \leftrightarrow (x \in A_0 \land \exists Y(Y \in \mathcal{F} \land x \in Y)))]_1$}
+    \UnaryInfC{$x \in B_0 \to (\exists Y(Y \in \mathcal{F} \land x \in Y))$}
+\end{prooftree}
+\begin{prooftree}
+    \AxiomC{$[\exists Y(Y \in \mathcal{F} \land x \in Y)]_2$}
+    \AxiomC{$[(\exists Y(x \in Y \land Y \in \mathcal{F})) \to x \in A_0]_3$}
+    \BinaryInfC{$x \in A_0$}
+    \AxiomC{$[\exists Y(Y \in \mathcal{F} \land x \in Y)]_2$}
+    \BinaryInfC{$x \in A_0 \land (\exists Y(Y \in \mathcal{F} \land x \in Y))$}
+\end{prooftree}
+\begin{prooftree}
+    \AxiomC{$x \in A_0 \land (\exists Y(Y \in \mathcal{F} \land x \in Y))$}
+    \AxiomC{$[\forall x(x \in B_0 \leftrightarrow (x \in A_0 \land \exists Y(Y \in \mathcal{F} \land x \in Y)))]_1$}
+    \BinaryInfC{$x \in B_0$}
+    \RightLabel{{\scriptsize 2}}
+    \UnaryInfC{$(\exists Y(Y \in \mathcal{F} \land x \in Y)) \to x \in B_0$}
+\end{prooftree}
+\begin{prooftree}
+    \AxiomC{$x \in B_0 \to (\exists Y(Y \in \mathcal{F} \land x \in Y))$}
+    \AxiomC{$(\exists Y(Y \in \mathcal{F} \land x \in Y)) \to x \in B_0$}
+    \BinaryInfC{$x \in B_0 \leftrightarrow (\exists Y(Y \in \mathcal{F} \land x \in Y))$}
+    \UnaryInfC{$\forall \mathcal{F}\exists B\forall x (x \in B \leftrightarrow (\exists Y(Y \in \mathcal{F} \land x \in Y)))$}
+    
+\end{prooftree}
+\begin{prooftree}
+    \AxiomC{$\forall \mathcal{F}\exists B\forall x (x \in B \leftrightarrow (\exists Y(Y \in \mathcal{F} \land x \in Y)))$}
+    \AxiomC{}
+    \UnaryInfC{$\forall \mathcal{F}\forall A \exists B\forall x(x \in B \leftrightarrow (x \in A \land \exists Y(Y \in \mathcal{F} \land x \in Y)))$}
+    \UnaryInfC{$\exists B\forall x(x \in B \leftrightarrow (x \in A_0 \land \exists Y(Y \in \mathcal{F} \land x \in Y)))$}
+    \RightLabel{{\scriptsize 1}}
+    \BinaryInfC{$\forall \mathcal{F}\exists B\forall x (x \in B \leftrightarrow (\exists Y(Y \in \mathcal{F} \land x \in Y)))$}
+\end{prooftree}
+\begin{prooftree}
+    \AxiomC{$[\forall Y\forall x((x \in Y \land Y \in \mathcal{F}) \to x \in A_0)]_4$}
+    \UnaryInfC{$(x \in Y_0 \land Y_0 \in \mathcal{F}) \to x \in A_0$}
+    \AxiomC{$[x \in Y_0 \land Y_0 \in \mathcal{F}]_5$}
+    \BinaryInfC{$x \in A_0$}
+    \AxiomC{$[\exists Y(x \in Y \land Y \in \mathcal{F})]_6$}
+    \RightLabel{{\scriptsize 5}}
+    \BinaryInfC{$x \in A_0$}
+    \RightLabel{{\scriptsize 6}}
+    \UnaryInfC{$(\exists Y(x \in Y \land Y \in \mathcal{F})) \to x \in A_0$}
+\end{prooftree}
+\begin{prooftree}
+    \AxiomC{$(\exists Y(x \in Y \land Y \in \mathcal{F})) \to x \in A_0$}
+    \AxiomC{}
+    \UnaryInfC{$\forall \mathcal{F}\exists A \forall Y \forall x((x \in Y \land Y \in \mathcal{F}) \to x \in A)$}
+    \UnaryInfC{$\exists A \forall Y \forall x((x \in Y \land Y \in \mathcal{F}) \to x \in A)$}
+    \RightLabel{{\scriptsize 4}}
+    \BinaryInfC{$(\exists Y(x \in Y \land Y \in \mathcal{F})) \to x \in A_0$}
+\end{prooftree}
+最後の証明図で仮定 3 は解消できる（一つの証明図としたければ, 3 の仮定の上に置くか, 下から 3 つめの証明図の最後で 3 $\to \phi$ の形にして仮定 3 を解消すればよい）
+}
+\end{nmprob}
+
+
+
+\begin{nmprob}
+    和集合.
+\pbenumex{
+問\ref{sec:set}-\ref{pname:Aunion}\ (3) より $\{ x\ |\ \exists Y \in \mathcal{F},\ (x \in Y)\}$ は集合である.
+これを $\bigcup \mathcal{F}$ と以後表す. また, 束縛変数記号を適当にとり $\bigcup_{Y \in \mathcal{F}} \mathcal{F}$ とも表すことにする.
+}{
+\item $u \cup v \coloneqq \bigcup \{u, v\}$ と定義する. $u \cup v = v \cup u$ を示せ.
+\item $u \cup v = \{x\ |\ x \in u \lor x \in v\}$ を示せ.
+\item $\phi \cup \{\phi\} = \{\phi\}$ を示せ.
+}{
+\item 問\ref{sec:set}-\ref{pname:Aunion}\ (2) より, $\{u, v\} = \{v, u\}$ であるから, $u \cup v = \bigcup \{u, v\} = \bigcup \{v, u\} = v \cup u$ となる.
+\item $x \in u \cup v \leftrightarrow (\exists Y(Y \in \{u, v\} \land x \in Y)) \leftrightarrow (\exists Y((Y = u \lor Y = v) \land x \in Y)) \leftrightarrow x \in u \lor x \in v$
+}
+\end{nmprob}
+
+
+
+\begin{nmprob}
 Kuratowski の順序対を理解しよう.
 \pbenum{
 \item $\langle a, b\rangle$ を $\langle a, b\rangle \coloneqq \{ \{a\}, \{a, b\} \}$ と定めるとき,
 \begin{align*}
     \langle a, b\rangle = \langle c, d\rangle \iff (a = c) \land (b = d)
 \end{align*}
-となることを示せ. (補足: 外延的記法において, 同一の元を重複して書くことは禁じられていない. 同じものをいくつ書いてもその効果はただ1つだけ書いたのと同じものとしている)
+となることを示せ.
 \item 順序対を拡張して $\bm{n}$\textbf{-対}を次のように定義する.
 \begin{align*}
     \langle a_1 \rangle \coloneqq a_1,\hspace{3zw} \langle a_1, \cdots, a_{n-1}, a_n \rangle \coloneqq \langle \langle a_1, \cdots, a_{n-1} \rangle, a_n \rangle 
@@ -252,8 +413,8 @@ $\langle x, y\rangle \in R$ かつ $\langle x, y^{'}\rangle \in R$ が成り立�
 \pbenum[fog]{
 \item 写像 $f: A\to B,\ g: B\to C$ の合成関係 $g\circ f$ は $A$ から $C$ への写像であることを示せ.
 \item 写像 $f: A\to B$ と $g: B\to C$ がそれぞれ全単射のとき, $g\circ f$ は $A$ から $C$ への全単射となることを示せ.
-\item $X$ から $X$ への写像で, 任意の $x \in X$ に対して, その像が $x$ となるものを恒等写像といい $I_X$ で表す.
-$I_X$ は全単射であることを示せ.
+\item $X$ から $X$ への写像で, 任意の $x \in X$ に対して, その像が $x$ となるものを恒等写像といい $I_X$ で表す. すなわち, $I_X = \{\langle x, x\rangle \ |\ x \in X\}$ である.
+ここで, $I_X$ は全単射であることを示せ.
 }{
 \item
 \begin{enumerate}

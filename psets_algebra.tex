@@ -613,7 +613,7 @@ $1 \leq {n_0}^{'}$ となる. よって, ${n_0}^{'} \neq 0$ であり, ${n_0}^{'
 
 \begin{nmprob}
 \makeatletter\tagsleft@true\makeatother
-群の定義, 一般結合法則
+群の定義.
 \pbenumex{
 空でない集合 $G$ と $G$ 上の二項演算（$*$ とする）が与えられ, $\langle G, *\rangle$ がモノイドであり, さらに次の条件 (G3) を満たすとき, $\langle G, *\rangle$ は群であるという.
 \begin{align}
@@ -621,9 +621,18 @@ $1 \leq {n_0}^{'}$ となる. よって, ${n_0}^{'} \neq 0$ であり, ${n_0}^{'
 \end{align}
 また, $*$ が交換律を満たすとき, $\langle G, *\rangle$ は可換群という.
 }{
-\item tt
+\item 空でない集合 $X$ からそれ自身への全単射の集合を $G$ とする. 問 \ref{sec:set}-\ref{pname:fog}\ より, 任意の $G$ の元 $f, g$ に関して $f \circ g \in G$ となるので,
+$f, g$ から $f \circ g$ を像とする写像を考えることができ, さらにこの写像は $G$ 上の二項演算である. 誤解が生じることがない場合には $\circ$ をこの演算と同一視する. 今, $\langle G, \circ \rangle$ は群となることを示せ.
+\item 任意の集合 $S$ に対して, そのべき集合 $\mathcal{P}(S)$ を考える. 集合 $A, B$ に対して, $A \triangle B \coloneqq (A \backslash B) \cup (B \backslash A)$ と定義し, $A, B \in \mathcal{P}(S)$ に対して, $A \triangle B$ を対応させる写像も誤解のない場合は $\triangle$ で表すとき,
+$\langle \mathcal{P}(S), \triangle \rangle$ は可換群となることを示せ.
 }{
-\item tt
+\item 問\ref{sec:set}-\ref{pname:fog}\ (3) より, $\circ$ が結合律を満たす. また, 任意の $f \in G$ をとると, $f \circ I_X = I_X \circ f = f$ となるので, (G2) を満たす.
+最後に, $f \in G$ は全単射で, 問\ref{sec:set}-\ref{pname:fog}\ (2) とから, $f^{-1} \circ f = f \circ f^{-1} = I_X$ より, (G3) を満たす. よって, $\langle G, \circ \rangle$ 群となる.\\
+この群は$X$ 上の対称群といい, 以後 $S(X)$ で表す.
+\item まず, $\triangle$ が結合律を満たすことを示す. $x \in (A \triangle B) \triangle C$ とすると, $x \in (A \triangle B)\backslash C$ または $x \in C \backslash (A \triangle B)$ となる.
+$x \in (A \triangle B)\backslash C$ のときは, $x \in (A \backslash B) \backslash C$ または $x \in (B \backslash A) \backslash C$ となる. $x \in C \backslash (A \triangle B)$ のときは,
+$x \in C \land \lnot(x \in A\backslash B \lor x \in B \backslash A)$ で $x \in C \land ((x \notin A \lor x \in B) \land (x \notin B \lor x \in A))$ で $x \in C \land ((x \notin A \land x \notin B) \lor (x \in A \land x \in B))$ より,
+$x \in (C\backslash B) \backslash A$ または $x \in A \cap B \cap C$ となる. あとは, これら 4 つの場合に対して, $x \in A \triangle (B \triangle C)$ を示せばよいが, めんどくさいのでいつかやる. 反対側も同様.
 }
 \makeatletter\tagsleft@false\makeatother
 \end{nmprob}
